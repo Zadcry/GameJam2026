@@ -2537,6 +2537,7 @@ position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_3o6np")
 
 [node name="MeleeArea" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="HitRight" type="CollisionShape2D" parent="MeleeArea"]
 position = Vector2(23, -12)

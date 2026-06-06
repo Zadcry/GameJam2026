@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cwj30qpuewkap"]
+[gd_scene load_steps=2 format=3 uid="uid://cwj30qpuewkap"]
 
 [sub_resource type="GDScript" id="GDScript_e66xa"]
 script/source = "extends Camera2D

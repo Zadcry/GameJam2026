@@ -27,8 +27,8 @@ func _process(_delta: float) -> void:
 	var midpoint = (player1.global_position + player2.global_position) / 2.0
 	var half_w = get_viewport().get_visible_rect().size.x / 2.0
 	var half_h = get_viewport().get_visible_rect().size.y / 2.0
-	Global.oxido_mitch = 0
-	Global.vida_crusty = 6
+	#Global.oxido_mitch = 0
+	#Global.vida_crusty = 6
 
 func _on_proyectil_golpeado() -> void:
 	if not tutorial_activo:

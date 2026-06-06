@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0p6nvdcfklsm"]
+
+[ext_resource type="Script" uid="uid://bh7bxdg85rilr" path="res://scripts/parallax_background.gd" id="1_d04nq"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_d04nq")
+
+[node name="CapaLejana" type="ParallaxLayer" parent="."]
+
+[node name="Fondo" type="Sprite2D" parent="CapaLejana"]
+
+[node name="CapaMedia" type="ParallaxLayer" parent="."]
+
+[node name="Medio" type="Sprite2D" parent="CapaMedia"]
+
+[node name="CapaFrontal" type="ParallaxLayer" parent="."]
+
+[node name="Frente" type="Sprite2D" parent="CapaFrontal"]

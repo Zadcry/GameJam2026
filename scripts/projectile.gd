@@ -25,8 +25,8 @@ func _on_hit(_area: Area2D) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player2":
-		Global.vida_crusty -= 1
-		body.actualizar_cuerpo()
+		var knockback_dir = sign(direction.x)
+		body.recibir_dano(knockback_dir)
 		queue_free()
 	else:
 		# Chocó con superficie, spawn explosión

@@ -1,15 +1,20 @@
 extends CharacterBody2D
+
 @onready var brazo_izq := $Body/BrazoIzq
 @onready var pierna_izq := $Body/PiernaIzq
+
 signal proyectil_golpeado
+
 const GRAVITY = 800.0
 const JUMP_FORCE = -400.0
+
 var SPEED = 200.0
 var facing := 1.0
 var locked := false
 var estado_actual := ""
 var atacando := false
 var puede_atacar := true
+var en_knockback := false
 
 func _physics_process(delta: float) -> void:
 	$Body/Torso.flip_h = facing == -1.0
@@ -18,17 +23,16 @@ func _physics_process(delta: float) -> void:
 	$Body/BrazoIzq.flip_h = facing == -1.0
 	$Body/PiernaDer.flip_h = facing == -1.0
 	$Body/PiernaIzq.flip_h = facing == -1.0
+
 	if $RayArriba.is_colliding():
 		velocity.x = 150.0 * facing
-	var p1 = get_tree().get_first_node_in_group("player1")
-	if p1:
-		var dist = global_position.distance_to(p1.global_position)
-		if dist < 40.0:
-			p1.recibir_dano(-p1.facing)
+
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+
 	var moving := false
-	if not locked:
+
+	if not locked and not en_knockback:
 		var direction := 0.0
 		if Input.is_action_pressed("p2_move_right"):
 			direction += 1.0
@@ -41,13 +45,25 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 		if Input.is_action_just_pressed("p2_move_up") and is_on_floor() and not $RayArriba.is_colliding():
 			velocity.y = JUMP_FORCE
-	else:
+	elif locked:
 		velocity.x = 0.0
+
 	if Input.is_action_just_pressed("p2_hit") and puede_atacar:
 		_melee_attack()
+
 	$MeleeArea/HitRight.disabled = facing != 1.0
 	$MeleeArea/HitLeft.disabled = facing != -1.0
+	
+	if not Global.es_tutorial:
+		var mitch = get_tree().get_first_node_in_group("player1")
+		if mitch:
+			var dist = global_position.distance_to(mitch.global_position)
+			if dist < 40.0 and not mitch.en_knockback:
+				var knockback_dir = sign(mitch.global_position.x - global_position.x)
+				mitch.recibir_dano(knockback_dir)
+	
 	move_and_slide()
+
 	if not atacando:
 		var nuevo_estado := ""
 		var en_aire = not is_on_floor()
@@ -133,6 +149,10 @@ func _melee_attack() -> void:
 	puede_atacar = false
 	atacando = true
 	estado_actual = ""
+	print("HitRight disabled: ", $MeleeArea/HitRight.disabled)
+	print("HitLeft disabled: ", $MeleeArea/HitLeft.disabled)
+	print("facing: ", facing)
+	print("monitoring antes: ", $MeleeArea.monitoring)
 	var anim := ""
 	if not is_on_floor() and not Global.es_tutorial:
 		anim = "atk_jump"
@@ -148,6 +168,7 @@ func _melee_attack() -> void:
 	$Body/PiernaDer.play(anim)
 	$Body/PiernaIzq.play(anim)
 	$MeleeArea.monitoring = true
+	print("monitoring después: ", $MeleeArea.monitoring)
 	await get_tree().create_timer(0.5).timeout
 	$MeleeArea.monitoring = false
 	$Body.position.y += 15.0
@@ -160,13 +181,40 @@ func actualizar_cuerpo() -> void:
 	pierna_izq.visible = Global.vida_crusty > 2
 
 func _on_melee_hit(area: Area2D) -> void:
+	print("area detectada: ", area.name)
 	if area.name == "HitArea":
-		print("golpeado")
 		emit_signal("proyectil_golpeado")
 		var proj = area.get_parent()
 		var speed = abs(proj.direction.x)
 		proj.hit_redirect(Vector2(-proj.direction.x, -speed * 1.732).normalized() * speed * 1.2)
 	elif area.name == "HurtBox":
-		var dano = randf_range(5.0, 7.0)
-		Global.oxido_mitch += dano
-		get_tree().get_first_node_in_group("player1").aplicar_oxido()
+		if Global.es_tutorial:
+			return
+		var mitch = get_tree().get_first_node_in_group("player1")
+		var knockback_dir = sign(mitch.global_position.x - global_position.x)
+		mitch.recibir_dano(knockback_dir)
+
+func _on_mitch_hurtbox_entered(area: Area2D) -> void:
+	if area.get_parent().name == "Player2":
+		var mitch = get_tree().get_first_node_in_group("player1")
+		var knockback_dir = sign(mitch.global_position.x - global_position.x)
+		mitch.recibir_dano(knockback_dir)
+
+func recibir_dano(knockback_dir: float) -> void:
+	if en_knockback:
+		return
+	Global.vida_crusty -= 1
+	actualizar_cuerpo()
+	_flash_dano()
+	en_knockback = true
+	velocity.x = knockback_dir * 150.0
+	await get_tree().create_timer(0.5).timeout
+	en_knockback = false
+
+func _flash_dano() -> void:
+	var partes = [$Body/Head, $Body/Torso, $Body/BrazoDer, $Body/BrazoIzq, $Body/PiernaDer, $Body/PiernaIzq]
+	for parte in partes:
+		parte.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.5).timeout
+	for parte in partes:
+		parte.modulate = Color(1, 1, 1)

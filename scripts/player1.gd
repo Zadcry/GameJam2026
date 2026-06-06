@@ -1,10 +1,13 @@
 extends CharacterBody2D
+
 const GRAVITY = 800.0
 const JUMP_FORCE = -400.0
 const MIN_POWER = 150.0
 const MAX_POWER = 800.0
 const CHARGE_RATE = 500.0
+
 @export var projectile_scene: PackedScene
+
 var SPEED = 200.0
 var can_shoot := true
 var facing := 1.0
@@ -14,15 +17,18 @@ var locked := false
 var estado_actual := ""
 var moving := false
 var disparando := false
+var en_knockback := false
 
 func _physics_process(delta: float) -> void:
 	if $RayArriba.is_colliding():
 		velocity.x = 150.0 * facing
-	
+
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+
 	moving = false
-	if not locked:
+
+	if not locked and not en_knockback:
 		var direction := 0.0
 		if Input.is_action_pressed("p1_move_right"):
 			direction += 1.0
@@ -47,15 +53,24 @@ func _physics_process(delta: float) -> void:
 				charging = false
 				charge = 0.0
 				estado_actual = ""
-	else:
+	elif locked:
 		velocity.x = 0.0
-	if Input.is_action_pressed("p1_shoot") and can_shoot:
+
+	if not is_on_floor():
+		if charging:
+			charging = false
+			charge = 0.0
+			estado_actual = ""
+	elif Input.is_action_pressed("p1_shoot") and can_shoot:
 		charging = true
 		charge = min(charge + CHARGE_RATE * delta, MAX_POWER)
-	if Input.is_action_just_released("p1_shoot") and can_shoot and charging:
+
+	if Input.is_action_just_released("p1_shoot") and can_shoot and charging and is_on_floor():
 		_shoot()
 	move_and_slide()
+
 	$animation.flip_h = facing == -1.0
+
 	var nivel = Global.oxido_mitch
 	if charging:
 		var anim_atk := ""
@@ -120,9 +135,20 @@ func aplicar_oxido() -> void:
 		SPEED = 200.0 * 0.7
 
 func recibir_dano(knockback_dir: float) -> void:
+	if en_knockback:
+		return
 	Global.oxido_mitch += randf_range(1.0, 2.0)
 	aplicar_oxido()
+	_flash_dano()
+	en_knockback = true
 	velocity.x = knockback_dir * 300.0
+	await get_tree().create_timer(0.5).timeout
+	en_knockback = false
+
+func _flash_dano() -> void:
+	$animation.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.5).timeout
+	$animation.modulate = Color(1, 1, 1)
 
 func lock_movement(forced_facing: float = 0.0) -> void:
 	locked = true
