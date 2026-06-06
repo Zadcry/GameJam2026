@@ -1,10 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbaoajew0ap22"]
+[gd_scene load_steps=23 format=3 uid="uid://cbaoajew0ap22"]
 
 [ext_resource type="Script" uid="uid://b08c3a3t1wf8x" path="res://scripts/main.gd" id="1_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="2_rarhs"]
 [ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="3_c01mt"]
 [ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="3_vcsgt"]
 [ext_resource type="Script" uid="uid://bwee4wvfr842v" path="res://scripts/player2.gd" id="4_rarhs"]
+[ext_resource type="Texture2D" uid="uid://c6l2cgb2ugi5g" path="res://sprites/teclas/awsd/A_Sprite.png" id="6_q8u5g"]
+[ext_resource type="Texture2D" uid="uid://b8tbff47wbo5t" path="res://sprites/teclas/awsd/D_Sprite.png" id="7_lhr70"]
+[ext_resource type="Texture2D" uid="uid://bne2r2m2ix20k" path="res://sprites/teclas/awsd/S_Sprite.png" id="8_wp0k4"]
+[ext_resource type="Texture2D" uid="uid://cd5yo5g58bt5i" path="res://sprites/teclas/awsd/W_Sprite.png" id="9_bjd11"]
+[ext_resource type="Texture2D" uid="uid://7yv7njndfdt3" path="res://sprites/teclas/updownrightleft/Down_Sprite.png" id="10_lhr70"]
+[ext_resource type="Texture2D" uid="uid://bxqjqgdqgxbj8" path="res://sprites/teclas/e-enter/E_Sprite.png" id="10_mwfav"]
+[ext_resource type="Texture2D" uid="uid://d1llwb4gq3lb8" path="res://sprites/teclas/updownrightleft/Left_Sprite.png" id="12_3p2gp"]
+[ext_resource type="Texture2D" uid="uid://bdb8g1ecjsvo4" path="res://sprites/teclas/updownrightleft/Right_Sprite.png" id="13_cvmbd"]
+[ext_resource type="Texture2D" uid="uid://bmi4cnh5wun8w" path="res://sprites/teclas/updownrightleft/Up_Sprite.png" id="14_ft6cd"]
+[ext_resource type="Texture2D" uid="uid://cu7viok5w0rpa" path="res://sprites/teclas/e-enter/Enter_Sprite.png" id="15_3p2gp"]
+[ext_resource type="PackedScene" uid="uid://cwj30qpuewkap" path="res://scenes/GameCamera.tscn" id="16_cvmbd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
 size = Vector2(1151, 26)
@@ -26,8 +37,8 @@ size = Vector2(136.5, 318)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0bbpv")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-5, -167)
+[node name="GameCamera" parent="." instance=ExtResource("16_cvmbd")]
+position = Vector2(0, -154)
 
 [node name="Piso" type="StaticBody2D" parent="."]
 collision_layer = 16
@@ -80,7 +91,26 @@ offset_top = -116.0
 offset_right = -186.0
 offset_bottom = -93.0
 scale = Vector2(1.2, 1.2)
-text = "WASD"
+
+[node name="ASprite" type="Sprite2D" parent="LetreroP1"]
+position = Vector2(0.208344, 7.91666)
+scale = Vector2(0.446429, 0.446429)
+texture = ExtResource("6_q8u5g")
+
+[node name="DSprite" type="Sprite2D" parent="LetreroP1"]
+position = Vector2(45.2083, 7.91666)
+scale = Vector2(0.456349, 0.456349)
+texture = ExtResource("7_lhr70")
+
+[node name="SSprite" type="Sprite2D" parent="LetreroP1"]
+position = Vector2(22.7083, 7.91666)
+scale = Vector2(0.456349, 0.456349)
+texture = ExtResource("8_wp0k4")
+
+[node name="WSprite" type="Sprite2D" parent="LetreroP1"]
+position = Vector2(22.7083, -14.5833)
+scale = Vector2(0.456349, 0.456349)
+texture = ExtResource("9_bjd11")
 
 [node name="LetreroP1b" type="Label" parent="."]
 visible = false
@@ -89,7 +119,11 @@ offset_left = -254.0
 offset_top = -115.0
 offset_right = -153.0
 offset_bottom = -92.0
-text = "E para lanzar"
+
+[node name="ESprite" type="Sprite2D" parent="LetreroP1b"]
+position = Vector2(49, -5)
+scale = Vector2(0.761905, 0.761905)
+texture = ExtResource("10_mwfav")
 
 [node name="LetreroP2" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
@@ -99,8 +133,27 @@ offset_top = -113.0
 offset_right = 186.0
 offset_bottom = -90.0
 scale = Vector2(1.2, 1.2)
-text = "↑↓←→"
 metadata/_edit_use_anchors_ = true
+
+[node name="DownSprite" type="Sprite2D" parent="LetreroP2"]
+position = Vector2(20.8333, 13.125)
+scale = Vector2(0.456349, 0.446429)
+texture = ExtResource("10_lhr70")
+
+[node name="LeftSprite" type="Sprite2D" parent="LetreroP2"]
+position = Vector2(0, 13.3333)
+scale = Vector2(0.436508, 0.436508)
+texture = ExtResource("12_3p2gp")
+
+[node name="RightSprite" type="Sprite2D" parent="LetreroP2"]
+position = Vector2(41.6667, 13.3333)
+scale = Vector2(0.436508, 0.436508)
+texture = ExtResource("13_cvmbd")
+
+[node name="UpSprite" type="Sprite2D" parent="LetreroP2"]
+position = Vector2(20.8333, -7.5)
+scale = Vector2(0.46627, 0.46627)
+texture = ExtResource("14_ft6cd")
 
 [node name="LetreroP2b" type="Label" parent="."]
 visible = false
@@ -110,4 +163,8 @@ offset_top = -109.0
 offset_right = 256.0
 offset_bottom = -86.0
 scale = Vector2(0.8, 0.8)
-text = "Enter para golpear"
+
+[node name="EnterSprite" type="Sprite2D" parent="LetreroP2b"]
+position = Vector2(70, 0)
+scale = Vector2(0.585937, 0.585937)
+texture = ExtResource("15_3p2gp")

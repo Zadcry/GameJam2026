@@ -2551,17 +2551,17 @@ shape = SubResource("CapsuleShape2D_khojo")
 [node name="PiernaIzq" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_5r00m")
 animation = &"saltando_sin"
-frame_progress = 0.237918
+frame_progress = 0.593241
 
 [node name="PiernaDer" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_fwvp1")
 animation = &"saltando_sin"
-frame_progress = 0.798028
+frame_progress = 0.15335
 
 [node name="BrazoIzq" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_3uyny")
 animation = &"saltando_sin"
-frame_progress = 0.520677
+frame_progress = 0.875999
 
 [node name="Head" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_3qbix")
@@ -2570,12 +2570,12 @@ animation = &"saltando_sin"
 [node name="Torso" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_6rnxb")
 animation = &"saltando_sin"
-frame_progress = 0.354275
+frame_progress = 0.709598
 
 [node name="BrazoDer" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_2p2cm")
 animation = &"saltando_sin"
-frame_progress = 0.86856
+frame_progress = 0.223882
 
 [node name="RayArriba" type="RayCast2D" parent="."]
 target_position = Vector2(0, -50)

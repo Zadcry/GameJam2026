@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var camera := $Camera2D
 @onready var player1 := $Player1
 @onready var player2 := $Player2
 @onready var zona_p1 := $ZonaP1
@@ -26,20 +25,10 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	var midpoint = (player1.global_position + player2.global_position) / 2.0
-	camera.global_position = midpoint + CAMERA_OFFSET
-
-	# Tamaño de la pantalla en coordenadas del mundo
 	var half_w = get_viewport().get_visible_rect().size.x / 2.0
 	var half_h = get_viewport().get_visible_rect().size.y / 2.0
-
-	var cam_left = camera.global_position.x - half_w
-	var cam_right = camera.global_position.x + half_w
-	var cam_top = camera.global_position.y - half_h
-	var cam_bottom = camera.global_position.y + half_h
-
-	# Limitar P1
-	player1.global_position.x = clamp(player1.global_position.x, cam_left + 20, cam_right - 20)
-	player2.global_position.x = clamp(player2.global_position.x, cam_left + 20, cam_right - 20)
+	Global.oxido_mitch = 0
+	Global.vida_crusty = 6
 
 func _on_proyectil_golpeado() -> void:
 	if not tutorial_activo:

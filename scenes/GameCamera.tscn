@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwj30qpuewkap"]
+
+[sub_resource type="GDScript" id="GDScript_e66xa"]
+script/source = "extends Camera2D
+
+const CAMERA_OFFSET := Vector2(0, -150)
+const MARGIN := 20.0
+
+var player1: Node2D = null
+var player2: Node2D = null
+
+func _ready() -> void:
+	await get_tree().process_frame
+	player1 = get_tree().get_first_node_in_group(\"player1\")
+	player2 = get_tree().get_first_node_in_group(\"player2\")
+
+func _process(_delta: float) -> void:
+	if not player1 or not player2:
+		return
+
+	var midpoint := (player1.global_position + player2.global_position) / 2.0
+	global_position = midpoint + CAMERA_OFFSET
+
+	var half_w := get_viewport().get_visible_rect().size.x / 2.0
+	var cam_left := global_position.x - half_w
+	var cam_right := global_position.x + half_w
+
+	player1.global_position.x = clamp(player1.global_position.x, cam_left + MARGIN, cam_right - MARGIN)
+	player2.global_position.x = clamp(player2.global_position.x, cam_left + MARGIN, cam_right - MARGIN)
+"
+
+[node name="GameCamera" type="Camera2D"]
+script = SubResource("GDScript_e66xa")
