@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bgbkd4sa2qjxf"]
+
+[ext_resource type="Texture2D" uid="uid://cujjhevjwwdde" path="res://images/initial_menu_images/Pantalla Prueba.jpg" id="1_nddpm"]
+[ext_resource type="Texture2D" uid="uid://cvkovwe0r62j8" path="res://images/initial_menu_images/PressAnyButton_Button.png" id="2_ejsif"]
+[ext_resource type="Texture2D" uid="uid://huwsd8a24spa" path="res://images/initial_menu_images/PlayM_ns_button.png" id="3_ejsif"]
+[ext_resource type="Texture2D" uid="uid://dd7pokutax02m" path="res://images/initial_menu_images/PlayM_s_button.png" id="4_b8v00"]
+[ext_resource type="Texture2D" uid="uid://b6cyi314eduek" path="res://images/initial_menu_images/OptionsM_ns_button.png" id="5_7q5xl"]
+[ext_resource type="Texture2D" uid="uid://brhana76kfk1k" path="res://images/initial_menu_images/OptionsM_s_button.png" id="6_hg5xu"]
+[ext_resource type="Texture2D" uid="uid://cxurc4rfbryhp" path="res://images/initial_menu_images/QuitM_ns_button.png" id="7_tsw84"]
+[ext_resource type="Texture2D" uid="uid://baainpsi1ku5x" path="res://images/initial_menu_images/QuitM_s_button.png" id="8_j5uib"]
+
+[node name="MenuI" type="Node2D" unique_id=764015196]
+
+[node name="ScreenP" type="Sprite2D" parent="." unique_id=635772020]
+position = Vector2(576, 325.00003)
+scale = Vector2(0.6000001, 0.6)
+texture = ExtResource("1_nddpm")
+
+[node name="click" type="TextureButton" parent="." unique_id=1157347301]
+offset_left = 405.0
+offset_top = 542.0
+offset_right = 1078.0
+offset_bottom = 625.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_ejsif")
+
+[node name="Play" type="TextureButton" parent="." unique_id=1152549273]
+offset_left = 461.0
+offset_top = 314.0
+offset_right = 911.0
+offset_bottom = 506.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_ejsif")
+texture_hover = ExtResource("4_b8v00")
+
+[node name="Options" type="TextureButton" parent="." unique_id=590813223]
+offset_left = 461.0
+offset_top = 395.0
+offset_right = 1013.0
+offset_bottom = 587.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("5_7q5xl")
+texture_hover = ExtResource("6_hg5xu")
+
+[node name="Quit" type="TextureButton" parent="." unique_id=820797511]
+offset_left = 461.0
+offset_top = 475.0
+offset_right = 911.0
+offset_bottom = 667.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("7_tsw84")
+texture_hover = ExtResource("8_j5uib")
