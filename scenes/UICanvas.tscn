@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ox0rop1t01u3"]
+
+[ext_resource type="Script" uid="uid://ctd2fcmrfb2xu" path="res://scripts/ui_canvas.gd" id="1_qkkka"]
+[ext_resource type="Texture2D" uid="uid://cd3v2cqjhfij1" path="res://sprites/teclas/a_and_d/A/A_Sprite_6.png" id="7_r6q38"]
+[ext_resource type="Texture2D" uid="uid://c1684p3eugnek" path="res://sprites/teclas/a_and_d/D/D_Sprite_6.png" id="14_fxjhw"]
+
+[node name="UiCanvas" type="CanvasLayer" unique_id=2031656424]
+script = ExtResource("1_qkkka")
+
+[node name="UI" type="Node" parent="." unique_id=26521696]
+
+[node name="A_Sprite" type="Sprite2D" parent="UI" unique_id=261040509]
+position = Vector2(96, 563)
+scale = Vector2(1.4285715, 1.4285715)
+texture = ExtResource("7_r6q38")
+
+[node name="D_Sprite" type="Sprite2D" parent="UI" unique_id=1019970022]
+position = Vector2(161, 563)
+scale = Vector2(1.4047619, 1.4047619)
+texture = ExtResource("14_fxjhw")

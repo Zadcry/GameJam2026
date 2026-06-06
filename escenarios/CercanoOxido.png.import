@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxgdlbnoshrwj"
-path="res://.godot/imported/A_Sprite_1.png-bfc664ebf45408ce3fd047763abc8b01.ctex"
+uid="uid://bo0bh7xjdumkk"
+path="res://.godot/imported/CercanoOxido.png-f622f5a6c8044b4beee2b293f46d0d46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/teclas/a and s states/A/A_Sprite_1.png"
-dest_files=["res://.godot/imported/A_Sprite_1.png-bfc664ebf45408ce3fd047763abc8b01.ctex"]
+source_file="res://escenarios/CercanoOxido.png"
+dest_files=["res://.godot/imported/CercanoOxido.png-f622f5a6c8044b4beee2b293f46d0d46.ctex"]
 
 [params]
 

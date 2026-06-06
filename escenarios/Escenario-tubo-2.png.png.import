@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w8l8hgkolmhn"
-path="res://.godot/imported/D_Sprite_0.png-8dedbcf435bddbc90fbd8e419cb1c93c.ctex"
+uid="uid://8mx6jcshs3y1"
+path="res://.godot/imported/Escenario-tubo-2.png.png-14f8043283d66477fbed73123fce968d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/teclas/a and s states/D/D_Sprite_0.png"
-dest_files=["res://.godot/imported/D_Sprite_0.png-8dedbcf435bddbc90fbd8e419cb1c93c.ctex"]
+source_file="res://escenarios/Escenario-tubo-2.png.png"
+dest_files=["res://.godot/imported/Escenario-tubo-2.png.png-14f8043283d66477fbed73123fce968d.ctex"]
 
 [params]
 

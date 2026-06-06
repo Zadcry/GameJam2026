@@ -18,6 +18,16 @@ var estado_actual := ""
 var moving := false
 var disparando := false
 var en_knockback := false
+var d_bloqueada := false
+var a_bloqueada := false
+var d_estado := 6
+var a_estado := 6
+
+var texturas_d: Array[Texture2D] = []
+var texturas_a: Array[Texture2D] = []
+
+func _get_ui():
+	return get_tree().get_first_node_in_group("ui_canvas")
 
 func _physics_process(delta: float) -> void:
 	if $RayArriba.is_colliding():
@@ -28,9 +38,44 @@ func _physics_process(delta: float) -> void:
 
 	moving = false
 
+	var nivel = Global.oxido_mitch
+	var ui = _get_ui()
+
+	if nivel > 40.0 and not d_bloqueada and d_estado == 6:
+		d_bloqueada = true
+		if ui:
+			ui.mostrar_d(texturas_d[d_estado])
+
+	if nivel > 55.0 and not a_bloqueada and a_estado == 6:
+		a_bloqueada = true
+		if ui:
+			ui.mostrar_a(texturas_a[a_estado])
+
+	if d_bloqueada and Input.is_action_just_pressed("p1_move_right"):
+		d_estado -= 1
+		if d_estado <= 0:
+			d_bloqueada = false
+			d_estado = -1
+			if ui:
+				ui.ocultar_d()
+		else:
+			if ui:
+				ui.mostrar_d(texturas_d[d_estado])
+
+	if a_bloqueada and Input.is_action_just_pressed("p1_move_left"):
+		a_estado -= 1
+		if a_estado <= 0:
+			a_bloqueada = false
+			a_estado = -1
+			if ui:
+				ui.ocultar_a()
+		else:
+			if ui:
+				ui.mostrar_a(texturas_a[a_estado])
+
 	if not locked and not en_knockback:
 		var direction := 0.0
-		if Input.is_action_pressed("p1_move_right"):
+		if Input.is_action_pressed("p1_move_right") and not d_bloqueada:
 			direction += 1.0
 			facing = 1.0
 			moving = true
@@ -38,7 +83,7 @@ func _physics_process(delta: float) -> void:
 				charging = false
 				charge = 0.0
 				estado_actual = ""
-		if Input.is_action_pressed("p1_move_left"):
+		if Input.is_action_pressed("p1_move_left") and not a_bloqueada:
 			direction -= 1.0
 			facing = -1.0
 			moving = true
@@ -67,11 +112,11 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_released("p1_shoot") and can_shoot and charging and is_on_floor():
 		_shoot()
+
 	move_and_slide()
 
 	$animation.flip_h = facing == -1.0
 
-	var nivel = Global.oxido_mitch
 	if charging:
 		var anim_atk := ""
 		if nivel < 20.0:
@@ -124,6 +169,9 @@ func _physics_process(delta: float) -> void:
 func _ready() -> void:
 	add_to_group("player1")
 	estado_actual = ""
+	for i in range(7):
+		texturas_d.append(load("res://sprites/teclas/a_and_d/D/D_Sprite_" + str(i) + ".png"))
+		texturas_a.append(load("res://sprites/teclas/a_and_d/A/A_Sprite_" + str(i) + ".png"))
 
 func aplicar_oxido() -> void:
 	var nivel = Global.oxido_mitch

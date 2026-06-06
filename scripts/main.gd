@@ -24,8 +24,9 @@ func _ready() -> void:
 	player2.connect("proyectil_golpeado", _on_proyectil_golpeado)
 
 func _process(_delta: float) -> void:
-	Global.oxido_mitch = 0
-	Global.vida_crusty = 6
+	pass
+	#Global.oxido_mitch = 0
+	#Global.vida_crusty = 6
 
 func _on_proyectil_golpeado() -> void:
 	if not tutorial_activo:
