@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://d0d0g5ypp5w7u"]
+
+[ext_resource type="Texture2D" uid="uid://b44ehdlmtvsx3" path="res://images/pause_menu_images/Pause Screen.png" id="1_01aqn"]
+[ext_resource type="Texture2D" uid="uid://c5ch7i4uji7xc" path="res://images/pause_menu_images/Resume_ns_button.png" id="2_tayp1"]
+[ext_resource type="Texture2D" uid="uid://dwo5i0ml72jcv" path="res://images/pause_menu_images/Resume_s_button.png" id="3_05rtu"]
+[ext_resource type="Texture2D" uid="uid://dflilkvlw3jrv" path="res://images/pause_menu_images/Options_ns_button.png" id="4_0xt4n"]
+[ext_resource type="Texture2D" uid="uid://v146ket8mvtq" path="res://images/pause_menu_images/Options_s_button.png" id="5_y6gl8"]
+[ext_resource type="Texture2D" uid="uid://bpwff3kxblcbd" path="res://images/pause_menu_images/Quit_ns_button.png" id="6_0ikmf"]
+[ext_resource type="Texture2D" uid="uid://dlnrnarve5xst" path="res://images/pause_menu_images/Quit_s_button.png" id="7_7in3v"]
+
+[node name="MenuP" type="Node2D" unique_id=513659370]
+
+[node name="ScreenPause" type="Sprite2D" parent="." unique_id=532865220]
+position = Vector2(578, 328)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_01aqn")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1209296374]
+offset_left = 359.0
+offset_top = 233.0
+offset_right = 714.0
+offset_bottom = 302.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("2_tayp1")
+texture_hover = ExtResource("3_05rtu")
+
+[node name="TextureButton2" type="TextureButton" parent="." unique_id=2013518155]
+offset_left = 359.0
+offset_top = 298.0
+offset_right = 700.0
+offset_bottom = 367.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("4_0xt4n")
+texture_hover = ExtResource("5_y6gl8")
+
+[node name="TextureButton3" type="TextureButton" parent="." unique_id=1479701944]
+offset_left = 359.0
+offset_top = 365.0
+offset_right = 577.0
+offset_bottom = 434.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("6_0ikmf")
+texture_hover = ExtResource("7_7in3v")
