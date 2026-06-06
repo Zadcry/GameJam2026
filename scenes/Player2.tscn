@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dprcmckdt2e7r"]
+
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_7nsvx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7nsvx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7nsvx"]
+radius = 12.0415945
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_safxn"]
+radius = 12.0
+
+[node name="Player2" type="CharacterBody2D" unique_id=940511587]
+collision_layer = 2
+collision_mask = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2022826233]
+position = Vector2(0.25000095, -2.3841858e-07)
+scale = Vector2(0.15234374, 0.234375)
+texture = ExtResource("1_7nsvx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=410363891]
+shape = SubResource("CapsuleShape2D_7nsvx")
+
+[node name="MeleeArea" type="Area2D" parent="." unique_id=1228833170]
+
+[node name="HitRight" type="CollisionShape2D" parent="MeleeArea" unique_id=2048710822]
+position = Vector2(22, 0)
+shape = SubResource("CircleShape2D_7nsvx")
+
+[node name="HitLeft" type="CollisionShape2D" parent="MeleeArea" unique_id=1580406248]
+position = Vector2(-22, 0)
+shape = SubResource("CircleShape2D_safxn")

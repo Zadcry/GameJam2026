@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d4lr2d8efn6p3"]
+
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_dprbf"]
+[ext_resource type="Script" uid="uid://x2kciqiu55yx" path="res://scripts/projectile.gd" id="1_vihyi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vihyi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vihyi"]
+radius = 12.0
+height = 24.0
+
+[node name="Projectile" type="Area2D" unique_id=46830163]
+collision_layer = 4
+collision_mask = 18
+script = ExtResource("1_vihyi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=964684473]
+shape = SubResource("CircleShape2D_vihyi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1244544843]
+position = Vector2(2.3841858e-07, 8.34465e-07)
+scale = Vector2(0.109375, 0.125)
+texture = ExtResource("1_dprbf")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=1168395626]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=948298264]
+shape = SubResource("CapsuleShape2D_vihyi")
