@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://5wufmqxy68bu"]
+
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_3gvst"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55jtl"]
+size = Vector2(20, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpr68"]
+size = Vector2(23, 39)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=739025128]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2113366956]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_55jtl")
+
+[node name="Vision" type="RayCast2D" parent="." unique_id=199537533]
+target_position = Vector2(91, 0)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=882671254]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=838272898]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_mpr68")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=683160825]
+position = Vector2(0, -4.9999995)
+scale = Vector2(0.15625, 0.23828125)
+texture = ExtResource("1_3gvst")
