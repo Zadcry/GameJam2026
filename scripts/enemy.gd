@@ -81,14 +81,36 @@ func _attack_logic() -> void:
 	if is_attacking: return
 	is_attacking = true
 	
-	print("¡El enemigo está atacando!")
-	# AQUÍ VA TU LÓGICA DE ATAQUE (Animaciones, quitarle vida al jugador, etc.)
+	print("¡El enemigo preparó un ataque!")
 	
-	# Espera 1 segundo (cooldown del ataque) antes de poder moverse o atacar de nuevo
-	await get_tree().create_timer(1.0).timeout 
+	# Pequeño tiempo de "casteo" (0.2s) para que el jugador tenga una ventana para esquivar
+	await get_tree().create_timer(0.2).timeout 
 	
+	# CRÍTICO: Si el Player 2 destruye al enemigo durante esos 0.2s, cancelamos el script
+	if not is_instance_valid(self): return 
+	
+	# Verificamos si el jugador sigue vivo y no se alejó demasiado
+	# Verificamos si el jugador sigue vivo y no se alejó demasiado
+	if is_instance_valid(target_player):
+		var distance = abs(target_player.global_position.x - global_position.x)
+		if distance <= ATTACK_RANGE + 15.0: # +15px de margen de gracia
+			
+			if target_player.has_method("recibir_dano"):
+				# Calculamos la dirección del empuje (-1.0 para izquierda, 1.0 para derecha)
+				var knockback_dir = sign(target_player.global_position.x - global_position.x)
+				
+				# Por si acaso están exactamente en el mismo pixel (evita knockback 0)
+				if knockback_dir == 0.0: knockback_dir = facing
+				
+				# Enviamos el daño con la dirección calculada
+				target_player.recibir_dano(knockback_dir)
+	
+	# Cooldown de recuperación tras lanzar el golpe
+	await get_tree().create_timer(0.8).timeout 
+	
+	if not is_instance_valid(self): return
 	is_attacking = false
-	current_state = State.PATROL # Vuelve a evaluar su entorno
+	current_state = State.PATROL
 
 # --- VISIÓN Y DAÑO ---
 
@@ -111,30 +133,8 @@ func _check_vision() -> void:
 func _check_damage() -> void:
 	# Revisamos las áreas que se solapan en este frame
 	for area in $Hurtbox.get_overlapping_areas():
-		
-		# 1. CHEQUEO DE DAÑO (Player 2)
-		if area.name == "MeleeArea" and area.monitoring == true and not is_invulnerable:
-			is_invulnerable = true 
-			health -= 1
-			print("Enemigo herido. Vida restante: ", health)
-			
-			$Sprite2D.modulate = Color(1, 0, 0) # Rojo al recibir daño
-			
-			if health <= 0:
-				queue_free() 
-			else:
-				await get_tree().create_timer(0.5).timeout
-				if is_instance_valid(self): 
-					# Si sobrevive y está stuneado, vuelve al color azul; si no, a blanco
-					if current_state == State.STUNNED:
-						$Sprite2D.modulate = Color(0.3, 0.5, 1.0) 
-					else:
-						$Sprite2D.modulate = Color(1, 1, 1) 
-					is_invulnerable = false 
-			break 
-			
-		# 2. CHEQUEO DE STUN (Player 1)
-		elif area.name == "HitArea" and area.get_parent().has_method("hit_redirect"):
+		# CHEQUEO DE STUN (Player 1)
+		if area.name == "HitArea" and area.get_parent().has_method("hit_redirect"):
 			_apply_stun()
 
 func _apply_stun() -> void:
@@ -154,3 +154,24 @@ func _apply_stun() -> void:
 		if not is_invulnerable:
 			$Sprite2D.modulate = Color(1, 1, 1)
 		current_state = State.PATROL
+		
+func recibir_dano_melee() -> void:
+	if is_invulnerable: return
+	
+	is_invulnerable = true 
+	health -= 1
+	print("Enemigo herido. Vida restante: ", health)
+	
+	$Sprite2D.modulate = Color(1, 0, 0) # Rojo al recibir daño
+	
+	if health <= 0:
+		queue_free() 
+	else:
+		await get_tree().create_timer(0.5).timeout
+		if is_instance_valid(self): 
+			# Si sobrevive y está stuneado, vuelve al color azul; si no, a blanco
+			if current_state == State.STUNNED:
+				$Sprite2D.modulate = Color(0.3, 0.5, 1.0) 
+			else:
+				$Sprite2D.modulate = Color(1, 1, 1) 
+			is_invulnerable = false

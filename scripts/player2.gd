@@ -132,7 +132,6 @@ func _ready() -> void:
 	$MeleeArea/HitRight.disabled = true
 	$MeleeArea/HitLeft.disabled = true
 	$MeleeArea.monitoring = false
-	$MeleeArea.connect("area_entered", _on_melee_hit)
 	estado_actual = ""
 	actualizar_cuerpo()
 
@@ -154,9 +153,15 @@ func _melee_attack() -> void:
 	$Body/BrazoIzq.play(anim)
 	$Body/PiernaDer.play(anim)
 	$Body/PiernaIzq.play(anim)
+	
+	$MeleeArea/HitRight.disabled = facing != 1.0
+	$MeleeArea/HitLeft.disabled = facing != -1.0
 	$MeleeArea.monitoring = true
 	await get_tree().create_timer(0.5).timeout
 	$MeleeArea.monitoring = false
+	$MeleeArea/HitRight.disabled = true
+	$MeleeArea/HitLeft.disabled = true
+	
 	$Body.position.y += 15.0
 	atacando = false
 	estado_actual = ""
@@ -172,12 +177,25 @@ func _on_melee_hit(area: Area2D) -> void:
 		var proj = area.get_parent()
 		var speed = abs(proj.direction.x)
 		proj.hit_redirect(Vector2(-proj.direction.x, -speed * 1.732).normalized() * speed * 1.2)
-	elif area.name == "HurtBox":
+		
+	# Buscamos variaciones de mayúsculas por si acaso
+	elif area.name == "HurtBox" or area.name == "Hurtbox":
 		if Global.es_tutorial:
 			return
-		var mitch = get_tree().get_first_node_in_group("player1")
-		var knockback_dir = sign(mitch.global_position.x - global_position.x)
-		mitch.recibir_dano(knockback_dir)
+			
+		var victima = area.get_parent()
+		
+		# Calculamos la dirección del empuje basados en la posición de la víctima
+		var knockback_dir = sign(victima.global_position.x - global_position.x)
+		if knockback_dir == 0.0: knockback_dir = facing
+		
+		# 1. FUEGO AMIGO: Si a quien golpeamos está en el grupo "player1"
+		if victima.is_in_group("player1"):
+			victima.recibir_dano(knockback_dir)
+			
+		# 2. ENEMIGO: Si a quien golpeamos tiene la función para recibir ataques melee
+		elif victima.has_method("recibir_dano_melee"):
+			victima.recibir_dano_melee()
 
 func recibir_dano_liquido() -> void:
 	Global.vida_crusty -= 1
