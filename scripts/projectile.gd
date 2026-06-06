@@ -29,11 +29,14 @@ func _on_body_entered(body: Node2D) -> void:
 		body.recibir_dano(knockback_dir)
 		queue_free()
 	else:
-		# Chocó con superficie, spawn explosión
-		var explosion_scene = preload("res://scenes/ExplosionArea.tscn")
-		var explosion = explosion_scene.instantiate()
-		explosion.global_position = global_position
-		get_parent().add_child(explosion)
+		var es_pared = abs(direction.x) > abs(direction.y) * 3.0
+		if not es_pared:
+			var explosion_scene = preload("res://scenes/ExplosionArea.tscn")
+			var explosion = explosion_scene.instantiate()
+			explosion.global_position = global_position
+			if direction.y < 0:
+				explosion.scale.y = -1.0
+			get_parent().add_child(explosion)
 		queue_free()
 
 func _on_area_entered(area: Area2D) -> void:

@@ -5,8 +5,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	for body in get_overlapping_bodies():
 		if body.name == "Player2":
-			Global.vida_crusty -= 1
-			body.actualizar_cuerpo()
+			body.recibir_dano_liquido()
 	
 	# Spawn del líquido en la misma posición
 	var liquido_scene = preload("res://scenes/Liquido.tscn")

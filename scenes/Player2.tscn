@@ -1,9 +1,10 @@
-[gd_scene load_steps=374 format=3 uid="uid://dprcmckdt2e7r"]
+[gd_scene format=3 uid="uid://dprcmckdt2e7r"]
 
 [ext_resource type="Texture2D" uid="uid://o121oiogivhp" path="res://sprites/crusty_atacando_oxido/crusty_piernaIzq.png" id="1_2p2cm"]
 [ext_resource type="Texture2D" uid="uid://bcwny767wqu6x" path="res://sprites/crusty_idle_bate/crusty_piernaIZQ.png" id="1_3o6np"]
 [ext_resource type="Texture2D" uid="uid://3kitn0p6atl0" path="res://sprites/crusty_idle_bate/crusty_torso.png" id="1_7nsvx"]
 [ext_resource type="Texture2D" uid="uid://bxt8daktnaky1" path="res://sprites/crusty_caminar_sinoxido/piernaIzq_caminar.png" id="1_dat24"]
+[ext_resource type="Script" uid="uid://bwee4wvfr842v" path="res://scripts/player2.gd" id="1_khojo"]
 [ext_resource type="Texture2D" uid="uid://b03o3vqramswx" path="res://sprites/crusty_ataqueaire_oxidado/crusty_piernaIzq.png" id="1_mxa3r"]
 [ext_resource type="Texture2D" uid="uid://cu0tidqqqv4e" path="res://sprites/crusty_caminar_oxido/piernaIzq_caminar.png" id="2_iw6v3"]
 [ext_resource type="Texture2D" uid="uid://deve8v7d8qlpb" path="res://sprites/crusty_caminar_sinoxido/piernaDer_caminar.png" id="2_vgtes"]
@@ -2528,55 +2529,58 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Player2" type="CharacterBody2D"]
+[node name="Player2" type="CharacterBody2D" unique_id=1507780693]
 collision_layer = 2
 collision_mask = 16
+script = ExtResource("1_khojo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=926438188]
 position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_3o6np")
 
-[node name="MeleeArea" type="Area2D" parent="."]
+[node name="MeleeArea" type="Area2D" parent="." unique_id=1813902516]
 collision_layer = 2
 
-[node name="HitRight" type="CollisionShape2D" parent="MeleeArea"]
+[node name="HitRight" type="CollisionShape2D" parent="MeleeArea" unique_id=156431904]
 position = Vector2(23, -12)
 shape = SubResource("CapsuleShape2D_uns7x")
 
-[node name="HitLeft" type="CollisionShape2D" parent="MeleeArea"]
+[node name="HitLeft" type="CollisionShape2D" parent="MeleeArea" unique_id=1814544037]
 position = Vector2(-22, -11)
 shape = SubResource("CapsuleShape2D_khojo")
 
-[node name="Body" type="Node2D" parent="."]
+[node name="Body" type="Node2D" parent="." unique_id=597068875]
 
-[node name="PiernaIzq" type="AnimatedSprite2D" parent="Body"]
+[node name="PiernaIzq" type="AnimatedSprite2D" parent="Body" unique_id=1998490620]
 sprite_frames = SubResource("SpriteFrames_5r00m")
 animation = &"saltando_sin"
 frame_progress = 0.593241
 
-[node name="PiernaDer" type="AnimatedSprite2D" parent="Body"]
+[node name="PiernaDer" type="AnimatedSprite2D" parent="Body" unique_id=129515144]
 sprite_frames = SubResource("SpriteFrames_fwvp1")
 animation = &"saltando_sin"
 frame_progress = 0.15335
 
-[node name="BrazoIzq" type="AnimatedSprite2D" parent="Body"]
+[node name="BrazoIzq" type="AnimatedSprite2D" parent="Body" unique_id=2098020911]
 sprite_frames = SubResource("SpriteFrames_3uyny")
 animation = &"saltando_sin"
 frame_progress = 0.875999
 
-[node name="Head" type="AnimatedSprite2D" parent="Body"]
+[node name="Head" type="AnimatedSprite2D" parent="Body" unique_id=948382590]
 sprite_frames = SubResource("SpriteFrames_3qbix")
 animation = &"saltando_sin"
 
-[node name="Torso" type="AnimatedSprite2D" parent="Body"]
+[node name="Torso" type="AnimatedSprite2D" parent="Body" unique_id=1423907195]
 sprite_frames = SubResource("SpriteFrames_6rnxb")
 animation = &"saltando_sin"
 frame_progress = 0.709598
 
-[node name="BrazoDer" type="AnimatedSprite2D" parent="Body"]
+[node name="BrazoDer" type="AnimatedSprite2D" parent="Body" unique_id=1575192143]
 sprite_frames = SubResource("SpriteFrames_2p2cm")
 animation = &"saltando_sin"
 frame_progress = 0.223882
 
-[node name="RayArriba" type="RayCast2D" parent="."]
+[node name="RayArriba" type="RayCast2D" parent="." unique_id=81648549]
 target_position = Vector2(0, -50)
+
+[connection signal="area_entered" from="MeleeArea" to="." method="_on_melee_hit"]

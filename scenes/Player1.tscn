@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://do2gp1wxtuj7d"]
+[gd_scene format=3 uid="uid://do2gp1wxtuj7d"]
 
 [ext_resource type="Script" uid="uid://bxwf4lomb8g77" path="res://scripts/player1.gd" id="1_1jryi"]
 [ext_resource type="Texture2D" uid="uid://d601ygj3wx2v" path="res://sprites/mitch_atacando_oxido1/mitch_atacando_oxido1.png" id="2_1jryi"]
@@ -843,28 +843,28 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player1" type="CharacterBody2D"]
+[node name="Player1" type="CharacterBody2D" unique_id=2021305826]
 collision_mask = 16
 script = ExtResource("1_1jryi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1672290598]
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_1jryi")
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." unique_id=1167173215]
 position = Vector2(-5, 2)
-collision_mask = 0
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2111813704]
 position = Vector2(5, -6.5)
 shape = SubResource("RectangleShape2D_b1h3a")
 
-[node name="animation" type="AnimatedSprite2D" parent="."]
+[node name="animation" type="AnimatedSprite2D" parent="." unique_id=2061720435]
 position = Vector2(1, -16)
 sprite_frames = SubResource("SpriteFrames_f84kq")
 animation = &"atk_ox0"
 frame_progress = 0.20051
 
-[node name="RayArriba" type="RayCast2D" parent="."]
+[node name="RayArriba" type="RayCast2D" parent="." unique_id=1281377716]
 target_position = Vector2(0, -50)
 collision_mask = 2

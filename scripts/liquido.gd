@@ -12,10 +12,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if crusty_dentro:
 		tiempo_contacto += delta
-		if tiempo_contacto >= 1.5:
+		if tiempo_contacto >= 1.0:
 			tiempo_contacto = 0.0
-			Global.vida_crusty -= 1
-			get_tree().get_first_node_in_group("player2").actualizar_cuerpo()
+			get_tree().get_first_node_in_group("player2").recibir_dano_liquido()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player2":
