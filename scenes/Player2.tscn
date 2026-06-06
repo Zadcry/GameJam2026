@@ -54,11 +54,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3o6np"]
 size = Vector2(23, 59)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7nsvx"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uns7x"]
 radius = 11.0
+height = 56.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_safxn"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_khojo"]
 radius = 11.0
+height = 56.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_roomw"]
 atlas = ExtResource("1_mxa3r")
@@ -2537,29 +2539,29 @@ shape = SubResource("RectangleShape2D_3o6np")
 [node name="MeleeArea" type="Area2D" parent="."]
 
 [node name="HitRight" type="CollisionShape2D" parent="MeleeArea"]
-position = Vector2(23, -7)
-shape = SubResource("CircleShape2D_7nsvx")
+position = Vector2(23, -12)
+shape = SubResource("CapsuleShape2D_uns7x")
 
 [node name="HitLeft" type="CollisionShape2D" parent="MeleeArea"]
-position = Vector2(-22, -7)
-shape = SubResource("CircleShape2D_safxn")
+position = Vector2(-22, -11)
+shape = SubResource("CapsuleShape2D_khojo")
 
 [node name="Body" type="Node2D" parent="."]
 
 [node name="PiernaIzq" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_5r00m")
 animation = &"saltando_sin"
-frame_progress = 0.186719
+frame_progress = 0.237918
 
 [node name="PiernaDer" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_fwvp1")
 animation = &"saltando_sin"
-frame_progress = 0.746831
+frame_progress = 0.798028
 
 [node name="BrazoIzq" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_3uyny")
 animation = &"saltando_sin"
-frame_progress = 0.469466
+frame_progress = 0.520677
 
 [node name="Head" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_3qbix")
@@ -2568,12 +2570,12 @@ animation = &"saltando_sin"
 [node name="Torso" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_6rnxb")
 animation = &"saltando_sin"
-frame_progress = 0.303073
+frame_progress = 0.354275
 
 [node name="BrazoDer" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_2p2cm")
 animation = &"saltando_sin"
-frame_progress = 0.817364
+frame_progress = 0.86856
 
 [node name="RayArriba" type="RayCast2D" parent="."]
 target_position = Vector2(0, -50)
