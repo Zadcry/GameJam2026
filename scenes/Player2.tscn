@@ -348,7 +348,7 @@ position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_3qbix")
 animation = &"idle_head_crusty_bate"
 autoplay = "idle_head_crusty_bate"
-frame_progress = 0.33174178
+frame_progress = 0.64415586
 
 [node name="Torso" type="AnimatedSprite2D" parent="Body" unique_id=1462949732]
 sprite_frames = SubResource("SpriteFrames_6rnxb")

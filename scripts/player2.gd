@@ -61,6 +61,7 @@ func lock_movement(forced_facing: float = 0.0) -> void:
 
 func _ready() -> void:
 	actualizar_cuerpo()
+	add_to_group("player2")
 	$MeleeArea/HitRight.disabled = true
 	$MeleeArea/HitLeft.disabled = true
 	$MeleeArea.monitoring = false
@@ -72,8 +73,8 @@ func _melee_attack() -> void:
 	$MeleeArea.monitoring = false
 
 func actualizar_cuerpo() -> void:
-	brazo_izq.visible = Global.vida_crusty > 20.0
-	pierna_izq.visible = Global.vida_crusty > 45.0
+	brazo_izq.visible = Global.vida_crusty > 3.0
+	pierna_izq.visible = Global.vida_crusty > 2.0
 
 func _on_melee_hit(area: Area2D) -> void:
 	if area.name == "HitArea":
@@ -81,4 +82,9 @@ func _on_melee_hit(area: Area2D) -> void:
 		emit_signal("proyectil_golpeado")
 		var proj = area.get_parent()
 		var speed = abs(proj.direction.x)
-		proj.hit_redirect(Vector2(-proj.direction.x, -speed * 1.732).normalized() * speed * 1.2)
+		proj.hit_redirect(Vector2(-proj.direction.x, -speed * 0.577).normalized() * speed * 1.2)
+	elif area.name == "HurtBox":
+		var dano = randf_range(5.0, 7.0)
+		Global.oxido_p1 += dano
+		print("Óxido P1: ", Global.oxido_p1)
+		get_tree().get_first_node_in_group("player1").aplicar_oxido()

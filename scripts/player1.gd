@@ -1,5 +1,4 @@
 extends CharacterBody2D
-const SPEED = 200.0
 const GRAVITY = 800.0
 const JUMP_FORCE = -250.0
 const MIN_POWER = 150.0
@@ -7,6 +6,7 @@ const MAX_POWER = 800.0
 const CHARGE_RATE = 500.0
 
 @export var projectile_scene: PackedScene
+var SPEED = 200.0
 var can_shoot := true
 var facing := 1.0
 var charge := 0.0
@@ -14,6 +14,7 @@ var charging := false
 var locked := false
 
 func _physics_process(delta: float) -> void:
+	print(Global.oxido_p1)
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	if not locked:
@@ -38,8 +39,19 @@ func _physics_process(delta: float) -> void:
 	# Soltar E para disparar
 	if Input.is_action_just_released("p1_shoot") and can_shoot and charging:
 		_shoot()
-
 	move_and_slide()
+
+func _ready() -> void:
+	add_to_group("player1")
+
+func aplicar_oxido() -> void:
+	var nivel = Global.oxido_p1
+	if nivel >= 60.0:
+		SPEED = 200.0 * 0.4   # -60%
+	elif nivel >= 40.0:
+		SPEED = 200.0 * 0.6   # -40%
+	elif nivel >= 20.0:
+		SPEED = 200.0 * 0.7   # -30%
 
 func lock_movement(forced_facing: float = 0.0) -> void:
 	locked = true

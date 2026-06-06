@@ -23,8 +23,18 @@ func hit_redirect(new_dir: Vector2) -> void:
 func _on_hit(_area: Area2D) -> void:
 	pass
 
-func _on_body_entered(_body: Node2D) -> void:
-	queue_free()
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == "Player2":
+		Global.vida_crusty -= 1
+		body.actualizar_cuerpo()
+		queue_free()
+	else:
+		# Chocó con superficie, spawn explosión
+		var explosion_scene = preload("res://scenes/ExplosionArea.tscn")
+		var explosion = explosion_scene.instantiate()
+		explosion.global_position = global_position
+		get_parent().add_child(explosion)
+		queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name != "HitArea" and area.name != "MeleeArea":
