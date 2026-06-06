@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cu7viok5w0rpa" path="res://sprites/teclas/e-enter/Enter_Sprite.png" id="15_3p2gp"]
 [ext_resource type="PackedScene" uid="uid://cwj30qpuewkap" path="res://scenes/GameCamera.tscn" id="16_cvmbd"]
 [ext_resource type="PackedScene" uid="uid://d0p6nvdcfklsm" path="res://scenes/ParallaxBackground.tscn" id="17_ft6cd"]
+[ext_resource type="PackedScene" uid="uid://cynyuu07jbpr4" path="res://scenes/PauseManager.tscn" id="20_1nqs0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
 size = Vector2(1151, 26)
@@ -175,3 +176,5 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(70, 0)
 scale = Vector2(0.585937, 0.585937)
 texture = ExtResource("15_3p2gp")
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("20_1nqs0")]

@@ -25,4 +25,5 @@ func _on_opciones_cerradas() -> void:
 
 func _on_quit() -> void:
 	get_tree().paused = false
+	get_parent().queue_free()
 	get_tree().change_scene_to_file("res://menus/initial_menu/menuI.tscn")

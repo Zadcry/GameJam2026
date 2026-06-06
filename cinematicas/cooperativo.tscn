@@ -1,34 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://l3lf4344xlrm"]
+[gd_scene format=3 uid="uid://l3lf4344xlrm"]
 
 [ext_resource type="FontFile" uid="uid://c64fus21ycpbr" path="res://fonts/DePixelBreit.ttf" id="1_k610j"]
 [ext_resource type="Script" uid="uid://q2bmewebcw2" path="res://scripts/cooperativo.gd" id="2_ftn4w"]
 [ext_resource type="Texture2D" uid="uid://bxqjqgdqgxbj8" path="res://sprites/teclas/e-enter/E_Sprite.png" id="3_rvn6c"]
 [ext_resource type="Texture2D" uid="uid://bdb8g1ecjsvo4" path="res://sprites/teclas/updownrightleft/Right_Sprite.png" id="4_xfnhk"]
 
-[node name="Cooperativo" type="CanvasLayer"]
+[node name="Cooperativo" type="CanvasLayer" unique_id=229816536]
 script = ExtResource("2_ftn4w")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1994270886]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
-[node name="coop" type="Label" parent="."]
+[node name="coop" type="Label" parent="." unique_id=919737664]
 offset_left = 415.0
 offset_top = 297.0
 offset_right = 735.0
 offset_bottom = 354.0
 theme_override_fonts/font = ExtResource("1_k610j")
-text = "   Este juego es cooperativo
+text = "  This is a cooperative game
 
-Necesitas un amigo para jugar"
+You need a friend to play with"
 
-[node name="E" type="Sprite2D" parent="."]
+[node name="E" type="Sprite2D" parent="." unique_id=1900395435]
 position = Vector2(1012, 556)
 scale = Vector2(1.19076, 1.19076)
 texture = ExtResource("3_rvn6c")
 
-[node name="flecha" type="Sprite2D" parent="."]
+[node name="flecha" type="Sprite2D" parent="." unique_id=2088217844]
 position = Vector2(1066, 557)
 scale = Vector2(0.695313, 0.55625)
 texture = ExtResource("4_xfnhk")

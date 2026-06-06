@@ -25,6 +25,13 @@ config/icon="res://icon.svg"
 Global="*uid://bpxiwsmvrc6l"
 FadeManager="*res://scenes/FadeManager.tscn"
 
+[display]
+
+window/size/mode=3
+window/size/resizable=false
+window/size/borderless=true
+window/stretch/mode="canvas_items"
+
 [input]
 
 ui_accept={

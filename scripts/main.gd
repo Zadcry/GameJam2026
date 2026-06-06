@@ -24,11 +24,8 @@ func _ready() -> void:
 	player2.connect("proyectil_golpeado", _on_proyectil_golpeado)
 
 func _process(_delta: float) -> void:
-	var midpoint = (player1.global_position + player2.global_position) / 2.0
-	var half_w = get_viewport().get_visible_rect().size.x / 2.0
-	var half_h = get_viewport().get_visible_rect().size.y / 2.0
-	#Global.oxido_mitch = 0
-	#Global.vida_crusty = 6
+	Global.oxido_mitch = 0
+	Global.vida_crusty = 6
 
 func _on_proyectil_golpeado() -> void:
 	if not tutorial_activo:
@@ -56,14 +53,3 @@ func _on_zona_p2_entered(body: Node2D) -> void:
 		letrero_p2b.visible = true
 		if p1_en_zona:
 			tutorial_activo = true
-			
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pausar"):
-		_pausar()
-
-func _pausar() -> void:
-	get_tree().paused = true
-	var pausa = preload("res://menus/pause_menu/menuP.tscn").instantiate()
-	var canvas = CanvasLayer.new()
-	add_child(canvas)
-	canvas.add_child(pausa)

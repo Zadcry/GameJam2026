@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cynyuu07jbpr4"]
+
+[sub_resource type="GDScript" id="GDScript_pcko4"]
+script/source = "extends Node
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"pausar\"):
+		_pausar()
+
+func _pausar() -> void:
+	get_tree().paused = true
+	var pausa = preload(\"res://menus/pause_menu/menuP.tscn\").instantiate()
+	var canvas = CanvasLayer.new()
+	get_tree().root.add_child(canvas)
+	canvas.add_child(pausa)
+"
+
+[node name="PauseManager" type="Node2D" unique_id=768789384]
+script = SubResource("GDScript_pcko4")
