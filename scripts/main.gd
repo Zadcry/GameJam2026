@@ -6,8 +6,8 @@ extends Node2D
 @onready var zona_p1 := $ZonaP1
 @onready var zona_p2 := $ZonaP2
 @onready var letrero_p1 := $LetreroP1
-@onready var letrero_p2 := $LetreroP2
 @onready var letrero_p1b := $LetreroP1b
+@onready var letrero_p2 := $LetreroP2
 @onready var letrero_p2b := $LetreroP2b
 
 var p1_en_zona := false

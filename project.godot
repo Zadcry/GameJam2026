@@ -15,6 +15,10 @@ config/description="El jueguito de la gamejam"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*uid://bpxiwsmvrc6l"
+
 [input]
 
 ui_accept={

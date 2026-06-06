@@ -1,7 +1,7 @@
 extends CharacterBody2D
 const SPEED = 200.0
 const GRAVITY = 800.0
-const JUMP_FORCE = -400.0
+const JUMP_FORCE = -250.0
 const MIN_POWER = 150.0
 const MAX_POWER = 800.0
 const CHARGE_RATE = 300.0

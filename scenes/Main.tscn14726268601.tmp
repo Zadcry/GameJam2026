@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="3_c01mt"]
 [ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="3_vcsgt"]
 [ext_resource type="Script" uid="uid://bwee4wvfr842v" path="res://scripts/player2.gd" id="4_rarhs"]
+[ext_resource type="Shader" uid="uid://bx4ulpxmomo3e" path="res://materials/naranja.gdshader" id="6_c01mt"]
+[ext_resource type="Shader" uid="uid://iqmweth8ybdo" path="res://materials/azul.gdshader" id="6_nxtc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
 size = Vector2(1151, 26)
@@ -20,6 +22,14 @@ size = Vector2(136.5, 165.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8u5g"]
 size = Vector2(136.5, 318)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8u5g"]
+shader = ExtResource("6_nxtc6")
+shader_parameter/color = Color(1, 0.5, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxtc6"]
+shader = ExtResource("6_c01mt")
+shader_parameter/color = Color(1, 0.5, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jlsqs"]
 
@@ -73,7 +83,17 @@ shape = SubResource("RectangleShape2D_jlsqs")
 position = Vector2(315, -164)
 shape = SubResource("RectangleShape2D_q8u5g")
 
-[node name="LetreroP1" type="Label" parent="." unique_id=1709573361]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1432885559]
+
+[node name="EstelaAzul" type="ColorRect" parent="UI" unique_id=2138336565]
+modulate = Color(1, 1, 1, 0.5019608)
+material = SubResource("ShaderMaterial_q8u5g")
+offset_left = -261.0
+offset_top = -491.0
+offset_right = -151.0
+offset_bottom = -10.0
+
+[node name="LetreroP1" type="Label" parent="UI" unique_id=1709573361]
 modulate = Color(1, 1, 1, 0.5019608)
 offset_left = -233.00002
 offset_top = -116.0
@@ -81,8 +101,9 @@ offset_right = -186.00002
 offset_bottom = -93.0
 scale = Vector2(1.2, 1.2)
 text = "WASD"
+metadata/_edit_use_anchors_ = true
 
-[node name="LetreroP1b" type="Label" parent="." unique_id=783075351]
+[node name="LetreroP1b" type="Label" parent="UI" unique_id=783075351]
 visible = false
 modulate = Color(1, 1, 1, 0.5019608)
 offset_left = -254.0
@@ -91,7 +112,15 @@ offset_right = -153.0
 offset_bottom = -92.0
 text = "E para lanzar"
 
-[node name="LetreroP2" type="Label" parent="." unique_id=2088217462]
+[node name="EstelaNaranja" type="ColorRect" parent="UI" unique_id=1390848700]
+modulate = Color(1, 1, 1, 0.5019608)
+material = SubResource("ShaderMaterial_nxtc6")
+offset_left = 129.0
+offset_top = -492.0
+offset_right = 211.0
+offset_bottom = -8.0
+
+[node name="LetreroP2" type="Label" parent="UI" unique_id=2088217462]
 modulate = Color(1, 1, 1, 0.5019608)
 material = SubResource("ShaderMaterial_jlsqs")
 offset_left = 143.0
@@ -102,7 +131,7 @@ scale = Vector2(1.2, 1.2)
 text = "↑↓←→"
 metadata/_edit_use_anchors_ = true
 
-[node name="LetreroP2b" type="Label" parent="." unique_id=1576532763]
+[node name="LetreroP2b" type="Label" parent="UI" unique_id=1576532763]
 visible = false
 modulate = Color(1, 1, 1, 0.5019608)
 offset_left = 112.0
