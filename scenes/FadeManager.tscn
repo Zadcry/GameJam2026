@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5a1qvb5eq8at"]
+[gd_scene format=3 uid="uid://c5a1qvb5eq8at"]
 
 [ext_resource type="Script" uid="uid://5rv856jtyovc" path="res://scripts/fade_manager.gd" id="1_cninp"]
 

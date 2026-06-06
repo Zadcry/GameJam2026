@@ -10,7 +10,8 @@ const SPEED_PATROL = 100.0
 const SPEED_CHASE = 220.0
 const ATTACK_RANGE = 50.0 # Distancia a la que se detiene a atacar
 
-@export var patrol_distance := 200.0 # Distancia desde su punto de inicio
+@export var patrol_distance := 100.0 # Distancia desde su punto de inicio
+@export var vision_range := 200.0
 var point_a: float
 var point_b: float
 
@@ -43,7 +44,8 @@ func _physics_process(delta: float) -> void:
 	
 	# Solo actualizamos hacia dónde mira si NO está stuneado
 	if facing != 0.0 and current_state != State.STUNNED:
-		$Vision.target_position = Vector2(facing * 200, 0)
+		# AHORA USA LA VARIABLE EN LUGAR DEL 200 FIJO
+		$Vision.target_position = Vector2(facing * vision_range, 0) 
 		$Sprite2D.flip_h = facing == -1.0
 
 	move_and_slide()
@@ -121,7 +123,7 @@ func _check_damage() -> void:
 			if health <= 0:
 				queue_free() 
 			else:
-				await get_tree().create_timer(0.3).timeout
+				await get_tree().create_timer(0.5).timeout
 				if is_instance_valid(self): 
 					# Si sobrevive y está stuneado, vuelve al color azul; si no, a blanco
 					if current_state == State.STUNNED:
