@@ -21,7 +21,7 @@ texture = ExtResource("1_f84kq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1640873707]
 shape = SubResource("RectangleShape2D_1jryi")
 
-[node name="HurtBox" type="Area2D" parent="." unique_id=445553520]
+[node name="HurtBox" type="Area2D" parent="." unique_id=200979103]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=582025891]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2121847269]
 shape = SubResource("RectangleShape2D_b1h3a")
