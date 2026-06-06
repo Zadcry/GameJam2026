@@ -1,18 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0p6nvdcfklsm"]
+[gd_scene format=3 uid="uid://d0p6nvdcfklsm"]
 
 [ext_resource type="Script" uid="uid://bh7bxdg85rilr" path="res://scripts/parallax_background.gd" id="1_d04nq"]
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="2_vju12"]
 
-[node name="ParallaxBackground" type="ParallaxBackground"]
+[node name="ParallaxBackground" type="ParallaxBackground" unique_id=1401416965]
 script = ExtResource("1_d04nq")
 
-[node name="CapaLejana" type="ParallaxLayer" parent="."]
+[node name="CapaLejana" type="ParallaxLayer" parent="." unique_id=157847192]
 
-[node name="Fondo" type="Sprite2D" parent="CapaLejana"]
+[node name="Fondo" type="Sprite2D" parent="CapaLejana" unique_id=1990313443]
+position = Vector2(1, -20.099854)
+scale = Vector2(3.2109375, 3.06428)
+texture = ExtResource("2_vju12")
 
-[node name="CapaMedia" type="ParallaxLayer" parent="."]
+[node name="CapaMedia" type="ParallaxLayer" parent="." unique_id=1249099805]
 
-[node name="Medio" type="Sprite2D" parent="CapaMedia"]
+[node name="Medio" type="Sprite2D" parent="CapaMedia" unique_id=831732216]
+position = Vector2(-2.249939, -21.992966)
+scale = Vector2(3.3085938, 3.109485)
+texture = ExtResource("2_vju12")
 
-[node name="CapaFrontal" type="ParallaxLayer" parent="."]
+[node name="CapaFrontal" type="ParallaxLayer" parent="." unique_id=40130733]
 
-[node name="Frente" type="Sprite2D" parent="CapaFrontal"]
+[node name="Frente" type="Sprite2D" parent="CapaFrontal" unique_id=930208825]
+position = Vector2(-1.5, -19.985962)
+scale = Vector2(3.2578123, 3.1033876)
+texture = ExtResource("2_vju12")

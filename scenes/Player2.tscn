@@ -2540,6 +2540,7 @@ shape = SubResource("RectangleShape2D_3o6np")
 
 [node name="MeleeArea" type="Area2D" parent="." unique_id=1813902516]
 collision_layer = 2
+collision_mask = 17
 
 [node name="HitRight" type="CollisionShape2D" parent="MeleeArea" unique_id=156431904]
 position = Vector2(23, -12)

@@ -36,7 +36,7 @@ func _on_proyectil_golpeado() -> void:
 	golpes += 1
 	print("Golpes: ", golpes)
 	if golpes >= 3:
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://scenes/level0.tscn")
 
 
 func _on_zona_p1_entered(body: Node2D) -> void:
