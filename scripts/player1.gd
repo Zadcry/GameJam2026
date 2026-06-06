@@ -4,7 +4,7 @@ const GRAVITY = 800.0
 const JUMP_FORCE = -250.0
 const MIN_POWER = 150.0
 const MAX_POWER = 800.0
-const CHARGE_RATE = 300.0
+const CHARGE_RATE = 500.0
 
 @export var projectile_scene: PackedScene
 var can_shoot := true
@@ -57,5 +57,5 @@ func _shoot() -> void:
 	get_parent().add_child(proj)
 	proj.direction = Vector2(facing * power, -power * 0.0875)
 
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	can_shoot = true

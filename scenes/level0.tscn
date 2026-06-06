@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bk7hsy8dtdypa"]
+
+[ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="1_2h6oo"]
+[ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="2_x1x1l"]
+[ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="3_gklfi"]
+[ext_resource type="Script" uid="uid://bwee4wvfr842v" path="res://scripts/player2.gd" id="4_cm1v6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrnl3"]
+size = Vector2(1151, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcqsn"]
+size = Vector2(136.5, 165.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6q6d4"]
+size = Vector2(136.5, 318)
+
+[node name="Level0" type="Node2D" unique_id=78769976]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=847810276]
+position = Vector2(-3.9999847, -169)
+
+[node name="Piso" type="StaticBody2D" parent="." unique_id=1215947676]
+position = Vector2(1.0000153, -2)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso" unique_id=1197473994]
+position = Vector2(-5.5, 3)
+shape = SubResource("RectangleShape2D_wrnl3")
+
+[node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("1_2h6oo")]
+position = Vector2(-204, -35)
+collision_mask = 18
+projectile_scene = ExtResource("2_x1x1l")
+
+[node name="Player2" parent="." unique_id=940511587 instance=ExtResource("3_gklfi")]
+position = Vector2(180, -29)
+collision_mask = 17
+script = ExtResource("4_cm1v6")
+
+[node name="Pared" type="StaticBody2D" parent="." unique_id=228636595]
+position = Vector2(1.0000153, -2)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pared" unique_id=1062675087]
+position = Vector2(-346, -91.25)
+shape = SubResource("RectangleShape2D_tcqsn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pared" unique_id=973006864]
+position = Vector2(315, -164)
+shape = SubResource("RectangleShape2D_6q6d4")
+
+[node name="LetreroP1" type="Label" parent="." unique_id=1143660730]
+modulate = Color(1, 1, 1, 0.5019608)
+offset_left = -232.0
+offset_top = -118.0
+offset_right = -185.0
+offset_bottom = -95.0
+scale = Vector2(1.2, 1.2)
+text = "WASD"
+
+[node name="LetreroP2" type="Label" parent="." unique_id=2070535850]
+modulate = Color(1, 1, 1, 0.5019608)
+offset_left = 144.00002
+offset_top = -115.0
+offset_right = 187.00002
+offset_bottom = -92.0
+scale = Vector2(1.2, 1.2)
+text = "↑↓←→"
