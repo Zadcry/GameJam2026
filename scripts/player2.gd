@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+@onready var brazo_izq := $Body/BrazoIzq
+@onready var pierna_izq := $Body/PiernaIzq
+@onready var filler := $filler
+
 signal proyectil_golpeado
 
 const GRAVITY = 800.0
@@ -10,6 +14,20 @@ var facing := 1.0
 var locked := false
 
 func _physics_process(delta: float) -> void:
+	$Body/Torso.flip_h = facing == -1.0
+	$Body/Head.flip_h = facing == -1.0
+	$Body/BrazoDer.flip_h = facing == -1.0
+	$Body/BrazoIzq.flip_h = facing == -1.0
+	$Body/PiernaDer.flip_h = facing == -1.0
+	$Body/PiernaIzq.flip_h = facing == -1.0
+	
+	if velocity.x != 0.0:
+		$Body.visible = false
+		$filler.visible = true
+	else:
+		$Body.visible = true
+		$filler.visible = false
+	
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	if not locked:
@@ -42,6 +60,7 @@ func lock_movement(forced_facing: float = 0.0) -> void:
 		facing = forced_facing
 
 func _ready() -> void:
+	actualizar_cuerpo()
 	$MeleeArea/HitRight.disabled = true
 	$MeleeArea/HitLeft.disabled = true
 	$MeleeArea.monitoring = false
@@ -51,6 +70,10 @@ func _melee_attack() -> void:
 	$MeleeArea.monitoring = true
 	await get_tree().create_timer(0.1).timeout
 	$MeleeArea.monitoring = false
+
+func actualizar_cuerpo() -> void:
+	brazo_izq.visible = Global.vida_crusty > 20.0
+	pierna_izq.visible = Global.vida_crusty > 45.0
 
 func _on_melee_hit(area: Area2D) -> void:
 	if area.name == "HitArea":

@@ -43,7 +43,7 @@ collision_mask = 18
 projectile_scene = ExtResource("3_c01mt")
 
 [node name="Player2" parent="." unique_id=940511587 instance=ExtResource("3_vcsgt")]
-position = Vector2(-50, -30)
+position = Vector2(-49, -48)
 collision_mask = 17
 script = ExtResource("4_rarhs")
 

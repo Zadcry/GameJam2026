@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://dprcmckdt2e7r"]
 
-[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_7nsvx"]
+[ext_resource type="Texture2D" uid="uid://bcwny767wqu6x" path="res://sprites/crusty_idle_bate/crusty_piernaIZQ.png" id="1_3o6np"]
+[ext_resource type="Texture2D" uid="uid://3kitn0p6atl0" path="res://sprites/crusty_idle_bate/crusty_torso.png" id="1_7nsvx"]
+[ext_resource type="Texture2D" uid="uid://brx2xpu4ixyhk" path="res://sprites/crusty_idle_bate/crusty_piernaDER.png" id="2_y5wyn"]
+[ext_resource type="Texture2D" uid="uid://ce4dej62jp3yr" path="res://sprites/crusty_idle_bate/crusty_brazoIZQ.png" id="3_u3gjl"]
+[ext_resource type="Texture2D" uid="uid://eip8y667fi8h" path="res://sprites/crusty_idle_bate/crusty_brazoDER_bate.png" id="4_a1ruj"]
+[ext_resource type="Texture2D" uid="uid://c5m5xmom3bvcn" path="res://sprites/crusty_idle_bate/crusty_head.png" id="5_6rnxb"]
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="7_y5wyn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7nsvx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3o6np"]
+size = Vector2(23, 59)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7nsvx"]
 radius = 12.0415945
@@ -10,24 +17,345 @@ radius = 12.0415945
 [sub_resource type="CircleShape2D" id="CircleShape2D_safxn"]
 radius = 12.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_21jxl"]
+atlas = ExtResource("1_3o6np")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5r00m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21jxl")
+}],
+"loop": true,
+"name": &"idle_piernaizq_crusty",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgtes"]
+atlas = ExtResource("2_y5wyn")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dat24"]
+atlas = ExtResource("2_y5wyn")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eajky"]
+atlas = ExtResource("2_y5wyn")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2smn"]
+atlas = ExtResource("2_y5wyn")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyvye"]
+atlas = ExtResource("2_y5wyn")
+region = Rect2(32, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayv0k"]
+atlas = ExtResource("2_y5wyn")
+region = Rect2(64, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ekwx"]
+atlas = ExtResource("2_y5wyn")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw6v3"]
+atlas = ExtResource("2_y5wyn")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fwvp1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgtes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dat24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eajky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2smn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyvye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayv0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ekwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw6v3")
+}],
+"loop": true,
+"name": &"idle_piernader_crusty",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xatjn"]
+atlas = ExtResource("3_u3gjl")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3uyny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xatjn")
+}],
+"loop": true,
+"name": &"idle_brazoizq_crusty_bate",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk6d2"]
+atlas = ExtResource("4_a1ruj")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su0d6"]
+atlas = ExtResource("4_a1ruj")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd3ao"]
+atlas = ExtResource("4_a1ruj")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkryi"]
+atlas = ExtResource("4_a1ruj")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yqbm"]
+atlas = ExtResource("4_a1ruj")
+region = Rect2(32, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fymp1"]
+atlas = ExtResource("4_a1ruj")
+region = Rect2(64, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ju3a"]
+atlas = ExtResource("4_a1ruj")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go8wu"]
+atlas = ExtResource("4_a1ruj")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2p2cm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk6d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su0d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd3ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkryi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yqbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fymp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ju3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go8wu")
+}],
+"loop": true,
+"name": &"idle_brazoder_crusty_bate",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0ane"]
+atlas = ExtResource("5_6rnxb")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecxw0"]
+atlas = ExtResource("5_6rnxb")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6iws"]
+atlas = ExtResource("5_6rnxb")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajhvb"]
+atlas = ExtResource("5_6rnxb")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puud1"]
+atlas = ExtResource("5_6rnxb")
+region = Rect2(32, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2len"]
+atlas = ExtResource("5_6rnxb")
+region = Rect2(64, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mhvr"]
+atlas = ExtResource("5_6rnxb")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haiig"]
+atlas = ExtResource("5_6rnxb")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3qbix"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0ane")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecxw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6iws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajhvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puud1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2len")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mhvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haiig")
+}],
+"loop": true,
+"name": &"idle_head_crusty_bate",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_safxn"]
+atlas = ExtResource("1_7nsvx")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr50v"]
+atlas = ExtResource("1_7nsvx")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8145"]
+atlas = ExtResource("1_7nsvx")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4680k"]
+atlas = ExtResource("1_7nsvx")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o6np"]
+atlas = ExtResource("1_7nsvx")
+region = Rect2(32, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5wyn"]
+atlas = ExtResource("1_7nsvx")
+region = Rect2(64, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3gjl"]
+atlas = ExtResource("1_7nsvx")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1ruj"]
+atlas = ExtResource("1_7nsvx")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rnxb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_safxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr50v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8145")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4680k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o6np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5wyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3gjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1ruj")
+}],
+"loop": true,
+"name": &"idle_crusty_torso_bate",
+"speed": 7.0
+}]
+
 [node name="Player2" type="CharacterBody2D" unique_id=940511587]
 collision_layer = 2
 collision_mask = 16
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2022826233]
-position = Vector2(0.25000095, -2.3841858e-07)
-scale = Vector2(0.15234374, 0.234375)
-texture = ExtResource("1_7nsvx")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=410363891]
-shape = SubResource("CapsuleShape2D_7nsvx")
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_3o6np")
 
 [node name="MeleeArea" type="Area2D" parent="." unique_id=1228833170]
 
 [node name="HitRight" type="CollisionShape2D" parent="MeleeArea" unique_id=2048710822]
-position = Vector2(22, 0)
+position = Vector2(24, -7)
 shape = SubResource("CircleShape2D_7nsvx")
 
 [node name="HitLeft" type="CollisionShape2D" parent="MeleeArea" unique_id=1580406248]
-position = Vector2(-22, 0)
+position = Vector2(-23, -7)
 shape = SubResource("CircleShape2D_safxn")
+
+[node name="Body" type="Node2D" parent="." unique_id=82893316]
+
+[node name="PiernaIzq" type="AnimatedSprite2D" parent="Body" unique_id=1297127366]
+sprite_frames = SubResource("SpriteFrames_5r00m")
+animation = &"idle_piernaizq_crusty"
+autoplay = "idle_piernaizq_crusty"
+
+[node name="PiernaDer" type="AnimatedSprite2D" parent="Body" unique_id=2139391445]
+sprite_frames = SubResource("SpriteFrames_fwvp1")
+animation = &"idle_piernader_crusty"
+autoplay = "idle_piernader_crusty"
+
+[node name="BrazoIzq" type="AnimatedSprite2D" parent="Body" unique_id=1898261017]
+sprite_frames = SubResource("SpriteFrames_3uyny")
+animation = &"idle_brazoizq_crusty_bate"
+autoplay = "idle_brazoizq_crusty_bate"
+
+[node name="BrazoDer" type="AnimatedSprite2D" parent="Body" unique_id=224693977]
+sprite_frames = SubResource("SpriteFrames_2p2cm")
+animation = &"idle_brazoder_crusty_bate"
+autoplay = "idle_brazoder_crusty_bate"
+
+[node name="Head" type="AnimatedSprite2D" parent="Body" unique_id=511372185]
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_3qbix")
+animation = &"idle_head_crusty_bate"
+autoplay = "idle_head_crusty_bate"
+frame_progress = 0.33174178
+
+[node name="Torso" type="AnimatedSprite2D" parent="Body" unique_id=1462949732]
+sprite_frames = SubResource("SpriteFrames_6rnxb")
+animation = &"idle_crusty_torso_bate"
+autoplay = "idle_crusty_torso_bate"
+
+[node name="filler" type="Sprite2D" parent="." unique_id=1145856666]
+position = Vector2(0.4999981, 2.999998)
+scale = Vector2(0.1796875, 0.46874997)
+texture = ExtResource("7_y5wyn")
