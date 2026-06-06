@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cbaoajew0ap22"]
+[gd_scene load_steps=12 format=3 uid="uid://cbaoajew0ap22"]
 
 [ext_resource type="Script" uid="uid://b08c3a3t1wf8x" path="res://scripts/main.gd" id="1_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="2_rarhs"]
@@ -16,83 +16,83 @@ size = Vector2(20, 13)
 size = Vector2(20, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlsqs"]
-size = Vector2(136.5, 165.5)
+size = Vector2(136.5, 338.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8u5g"]
 size = Vector2(136.5, 318)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jlsqs"]
 
-[node name="Main" type="Node2D" unique_id=2126197489]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_0bbpv")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1400685248]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-5, -167)
 
-[node name="Piso" type="StaticBody2D" parent="." unique_id=661847576]
+[node name="Piso" type="StaticBody2D" parent="."]
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso" unique_id=1898045798]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso"]
 position = Vector2(-5.5, 3)
 shape = SubResource("RectangleShape2D_c01mt")
 
-[node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("2_rarhs")]
+[node name="Player1" parent="." instance=ExtResource("2_rarhs")]
 position = Vector2(35, -29)
 collision_mask = 18
 projectile_scene = ExtResource("3_c01mt")
 
-[node name="Player2" parent="." unique_id=940511587 instance=ExtResource("3_vcsgt")]
+[node name="Player2" parent="." instance=ExtResource("3_vcsgt")]
 position = Vector2(-49, -48)
 collision_mask = 17
 script = ExtResource("4_rarhs")
 
-[node name="ZonaP1" type="Area2D" parent="." unique_id=936231156]
+[node name="ZonaP1" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaP1" unique_id=1844259793]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaP1"]
 position = Vector2(-205, -6.5)
 shape = SubResource("RectangleShape2D_vcsgt")
 
-[node name="ZonaP2" type="Area2D" parent="." unique_id=893667412]
+[node name="ZonaP2" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaP2" unique_id=318843572]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaP2"]
 position = Vector2(168, -7)
 shape = SubResource("RectangleShape2D_nxtc6")
 
-[node name="Pared" type="StaticBody2D" parent="." unique_id=1417594952]
+[node name="Pared" type="StaticBody2D" parent="."]
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pared" unique_id=997775344]
-position = Vector2(-346, -91.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pared"]
+position = Vector2(-346, -177.75)
 shape = SubResource("RectangleShape2D_jlsqs")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pared" unique_id=1064976521]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pared"]
 position = Vector2(315, -164)
 shape = SubResource("RectangleShape2D_q8u5g")
 
-[node name="LetreroP1" type="Label" parent="." unique_id=1709573361]
-modulate = Color(1, 1, 1, 0.5019608)
-offset_left = -233.00002
+[node name="LetreroP1" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+offset_left = -233.0
 offset_top = -116.0
-offset_right = -186.00002
+offset_right = -186.0
 offset_bottom = -93.0
 scale = Vector2(1.2, 1.2)
 text = "WASD"
 
-[node name="LetreroP1b" type="Label" parent="." unique_id=783075351]
+[node name="LetreroP1b" type="Label" parent="."]
 visible = false
-modulate = Color(1, 1, 1, 0.5019608)
+modulate = Color(1, 1, 1, 0.501961)
 offset_left = -254.0
 offset_top = -115.0
 offset_right = -153.0
 offset_bottom = -92.0
 text = "E para lanzar"
 
-[node name="LetreroP2" type="Label" parent="." unique_id=2088217462]
-modulate = Color(1, 1, 1, 0.5019608)
+[node name="LetreroP2" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
 material = SubResource("ShaderMaterial_jlsqs")
 offset_left = 143.0
 offset_top = -113.0
@@ -102,9 +102,9 @@ scale = Vector2(1.2, 1.2)
 text = "↑↓←→"
 metadata/_edit_use_anchors_ = true
 
-[node name="LetreroP2b" type="Label" parent="." unique_id=1576532763]
+[node name="LetreroP2b" type="Label" parent="."]
 visible = false
-modulate = Color(1, 1, 1, 0.5019608)
+modulate = Color(1, 1, 1, 0.501961)
 offset_left = 112.0
 offset_top = -109.0
 offset_right = 256.0

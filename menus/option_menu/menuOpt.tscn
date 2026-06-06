@@ -1,52 +1,54 @@
-[gd_scene format=3 uid="uid://bydd1vwpb2w46"]
+[gd_scene load_steps=7 format=3 uid="uid://bydd1vwpb2w46"]
 
 [ext_resource type="Texture2D" uid="uid://d28m2iks4fh0t" path="res://images/options_menu_images/Option Screen.png" id="1_0smj3"]
+[ext_resource type="Script" uid="uid://d2grnxwnhvmqx" path="res://scripts/menuopt.gd" id="1_yrgpp"]
 [ext_resource type="Texture2D" uid="uid://bpwff3kxblcbd" path="res://images/pause_menu_images/Quit_ns_button.png" id="2_6jdg8"]
 [ext_resource type="Texture2D" uid="uid://dlnrnarve5xst" path="res://images/pause_menu_images/Quit_s_button.png" id="3_1r3ln"]
 [ext_resource type="Texture2D" uid="uid://b4d4sikpduj04" path="res://images/options_menu_images/volume_0.png" id="4_1r3ln"]
 [ext_resource type="Texture2D" uid="uid://c7vydhsbvu30p" path="res://images/options_menu_images/volume_100.png" id="5_yrgpp"]
 
-[node name="MenuOpt" type="Node2D" unique_id=1456084143]
+[node name="MenuOpt" type="Node2D"]
+script = ExtResource("1_yrgpp")
 
-[node name="ScreenOpt" type="Sprite2D" parent="." unique_id=2043599949]
+[node name="ScreenOpt" type="Sprite2D" parent="."]
 position = Vector2(578, 328)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_0smj3")
 
-[node name="Quit" type="TextureButton" parent="." unique_id=2122539131]
+[node name="Quit" type="TextureButton" parent="."]
 offset_left = 852.0
-offset_top = 455.00003
+offset_top = 455.0
 offset_right = 1070.0
 offset_bottom = 524.0
 scale = Vector2(0.6, 0.6)
 texture_normal = ExtResource("2_6jdg8")
 texture_hover = ExtResource("3_1r3ln")
 
-[node name="Label" type="Label" parent="." unique_id=1381880509]
+[node name="Label" type="Label" parent="."]
 offset_left = 781.0
 offset_top = 313.0
 offset_right = 992.0
 offset_bottom = 350.0
 
-[node name="Label2" type="Label" parent="." unique_id=1067480845]
+[node name="Label2" type="Label" parent="."]
 offset_left = 580.0
 offset_top = 379.0
 offset_right = 791.0
 offset_bottom = 416.0
 
-[node name="Label3" type="Label" parent="." unique_id=913182367]
+[node name="Label3" type="Label" parent="."]
 offset_left = 524.0
 offset_top = 379.0
 offset_right = 564.0
 offset_bottom = 416.0
 
-[node name="Label4" type="Label" parent="." unique_id=1740195713]
+[node name="Label4" type="Label" parent="."]
 offset_left = 804.0
 offset_top = 379.0
 offset_right = 844.0
 offset_bottom = 416.0
 
-[node name="sfx" type="TextureProgressBar" parent="." unique_id=642115085]
+[node name="sfx" type="TextureProgressBar" parent="."]
 offset_left = 737.0
 offset_top = 191.0
 offset_right = 1000.0
@@ -54,7 +56,7 @@ offset_bottom = 231.0
 texture_under = ExtResource("4_1r3ln")
 texture_progress = ExtResource("5_yrgpp")
 
-[node name="music" type="TextureProgressBar" parent="." unique_id=788127465]
+[node name="music" type="TextureProgressBar" parent="."]
 offset_left = 737.0
 offset_top = 252.0
 offset_right = 1000.0

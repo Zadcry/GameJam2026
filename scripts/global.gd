@@ -1,5 +1,7 @@
 extends Node
 
-var oxido_p1 := 0.0
+var oxido_mitch := 0.0
 var vida_crusty := 6.0
 var es_tutorial := true
+var sfx_volume := 100.0
+var music_volume := 100.0

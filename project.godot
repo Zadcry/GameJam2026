@@ -12,13 +12,14 @@ config_version=5
 
 config/name="GameJam2026"
 config/description="El jueguito de la gamejam"
-run/main_scene="uid://cbaoajew0ap22"
-config/features=PackedStringArray("4.6", "Forward Plus")
+run/main_scene="uid://bgbkd4sa2qjxf"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*uid://bpxiwsmvrc6l"
+FadeManager="*res://scenes/FadeManager.tscn"
 
 [input]
 
@@ -31,14 +32,6 @@ ui_select={
 "events": []
 }
 ui_cancel={
-"deadzone": 0.5,
-"events": []
-}
-ui_close_dialog={
-"deadzone": 0.5,
-"events": []
-}
-ui_close_dialog.macos={
 "deadzone": 0.5,
 "events": []
 }
@@ -87,10 +80,6 @@ ui_cut={
 "events": []
 }
 ui_copy={
-"deadzone": 0.5,
-"events": []
-}
-ui_focus_mode={
 "deadzone": 0.5,
 "events": []
 }
@@ -318,6 +307,34 @@ ui_graph_delete={
 "deadzone": 0.5,
 "events": []
 }
+ui_filedialog_up_one_level={
+"deadzone": 0.5,
+"events": []
+}
+ui_filedialog_refresh={
+"deadzone": 0.5,
+"events": []
+}
+ui_filedialog_show_hidden={
+"deadzone": 0.5,
+"events": []
+}
+ui_swap_input_direction={
+"deadzone": 0.5,
+"events": []
+}
+ui_close_dialog={
+"deadzone": 0.5,
+"events": []
+}
+ui_close_dialog.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_focus_mode={
+"deadzone": 0.5,
+"events": []
+}
 ui_graph_follow_left={
 "deadzone": 0.5,
 "events": []
@@ -338,18 +355,6 @@ ui_filedialog_delete={
 "deadzone": 0.5,
 "events": []
 }
-ui_filedialog_up_one_level={
-"deadzone": 0.5,
-"events": []
-}
-ui_filedialog_refresh={
-"deadzone": 0.5,
-"events": []
-}
-ui_filedialog_show_hidden={
-"deadzone": 0.5,
-"events": []
-}
 ui_filedialog_find={
 "deadzone": 0.5,
 "events": []
@@ -359,10 +364,6 @@ ui_filedialog_focus_path={
 "events": []
 }
 ui_filedialog_focus_path.macos={
-"deadzone": 0.5,
-"events": []
-}
-ui_swap_input_direction={
 "deadzone": 0.5,
 "events": []
 }
@@ -418,6 +419,12 @@ p2_move_down={
 p2_hit={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+pausar={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
 ]
 }
 

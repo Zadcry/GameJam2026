@@ -13,11 +13,13 @@ extends Node2D
 var p1_en_zona := false
 var p2_en_zona := false
 var golpes := 0
+var tutorial_activo := false
 
 const MARGIN := 100.0
 const CAMERA_OFFSET := Vector2(0, -150)
 
 func _ready() -> void:
+	FadeManager.fade_in()
 	zona_p1.connect("body_entered", _on_zona_p1_entered)
 	zona_p2.connect("body_entered", _on_zona_p2_entered)
 	player2.connect("proyectil_golpeado", _on_proyectil_golpeado)
@@ -40,6 +42,8 @@ func _process(_delta: float) -> void:
 	player2.global_position.x = clamp(player2.global_position.x, cam_left + 20, cam_right - 20)
 
 func _on_proyectil_golpeado() -> void:
+	if not tutorial_activo:
+		return
 	golpes += 1
 	print("Golpes: ", golpes)
 	if golpes >= 3:
@@ -52,6 +56,8 @@ func _on_zona_p1_entered(body: Node2D) -> void:
 		player1.lock_movement(1.0)
 		letrero_p1.visible = false
 		letrero_p1b.visible = true
+		if p2_en_zona:
+			tutorial_activo = true
 
 func _on_zona_p2_entered(body: Node2D) -> void:
 	if body.name == "Player2":
@@ -59,3 +65,16 @@ func _on_zona_p2_entered(body: Node2D) -> void:
 		player2.lock_movement(-1.0)
 		letrero_p2.visible = false
 		letrero_p2b.visible = true
+		if p1_en_zona:
+			tutorial_activo = true
+			
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pausar"):
+		_pausar()
+
+func _pausar() -> void:
+	get_tree().paused = true
+	var pausa = preload("res://menus/pause_menu/menuP.tscn").instantiate()
+	var canvas = CanvasLayer.new()
+	add_child(canvas)
+	canvas.add_child(pausa)

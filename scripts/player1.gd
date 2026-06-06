@@ -4,7 +4,6 @@ const JUMP_FORCE = -400.0
 const MIN_POWER = 150.0
 const MAX_POWER = 800.0
 const CHARGE_RATE = 500.0
-
 @export var projectile_scene: PackedScene
 var SPEED = 200.0
 var can_shoot := true
@@ -12,46 +11,118 @@ var facing := 1.0
 var charge := 0.0
 var charging := false
 var locked := false
+var estado_actual := ""
+var moving := false
+var disparando := false
 
 func _physics_process(delta: float) -> void:
-	print(Global.oxido_p1)
+	if $RayArriba.is_colliding():
+		velocity.x = 150.0 * facing
+	
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+	moving = false
 	if not locked:
 		var direction := 0.0
 		if Input.is_action_pressed("p1_move_right"):
 			direction += 1.0
 			facing = 1.0
+			moving = true
+			if charging:
+				charging = false
+				charge = 0.0
+				estado_actual = ""
 		if Input.is_action_pressed("p1_move_left"):
 			direction -= 1.0
 			facing = -1.0
+			moving = true
+			if charging:
+				charging = false
+				charge = 0.0
+				estado_actual = ""
 		velocity.x = direction * SPEED
-		if Input.is_action_just_pressed("p1_move_up") and is_on_floor():
+		if Input.is_action_just_pressed("p1_move_up") and is_on_floor() and not $RayArriba.is_colliding():
 			velocity.y = JUMP_FORCE
+			if charging:
+				charging = false
+				charge = 0.0
+				estado_actual = ""
 	else:
 		velocity.x = 0.0
-
-	# Cargar mientras se mantiene E
 	if Input.is_action_pressed("p1_shoot") and can_shoot:
 		charging = true
 		charge = min(charge + CHARGE_RATE * delta, MAX_POWER)
-
-	# Soltar E para disparar
 	if Input.is_action_just_released("p1_shoot") and can_shoot and charging:
 		_shoot()
 	move_and_slide()
+	$animation.flip_h = facing == -1.0
+	var nivel = Global.oxido_mitch
+	if charging:
+		var anim_atk := ""
+		if nivel < 20.0:
+			anim_atk = "atk_ox0"
+		elif nivel < 40.0:
+			anim_atk = "atk_ox1"
+		elif nivel < 60.0:
+			anim_atk = "atk_ox2"
+		else:
+			anim_atk = "atk_ox3"
+		if estado_actual != anim_atk:
+			estado_actual = anim_atk
+			$animation.play(anim_atk)
+			$animation.pause()
+		var progreso = (charge - MIN_POWER) / (MAX_POWER - MIN_POWER)
+		progreso = clamp(progreso, 0.0, 1.0)
+		$animation.frame = int(progreso * 5.0)
+	elif not disparando:
+		var nuevo_estado := ""
+		var en_aire = not is_on_floor()
+		if en_aire:
+			if nivel < 20.0:
+				nuevo_estado = "jump_ox0"
+			elif nivel < 40.0:
+				nuevo_estado = "jump_ox1"
+			elif nivel < 60.0:
+				nuevo_estado = "jump_ox2"
+			else:
+				nuevo_estado = "jump_ox3"
+		elif moving:
+			if nivel < 20.0:
+				nuevo_estado = "walk_ox0"
+			elif nivel < 40.0:
+				nuevo_estado = "walk_ox1"
+			elif nivel < 60.0:
+				nuevo_estado = "walk_ox2"
+			else:
+				nuevo_estado = "walk_ox3"
+		else:
+			if nivel < 20.0:
+				nuevo_estado = "idle_ox0"
+			elif nivel < 50.0:
+				nuevo_estado = "idle_ox1"
+			else:
+				nuevo_estado = "idle_ox2"
+		if nuevo_estado != estado_actual:
+			estado_actual = nuevo_estado
+			$animation.play(nuevo_estado)
 
 func _ready() -> void:
 	add_to_group("player1")
+	estado_actual = ""
 
 func aplicar_oxido() -> void:
-	var nivel = Global.oxido_p1
+	var nivel = Global.oxido_mitch
 	if nivel >= 60.0:
-		SPEED = 200.0 * 0.4   # -60%
+		SPEED = 200.0 * 0.4
 	elif nivel >= 40.0:
-		SPEED = 200.0 * 0.6   # -40%
+		SPEED = 200.0 * 0.6
 	elif nivel >= 20.0:
-		SPEED = 200.0 * 0.7   # -30%
+		SPEED = 200.0 * 0.7
+
+func recibir_dano(knockback_dir: float) -> void:
+	Global.oxido_mitch += randf_range(1.0, 2.0)
+	aplicar_oxido()
+	velocity.x = knockback_dir * 300.0
 
 func lock_movement(forced_facing: float = 0.0) -> void:
 	locked = true
@@ -61,13 +132,16 @@ func lock_movement(forced_facing: float = 0.0) -> void:
 func _shoot() -> void:
 	charging = false
 	can_shoot = false
+	disparando = true
+	$animation.frame = 6
 	var power = max(charge, MIN_POWER)
 	charge = 0.0
-
 	var proj = projectile_scene.instantiate()
-	proj.global_position = global_position
+	proj.global_position = global_position + Vector2(0, -30)
 	get_parent().add_child(proj)
 	proj.direction = Vector2(facing * power, -power * 0.0875)
-
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.3).timeout
+	disparando = false
+	estado_actual = ""
+	await get_tree().create_timer(0.2).timeout
 	can_shoot = true
