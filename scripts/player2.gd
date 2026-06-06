@@ -7,7 +7,7 @@ extends CharacterBody2D
 signal proyectil_golpeado
 
 const GRAVITY = 800.0
-const JUMP_FORCE = -250.0
+const JUMP_FORCE = -400.0
 
 var SPEED = 200.0
 var facing := 1.0

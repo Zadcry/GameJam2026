@@ -1,12 +1,10 @@
-[gd_scene format=3 uid="uid://bk7hsy8dtdypa"]
+[gd_scene format=3 uid="uid://gih8l4ahcpwe"]
 
-[ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="1_2h6oo"]
-[ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="2_x1x1l"]
-[ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="3_gklfi"]
-[ext_resource type="Script" uid="uid://bwee4wvfr842v" path="res://scripts/player2.gd" id="4_cm1v6"]
-[ext_resource type="Script" uid="uid://cn314dbomqxci" path="res://scripts/block_projectile.gd" id="5_x1x1l"]
-[ext_resource type="Script" uid="uid://c521p1fmnaisw" path="res://scripts/block_melee.gd" id="6_gklfi"]
-[ext_resource type="Script" uid="uid://diura8olt18n" path="res://scripts/level_exit.gd" id="7_cm1v6"]
+[ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="1_6sh32"]
+[ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="2_ejswk"]
+[ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="3_bbk5w"]
+[ext_resource type="Script" uid="uid://bwee4wvfr842v" path="res://scripts/player2.gd" id="4_conm7"]
+[ext_resource type="Script" uid="uid://c521p1fmnaisw" path="res://scripts/block_melee.gd" id="6_u3awl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrnl3"]
 size = Vector2(1151, 26)
@@ -22,12 +20,6 @@ size = Vector2(1067.125, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cm1v6"]
 size = Vector2(333.5625, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3elg"]
-size = Vector2(9.499996, 106.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hrqr"]
-size = Vector2(73.375, 36.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wetln"]
 size = Vector2(289, 20.125)
@@ -50,12 +42,6 @@ size = Vector2(30.75, 39.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1g8i"]
 size = Vector2(66.375, 17.875)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h6oo"]
-size = Vector2(58, 175)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1x1l"]
-size = Vector2(63, 176)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xwn4"]
 size = Vector2(69, 96.5)
 
@@ -63,7 +49,7 @@ size = Vector2(69, 96.5)
 size = Vector2(76, 98)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qpon"]
-size = Vector2(198, 20)
+size = Vector2(178, 20)
 
 [node name="Level0" type="Node2D" unique_id=78769976]
 
@@ -79,15 +65,15 @@ collision_mask = 0
 position = Vector2(-5.0000153, 17)
 shape = SubResource("RectangleShape2D_wrnl3")
 
-[node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("1_2h6oo")]
+[node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("1_6sh32")]
 position = Vector2(-322, -304)
 collision_mask = 19
-projectile_scene = ExtResource("2_x1x1l")
+projectile_scene = ExtResource("2_ejswk")
 
-[node name="Player2" parent="." unique_id=940511587 instance=ExtResource("3_gklfi")]
+[node name="Player2" parent="." unique_id=940511587 instance=ExtResource("3_bbk5w")]
 position = Vector2(364, -323)
 collision_mask = 17
-script = ExtResource("4_cm1v6")
+script = ExtResource("4_conm7")
 
 [node name="Pared" type="StaticBody2D" parent="." unique_id=228636595]
 position = Vector2(1, -2)
@@ -109,14 +95,6 @@ shape = SubResource("RectangleShape2D_gklfi")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Pared" unique_id=1912867067]
 position = Vector2(-322, -271)
 shape = SubResource("RectangleShape2D_cm1v6")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Pared" unique_id=763603589]
-position = Vector2(-159.00002, -398.375)
-shape = SubResource("RectangleShape2D_l3elg")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Pared" unique_id=1302338938]
-position = Vector2(-192.68752, -300)
-shape = SubResource("RectangleShape2D_6hrqr")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Pared" unique_id=1877239926]
 position = Vector2(371.5, -274)
@@ -164,25 +142,10 @@ offset_bottom = -377.0
 scale = Vector2(1.2, 1.2)
 text = "↑↓←→"
 
-[node name="BloqueProyectil" type="StaticBody2D" parent="." unique_id=1993127073]
-position = Vector2(297, -374)
-collision_layer = 3
-script = ExtResource("5_x1x1l")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BloqueProyectil" unique_id=400430368]
-position = Vector2(-39, 0)
-shape = SubResource("RectangleShape2D_2h6oo")
-
-[node name="HitboxArea" type="Area2D" parent="BloqueProyectil" unique_id=1814620771]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BloqueProyectil/HitboxArea" unique_id=1472257362]
-position = Vector2(-39, -1)
-shape = SubResource("RectangleShape2D_x1x1l")
-
 [node name="BloqueMelee" type="StaticBody2D" parent="." unique_id=1951058121]
 position = Vector2(-483, -196)
 collision_layer = 3
-script = ExtResource("6_gklfi")
+script = ExtResource("6_u3awl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BloqueMelee" unique_id=1979934999]
 position = Vector2(-37.5, -39.25)
@@ -195,8 +158,7 @@ position = Vector2(-39, -39)
 shape = SubResource("RectangleShape2D_3i82n")
 
 [node name="LevelExit" type="Area2D" parent="." unique_id=662603234]
-script = ExtResource("7_cm1v6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit" unique_id=438724603]
-position = Vector2(55, -17)
+position = Vector2(36, -17)
 shape = SubResource("RectangleShape2D_8qpon")
