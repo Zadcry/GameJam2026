@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="1_xa7n4"]
 [ext_resource type="PackedScene" uid="uid://ox0rop1t01u3" path="res://scenes/UICanvas.tscn" id="2_76toy"]
 [ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="2_bo4dx"]
+[ext_resource type="PackedScene" uid="uid://448rjaktdhvr" path="res://scenes/AuraCambio.tscn" id="2_g8vcy"]
 [ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="3_76toy"]
 [ext_resource type="Texture2D" uid="uid://cacw0o7imfg3l" path="res://tileset/tiles.png" id="5_56gwk"]
 [ext_resource type="Script" uid="uid://b15ydvf4alkfs" path="res://scripts/level_1.gd" id="6_ve5ok"]
@@ -372,6 +373,18 @@ sources/1 = SubResource("TileSetAtlasSource_63e4f")
 
 [node name="Level2" type="Node2D" unique_id=78769976]
 script = ExtResource("1_bo4dx")
+
+[node name="AuraCambio4" parent="." unique_id=275953806 instance=ExtResource("2_g8vcy")]
+position = Vector2(351.5, 257.5)
+
+[node name="AuraCambio3" parent="." unique_id=1496683597 instance=ExtResource("2_g8vcy")]
+position = Vector2(322.5, 257.5)
+
+[node name="AuraCambio2" parent="." unique_id=711767200 instance=ExtResource("2_g8vcy")]
+position = Vector2(294.5, 257.5)
+
+[node name="AuraCambio" parent="." unique_id=244501649 instance=ExtResource("2_g8vcy")]
+position = Vector2(266.5, 257.5)
 
 [node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("2_76toy")]
 
