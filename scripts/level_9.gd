@@ -3,6 +3,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.vida_crusty = 8
+	Global.oxido_mitch = 0
 	FadeManager.fade_in()
 	if Global.puerta_destino != "":
 		# Buscamos el Marker2D que coincida con el nombre que guardamos

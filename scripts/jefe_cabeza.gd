@@ -110,7 +110,7 @@ func _physics_process(delta: float) -> void:
 					
 		Estado.CAIDA_FASE2:
 			# Fase 2: Smash hacia abajo
-			velocity.y = speed_ataque * 1.5 
+			velocity.y = speed_ataque * 0.5
 			
 			var impacto_jugador = false
 			if is_instance_valid(jugador) and global_position.distance_to(jugador.global_position) < 60.0:
@@ -127,7 +127,7 @@ func _physics_process(delta: float) -> void:
 				
 		Estado.SUBIDA_FASE2:
 			# Fase 2: Retorno al techo
-			velocity.y = -speed
+			velocity.y = -speed*0.1
 			velocity.x = 0
 			
 			

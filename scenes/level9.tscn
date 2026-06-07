@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b3b8a8k0wylep"]
 
-[ext_resource type="Script" uid="uid://ddx3imnmecwc2" path="res://scripts/level_3.gd" id="1_bcbta"]
+[ext_resource type="Script" uid="uid://h2qqpsdqlsw6" path="res://scripts/level_9.gd" id="1_xiiio"]
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="2_jo5h5"]
 [ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="3_llul2"]
 [ext_resource type="PackedScene" uid="uid://dns0jieuv522q" path="res://scenes/jefe_cabeza.tscn" id="4_dbux4"]
@@ -382,7 +382,7 @@ sources/1 = SubResource("TileSetAtlasSource_qcqi3")
 size = Vector2(635, 20)
 
 [node name="Level9" type="Node2D" unique_id=78769976]
-script = ExtResource("1_bcbta")
+script = ExtResource("1_xiiio")
 
 [node name="motorJefe" parent="." unique_id=1262854097 instance=ExtResource("12_jq68i")]
 position = Vector2(-255, -675)

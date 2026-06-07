@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://pjbsg1sqfo3t"]
 
-[ext_resource type="VideoStream" uid="uid://d2dcjx78akxv8" path="res://cinematicas/FinalMalo/Final-Malo.ogv" id="1_kvwta"]
+[ext_resource type="VideoStream" uid="uid://bkbow16k2p73q" path="res://cinematicas/FinalMalo/Final-Malo.ogv" id="1_kvwta"]
 [ext_resource type="Script" uid="uid://bxuu7w45vevhy" path="res://scripts/final_malo.gd" id="1_pj1ar"]
 
 [node name="FinalMalo" type="Node2D" unique_id=377967997]
