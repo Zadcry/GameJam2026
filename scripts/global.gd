@@ -8,6 +8,7 @@ var music_volume := 100.0
 var puerta_destino := ""
 var game_over_activo := false
 var version_mapa := 1
+var final_bueno : bool = false
 
 func _process(_delta: float) -> void:
 	if game_over_activo:

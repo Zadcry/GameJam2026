@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ml2nqec4vy3o"]
+
+[ext_resource type="Script" uid="uid://bl5n2snnnbb2d" path="res://scripts/gracias.gd" id="1_dfcrm"]
+[ext_resource type="FontFile" uid="uid://c64fus21ycpbr" path="res://fonts/DePixelBreit.ttf" id="1_ju5pi"]
+
+[node name="Gracias" type="Node2D" unique_id=2066757571]
+script = ExtResource("1_dfcrm")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1457471410]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Thanks" type="Label" parent="." unique_id=681104659]
+offset_left = 349.0
+offset_top = 242.0
+offset_right = 831.0
+offset_bottom = 295.0
+theme_override_fonts/font = ExtResource("1_ju5pi")
+theme_override_font_sizes/font_size = 40
+text = "Thanks for playing"
+
+[node name="BadEnding" type="Label" parent="." unique_id=2115922079]
+visible = false
+offset_left = 365.0
+offset_top = 341.0
+offset_right = 812.0
+offset_bottom = 396.0
+theme_override_fonts/font = ExtResource("1_ju5pi")
+theme_override_font_sizes/font_size = 30
+text = "You got the bad ending"
+
+[node name="GoodEnding" type="Label" parent="." unique_id=1877176101]
+visible = false
+offset_left = 355.0
+offset_top = 341.0
+offset_right = 822.0
+offset_bottom = 383.0
+theme_override_fonts/font = ExtResource("1_ju5pi")
+theme_override_font_sizes/font_size = 30
+text = "You got the good ending"

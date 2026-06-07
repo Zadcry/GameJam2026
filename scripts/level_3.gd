@@ -21,8 +21,12 @@ func _ready() -> void:
 		else:
 			print("Advertencia: No se encontró un Marker2D llamado '", Global.puerta_destino, "' en esta sala.")
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+# FINAL MALO REDIRIGE A:
+# res://cinematicas/FinalMalo/FinalMalo.tscn
+
+# FINAL BUENO REDIRIGE A:
+# res://cinematicas/FinalBueno/FinalBueno.tscn
