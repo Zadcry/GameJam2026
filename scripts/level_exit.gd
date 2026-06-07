@@ -33,7 +33,7 @@ func _change_level() -> void:
 	var id_a_cargar = id_destino
 	
 	# Si este TP en específico es condicional Y tienen el objeto especial...
-	if usar_desvio_condicional and Global.estado_mundo==2:
+	if usar_desvio_condicional and Global.estado_mundo>=2:
 		path_a_cargar = path_alternativo
 		id_a_cargar = id_destino_alternativo
 

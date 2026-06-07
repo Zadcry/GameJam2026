@@ -457,6 +457,8 @@ tex_frontal_alt = ExtResource("24_ibbb1")
 
 [node name="Antioxidante" type="Area2D" parent="." unique_id=58210354]
 position = Vector2(-433, -255)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("25_ibbb1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Antioxidante" unique_id=172575557]

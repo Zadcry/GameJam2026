@@ -10,7 +10,8 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		# Sumamos 1 al contador global
 		Global.contador_antioxidantes += 1
-		
+		Global.vida_crusty += 1
+		Global.oxido_mitch -=10
 		print("¡Coleccionable recogido! Total actual: ", Global.contador_antioxidantes)
 		
 		# Destruimos la moneda/objeto
