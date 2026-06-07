@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cksg0ttrqa8sc"]
+
+[ext_resource type="Texture2D" uid="uid://bnwu2wb7i23au" path="res://images/gameover_menu_images/FondoGameOver.png" id="1_6xe3b"]
+[ext_resource type="Texture2D" uid="uid://7our67bastpu" path="res://images/gameover_menu_images/SinSeñal.png" id="2_4xn18"]
+[ext_resource type="Texture2D" uid="uid://hhi1x8nerqn1" path="res://images/gameover_menu_images/Buttons/Quit_ns_button.png" id="3_j4ogd"]
+[ext_resource type="Texture2D" uid="uid://dj0gdv16dlut8" path="res://images/gameover_menu_images/Buttons/Quit_s_button.png" id="4_7tsoc"]
+[ext_resource type="Texture2D" uid="uid://7t7gy8bjys5k" path="res://images/gameover_menu_images/Buttons/Retry_ns_button.png" id="5_vtwjp"]
+[ext_resource type="Texture2D" uid="uid://d1maqghwhspp1" path="res://images/gameover_menu_images/Buttons/Retry_s_button.png" id="6_3bpux"]
+
+[node name="MenuGaOv" type="Node2D" unique_id=129239339]
+
+[node name="GaOvFondo" type="Sprite2D" parent="." unique_id=1267231586]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_6xe3b")
+
+[node name="SinSeñalFondo" type="Sprite2D" parent="." unique_id=529537884]
+visible = false
+position = Vector2(576, 324.00003)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_4xn18")
+
+[node name="Quit" type="TextureButton" parent="." unique_id=1514509272]
+offset_left = 688.0
+offset_top = 437.0
+offset_right = 979.0
+offset_bottom = 524.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("3_j4ogd")
+texture_hover = ExtResource("4_7tsoc")
+
+[node name="Retry" type="TextureButton" parent="." unique_id=669659748]
+offset_left = 217.0
+offset_top = 435.0
+offset_right = 633.0
+offset_bottom = 537.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("5_vtwjp")
+texture_hover = ExtResource("6_3bpux")
