@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://cacw0o7imfg3l" path="res://tileset/tiles.png" id="31_v0vrg"]
 [ext_resource type="Texture2D" uid="uid://blj5w3bdbeaqm" path="res://sprites/CrustyLogo.png" id="33_2c4at"]
 [ext_resource type="Texture2D" uid="uid://d4hora2ph4ocv" path="res://sprites/MitchLogo.png" id="34_g6wdg"]
+[ext_resource type="Texture2D" uid="uid://c1svovkkne7jo" path="res://sprites/teclas/e-enter/Esc_Sprite.png" id="35_g6wdg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8b871"]
 animations = [{
@@ -369,3 +370,19 @@ texture = ExtResource("33_2c4at")
 position = Vector2(-205, -167.00002)
 scale = Vector2(0.065624975, 0.065624975)
 texture = ExtResource("34_g6wdg")
+
+[node name="EscSprite" type="Sprite2D" parent="." unique_id=392834077]
+modulate = Color(1, 1, 1, 0.5019608)
+position = Vector2(-235.5, -333.5)
+scale = Vector2(0.4047619, 0.4047619)
+texture = ExtResource("35_g6wdg")
+
+[node name="PUNT2" type="Label" parent="." unique_id=80518770]
+modulate = Color(1, 1, 1, 0.5019608)
+offset_left = -217.5
+offset_top = -338.5
+offset_right = -158.5
+offset_bottom = -326.5
+theme_override_fonts/font = ExtResource("20_dg70y")
+theme_override_font_sizes/font_size = 11
+text = "to pause"
