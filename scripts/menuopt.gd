@@ -31,7 +31,7 @@ func _ready() -> void:
 	sfx.connect("value_changed", _on_sfx_changed)
 	music.connect("value_changed", _on_music_changed)
 
-	_load_config()
+	var es_primera_vez = _load_config()
 
 	sfx.value = Global.sfx_volume
 	music.value = Global.music_volume
@@ -46,7 +46,8 @@ func _ready() -> void:
 	sfx.gui_input.connect(_on_sfx_gui_input)
 	music.gui_input.connect(_on_music_gui_input)
 
-# ── Sliders input manual ──────────────────────────────────────────────────────
+	if es_primera_vez:
+		_save_config()
 
 func _on_sfx_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -64,16 +65,12 @@ func _on_music_gui_input(event: InputEvent) -> void:
 		var ratio = clamp(event.position.x / music.size.x, 0.0, 1.0)
 		music.value = lerp(music.min_value, music.max_value, ratio)
 
-# ── Input (modo pantalla + flechas resolución) ────────────────────────────────
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		var click_pos = event.position
 
-		# Window Mode
 		if modo_label and modo_label.get_global_rect().has_point(click_pos) and event.button_index == MOUSE_BUTTON_LEFT:
 			if opciones[indice_actual] == "Windowed":
-				# Guardamos la resolución de ventana antes de cambiar a fullscreen
 				ultima_resolucion_ventana = indice_resolucion
 
 			indice_actual = (indice_actual + 1) % opciones.size()
@@ -84,11 +81,9 @@ func _input(event: InputEvent) -> void:
 					DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 					DisplayServer.window_set_size(Vector2i(1920, 1080))
 					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-					# Mostramos 1920x1080 en el label aunque esté desactivado
 					resolucion_label.text = "1920x1080"
 					resolucion_label.modulate.a = 0.5
 				"Windowed":
-					# Recuperamos el índice que tenía antes de entrar a fullscreen
 					indice_resolucion = ultima_resolucion_ventana
 					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 					DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_RESIZE_DISABLED, true)
@@ -100,7 +95,6 @@ func _input(event: InputEvent) -> void:
 			_actualizar_visibilidad_flechas()
 			_save_config()
 
-		# Resolution arrows — solo en Windowed
 		if opciones[indice_actual] == "Windowed":
 			if flecha_izq and flecha_izq.get_global_rect().has_point(click_pos) and event.button_index == MOUSE_BUTTON_LEFT:
 				if indice_resolucion > 0:
@@ -117,8 +111,6 @@ func _input(event: InputEvent) -> void:
 					_actualizar_label_resolucion()
 					_actualizar_visibilidad_flechas()
 					_save_config()
-
-# ── Labels y resolución ───────────────────────────────────────────────────────
 
 func _actualizar_label_resolucion() -> void:
 	if opciones[indice_actual] == "Fullscreen":
@@ -173,8 +165,6 @@ func _aplicar_fuente() -> void:
 			label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
-# ── Config ────────────────────────────────────────────────────────────────────
-
 func _save_config() -> void:
 	var config = ConfigFile.new()
 	config.set_value("pantalla", "modo", indice_actual)
@@ -186,7 +176,7 @@ func _save_config() -> void:
 	if err != OK:
 		push_error("options_menu: failed to save config, error code %d" % err)
 
-func _load_config() -> void:
+func _load_config() -> bool:
 	var config = ConfigFile.new()
 	var err = config.load(CONFIG_PATH)
 	if err == OK:
@@ -195,14 +185,14 @@ func _load_config() -> void:
 		ultima_resolucion_ventana = int(config.get_value("pantalla", "ultima_ventana", indice_resolucion))
 		Global.sfx_volume         = float(config.get_value("audio", "sfx", 100.0))
 		Global.music_volume       = float(config.get_value("audio", "music", 100.0))
+		return false
 	else:
 		indice_actual             = 0
 		indice_resolucion         = 5
 		ultima_resolucion_ventana = indice_resolucion
 		Global.sfx_volume         = 100.0
 		Global.music_volume       = 100.0
-
-# ── Audio helpers ─────────────────────────────────────────────────────────────
+		return true
 
 func _aplicar_volumen_sfx(value: float) -> void:
 	var bus_idx = AudioServer.get_bus_index("SFX")
@@ -232,8 +222,6 @@ func _notification(what: int) -> void:
 			   modo_actual == DisplayServer.WINDOW_MODE_MINIMIZED:
 				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 				DisplayServer.window_set_size(resoluciones[indice_resolucion])
-
-# ── Quit ──────────────────────────────────────────────────────────────────────
 
 func _on_quit() -> void:
 	emit_signal("cerrar")
