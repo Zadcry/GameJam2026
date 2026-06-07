@@ -250,14 +250,21 @@ shape = SubResource("RectangleShape2D_jlsqs")
 position = Vector2(315, -164)
 shape = SubResource("RectangleShape2D_q8u5g")
 
+[node name="TUTORIAL" type="Label" parent="." unique_id=358192212]
+offset_left = -78.0
+offset_top = -245.0
+offset_right = 28.0
+offset_bottom = -196.0
+text = "   TUTORIAL:
+Learn to punt"
+
 [node name="PUNT" type="Label" parent="." unique_id=1108773049]
-offset_left = -49.0
-offset_top = -166.0
-offset_right = -1.0
-offset_bottom = -117.0
+offset_left = -41.0
+offset_top = -190.0
+offset_right = 1.0
+offset_bottom = -173.0
 theme_override_fonts/font = ExtResource("20_dg70y")
-text = "PUNT!
-  0/3"
+text = "0/3"
 
 [node name="LetreroP1" type="Label" parent="." unique_id=566380016]
 modulate = Color(1, 1, 1, 0.501961)

@@ -52,9 +52,8 @@ func _on_quit() -> void:
 
 func _on_retry() -> void:
 	await _mostrar_sin_senal()
-	Global.reset()             # ← esto faltaba — sin esto game_over_activo queda true
-	# NO tocar es_tutorial aquí — que conserve el valor que tenía al morir
-	get_tree().change_scene_to_file("res://scenes/Main.tscn")
+	Global.reset()
+	get_tree().change_scene_to_file("res://scenes/level0.tscn")
 
 func _mostrar_sin_senal() -> void:
 	quit.disabled = true

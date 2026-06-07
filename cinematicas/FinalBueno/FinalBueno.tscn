@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://mirqjxdmntkk"]
 
 [ext_resource type="Script" uid="uid://cpcn25qhe483f" path="res://scripts/final_bueno.gd" id="1_aqllr"]
-[ext_resource type="VideoStream" uid="uid://bkcek4q7tkrxx" path="res://cinematicas/FinalBueno/Final-Bueno.ogv" id="2_xwyr4"]
+[ext_resource type="VideoStream" uid="uid://ns0573dxokhi" path="res://cinematicas/FinalBueno/Final-Bueno.ogv" id="2_xwyr4"]
 
 [node name="FinalBueno" type="Node2D" unique_id=1162142195]
 script = ExtResource("1_aqllr")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=777292862]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
 stream = ExtResource("2_xwyr4")

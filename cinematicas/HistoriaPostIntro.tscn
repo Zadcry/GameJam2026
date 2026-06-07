@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://dgaaqkajbjt77"]
+
+[ext_resource type="FontFile" uid="uid://c64fus21ycpbr" path="res://fonts/DePixelBreit.ttf" id="1_bxtah"]
+[ext_resource type="Script" uid="uid://cpp6e08rxitvw" path="res://scripts/historia_post_intro.gd" id="1_qccl0"]
+[ext_resource type="Texture2D" uid="uid://bxqjqgdqgxbj8" path="res://sprites/teclas/e-enter/E_Sprite.png" id="2_qccl0"]
+[ext_resource type="Texture2D" uid="uid://bxi6btkhs2ooo" path="res://sprites/teclas/CyM/CLogo.png" id="4_qccl0"]
+[ext_resource type="Texture2D" uid="uid://b8dffq8tijcj0" path="res://sprites/teclas/CyM/MLogo.png" id="5_0yus7"]
+
+[node name="HistoriaPostIntro" type="CanvasLayer" unique_id=2020960046]
+script = ExtResource("1_qccl0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1470591390]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="historia1" type="Label" parent="." unique_id=232912698]
+offset_left = 350.0
+offset_top = 307.0
+offset_right = 799.0
+offset_bottom = 364.0
+theme_override_fonts/font = ExtResource("1_bxtah")
+text = "But two little ones are determined 
+to survive and rescue their broken home"
+horizontal_alignment = 1
+
+[node name="historia2" type="Label" parent="." unique_id=1625308564]
+offset_left = 268.0
+offset_top = 154.0
+offset_right = 959.0
+offset_bottom = 191.0
+theme_override_fonts/font = ExtResource("1_bxtah")
+text = "Crusty... 
+
+I'm scared"
+
+[node name="historia3" type="Label" parent="." unique_id=1640383497]
+offset_left = 239.0
+offset_top = 231.0
+offset_right = 917.0
+offset_bottom = 288.0
+theme_override_fonts/font = ExtResource("1_bxtah")
+text = "There's nothing to be afraid of
+
+We'll break out of here"
+horizontal_alignment = 2
+
+[node name="historia4" type="Label" parent="." unique_id=520573796]
+offset_left = 265.0
+offset_top = 328.0
+offset_right = 930.0
+offset_bottom = 385.0
+theme_override_fonts/font = ExtResource("1_bxtah")
+text = "But how? I can't touch anything 
+
+and there's no way out"
+
+[node name="historia5" type="Label" parent="." unique_id=699283319]
+offset_left = 230.0
+offset_top = 419.0
+offset_right = 921.0
+offset_bottom = 476.0
+theme_override_fonts/font = ExtResource("1_bxtah")
+text = "Just throw the ball... like we used 
+
+to do when we where kids"
+horizontal_alignment = 2
+
+[node name="E" type="Sprite2D" parent="." unique_id=1770517552]
+position = Vector2(1012, 556)
+scale = Vector2(1.19076, 1.19076)
+texture = ExtResource("2_qccl0")
+
+[node name="C" type="Sprite2D" parent="." unique_id=1499032439]
+position = Vector2(988, 255.00002)
+scale = Vector2(0.16509385, 0.16509384)
+texture = ExtResource("4_qccl0")
+
+[node name="M" type="Sprite2D" parent="." unique_id=1790879222]
+position = Vector2(203.00003, 173.99998)
+scale = Vector2(0.18867913, 0.18867908)
+texture = ExtResource("5_0yus7")
+
+[node name="C2" type="Sprite2D" parent="." unique_id=258523908]
+position = Vector2(987.5, 445.5236)
+scale = Vector2(0.16745287, 0.16745283)
+texture = ExtResource("4_qccl0")
+
+[node name="M2" type="Sprite2D" parent="." unique_id=1741845476]
+position = Vector2(203.5, 351.51416)
+scale = Vector2(0.1863207, 0.18632075)
+texture = ExtResource("5_0yus7")

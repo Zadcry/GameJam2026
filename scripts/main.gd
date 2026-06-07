@@ -56,7 +56,7 @@ func _on_proyectil_golpeado() -> void:
 	if not tutorial_activo:
 		return
 	golpes += 1
-	punt_label.text = "PUNT!\n  " + str(golpes) + "/3"
+	punt_label.text = str(golpes) + "/3"
 	if golpes >= 3:
 		Global.es_tutorial = false
 		await FadeManager.fade_out()
