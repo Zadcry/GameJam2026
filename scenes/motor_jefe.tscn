@@ -187,6 +187,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otvt3"]
 
 [node name="motorJefe" type="CharacterBody2D" unique_id=1262854097]
+collision_layer = 2
+collision_mask = 49
 script = ExtResource("1_7trfr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1983791701]
@@ -197,3 +199,13 @@ frame_progress = 0.2762421
 [node name="hitbox" type="CollisionShape2D" parent="." unique_id=2046574255]
 scale = Vector2(6, 6.1200013)
 shape = SubResource("RectangleShape2D_otvt3")
+
+[node name="rayIzq" type="RayCast2D" parent="." unique_id=617883227]
+rotation = 1.5707964
+target_position = Vector2(0, 65)
+collision_mask = 57
+
+[node name="rayDer" type="RayCast2D" parent="." unique_id=2090882280]
+rotation = -1.5707964
+target_position = Vector2(0, 65)
+collision_mask = 57

@@ -24,7 +24,7 @@ func _on_hit(_area: Area2D) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Player2":
+	if body.name == "Player2" or body.is_in_group("jefe"):
 		var knockback_dir = sign(direction.x)
 		body.recibir_dano(knockback_dir)
 		queue_free()

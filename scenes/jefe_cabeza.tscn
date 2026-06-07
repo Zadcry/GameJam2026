@@ -218,7 +218,21 @@ sprite_frames = SubResource("SpriteFrames_jv85w")
 animation = &"preJefe"
 
 [node name="Timer" type="Timer" parent="." unique_id=776467761]
-wait_time = 3.5
+wait_time = 3.0
+
+[node name="abajo" type="RayCast2D" parent="." unique_id=1267701900]
+target_position = Vector2(0, 250)
+collision_mask = 3
+
+[node name="izq" type="RayCast2D" parent="." unique_id=178607373]
+rotation = 1.5707964
+target_position = Vector2(0, 60)
+collision_mask = 57
+
+[node name="der" type="RayCast2D" parent="." unique_id=1482233626]
+rotation = -1.5707964
+target_position = Vector2(0, 60)
+collision_mask = 57
 
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
