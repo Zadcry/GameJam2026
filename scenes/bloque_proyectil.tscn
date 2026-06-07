@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c06q5xroigsbf"]
+
+[ext_resource type="Script" uid="uid://cn314dbomqxci" path="res://scripts/block_projectile.gd" id="1_nrg5i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h6oo"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1x1l"]
+size = Vector2(34, 34)
+
+[node name="BloqueProyectil" type="StaticBody2D" unique_id=58765184]
+z_index = 1
+collision_layer = 3
+script = ExtResource("1_nrg5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1492086557]
+shape = SubResource("RectangleShape2D_2h6oo")
+
+[node name="HitboxArea" type="Area2D" parent="." unique_id=929345581]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea" unique_id=533415250]
+shape = SubResource("RectangleShape2D_x1x1l")

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://448rjaktdhvr"]
+
+[ext_resource type="Texture2D" uid="uid://dgv3bnrn8fnj0" path="res://sprites/Auras/Blue/Blue_Sprite_1.png" id="1_nek3q"]
+[ext_resource type="Texture2D" uid="uid://dbjdeopp0kq2x" path="res://sprites/Auras/Blue/Blue_Sprite_2.png" id="2_qo3td"]
+[ext_resource type="Texture2D" uid="uid://byc5bkv5568i5" path="res://sprites/Auras/Blue/Blue_Sprite_3.png" id="3_lms7j"]
+[ext_resource type="Texture2D" uid="uid://dmgtt83eqnpny" path="res://sprites/Auras/Blue/Blue_Sprite_4.png" id="4_dt6wj"]
+[ext_resource type="Texture2D" uid="uid://dahkv7ggwj8xw" path="res://sprites/Auras/Blue/Blue_Sprite_5.png" id="5_tql46"]
+[ext_resource type="Script" uid="uid://gsei4clw85ht" path="res://scripts/aura_cambio.gd" id="6_oldc5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5c80h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nek3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qo3td")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lms7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dt6wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tql46")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AuraCambio" type="AnimatedSprite2D" unique_id=275953806]
+modulate = Color(0.2, 0.53333336, 0.2, 1)
+sprite_frames = SubResource("SpriteFrames_5c80h")
+frame_progress = 0.6786102
+script = ExtResource("6_oldc5")

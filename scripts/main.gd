@@ -22,6 +22,7 @@ const MARGIN := 100.0
 const CAMERA_OFFSET := Vector2(0, -150)
 
 func _ready() -> void:
+	Global.es_tutorial = true
 	FadeManager.fade_in()
 	azul.play("default")
 	naranja.play("default")
@@ -57,7 +58,7 @@ func _on_proyectil_golpeado() -> void:
 	print("Golpes: ", golpes)
 	if golpes >= 3:
 		Global.es_tutorial = false
-		get_tree().change_scene_to_file("res://scenes/level0.tscn")
+		get_tree().change_scene_to_file("res://cinematicas/intro/intro.tscn")
 
 
 func _on_zona_p1_entered(body: Node2D) -> void:

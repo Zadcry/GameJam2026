@@ -21,7 +21,7 @@
 size = Vector2(30, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1h3a"]
-size = Vector2(30, 41)
+size = Vector2(30, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bbdd7"]
 atlas = ExtResource("2_3p2px")
@@ -844,7 +844,8 @@ animations = [{
 }]
 
 [node name="Player1" type="CharacterBody2D" unique_id=2021305826]
-collision_mask = 16
+collision_layer = 9
+collision_mask = 56
 script = ExtResource("1_1jryi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1672290598]
@@ -856,7 +857,7 @@ position = Vector2(-5, 2)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2111813704]
-position = Vector2(5, -6.5)
+position = Vector2(5, -5)
 shape = SubResource("RectangleShape2D_b1h3a")
 
 [node name="animation" type="AnimatedSprite2D" parent="." unique_id=2061720435]

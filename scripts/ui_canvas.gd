@@ -77,12 +77,11 @@ func _process(delta: float) -> void:
 	rotacion_mitch += (rpm / 1000.0) * 150.0 * delta
 	engranaje_mitch.rotation_degrees = rotacion_mitch
 	
-	# Textura
-	if oxido < 45.0:
-		engranaje_mitch.texture = tex_mitch_0
-	elif oxido < 65.0:
-		engranaje_mitch.texture = tex_mitch_50
+	if oxido < 15.0:
+		rpm = lerp(1000.0, 650.0, oxido / 15.0)
+	elif oxido < 25.0:
+		rpm = lerp(650.0, 250.0, (oxido - 15.0) / 10.0)
 	else:
-		engranaje_mitch.texture = tex_mitch_100
+		rpm = lerp(250.0, 0.0, clamp((oxido - 25.0) / 10.0, 0.0, 1.0))
 	
 	rpm_label.text = str(int(rpm)) + " RPM"

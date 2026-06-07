@@ -16,8 +16,8 @@ func _ready() -> void:
 			if p1 and p2:
 				# Movemos a los jugadores a la posición del Marker2D.
 				# Les damos un pequeño desfase (offset) en X para que no aparezcan uno encima del otro.
-				p1.global_position = spawn_point.global_position + Vector2(-20, 0)
-				p2.global_position = spawn_point.global_position + Vector2(20, 0)
+				p1.global_position = spawn_point.global_position + Vector2(-30, 0)
+				p2.global_position = spawn_point.global_position + Vector2(30, 0)
 		else:
 			print("Advertencia: No se encontró un Marker2D llamado '", Global.puerta_destino, "' en esta sala.")
 
