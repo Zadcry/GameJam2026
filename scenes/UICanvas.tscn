@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://ox0rop1t01u3"]
 
 [ext_resource type="Script" uid="uid://ctd2fcmrfb2xu" path="res://scripts/ui_canvas.gd" id="1_qkkka"]
+[ext_resource type="Texture2D" uid="uid://2vhjtmwjhkun" path="res://UISprites/Crusty/BCrusty.png" id="4_q6oxl"]
+[ext_resource type="Texture2D" uid="uid://csoed8b4onfv4" path="res://UISprites/Crusty/Engranaje100.png" id="5_nebn6"]
+[ext_resource type="Texture2D" uid="uid://b8iwdju848kxo" path="res://UISprites/Mitch/Barra_Mitch_Tapete_Fondo_Sprite.png" id="6_ddb65"]
 [ext_resource type="Texture2D" uid="uid://cd3v2cqjhfij1" path="res://sprites/teclas/a_and_d/A/A_Sprite_6.png" id="7_r6q38"]
+[ext_resource type="Texture2D" uid="uid://dphimww6w144s" path="res://UISprites/Mitch/Engranaje0_Sprite.png" id="7_xam1g"]
+[ext_resource type="Texture2D" uid="uid://dohe7w0mvmvyi" path="res://UISprites/Mitch/Cabeza_Mitch_Sprite.png" id="9_6nnmw"]
+[ext_resource type="FontFile" uid="uid://c64fus21ycpbr" path="res://fonts/DePixelBreit.ttf" id="10_q877c"]
 [ext_resource type="Texture2D" uid="uid://c1684p3eugnek" path="res://sprites/teclas/a_and_d/D/D_Sprite_6.png" id="14_fxjhw"]
 
 [node name="UiCanvas" type="CanvasLayer" unique_id=2031656424]
@@ -18,3 +24,48 @@ texture = ExtResource("7_r6q38")
 position = Vector2(161, 563)
 scale = Vector2(1.4047619, 1.4047619)
 texture = ExtResource("14_fxjhw")
+
+[node name="BCrusty" type="Sprite2D" parent="UI" unique_id=1677825292]
+position = Vector2(1038, 104)
+scale = Vector2(1.8915095, 1.8915095)
+texture = ExtResource("4_q6oxl")
+
+[node name="Engranaje1" type="Sprite2D" parent="UI" unique_id=1733774685]
+position = Vector2(1098, 93)
+scale = Vector2(1.7380953, 1.7380953)
+texture = ExtResource("5_nebn6")
+
+[node name="Engranaje2" type="Sprite2D" parent="UI" unique_id=344506892]
+position = Vector2(1055.0001, 93)
+scale = Vector2(1.7380953, 1.7380953)
+texture = ExtResource("5_nebn6")
+
+[node name="Engranaje3" type="Sprite2D" parent="UI" unique_id=744773884]
+position = Vector2(1012.0001, 93)
+scale = Vector2(1.7380953, 1.7380953)
+texture = ExtResource("5_nebn6")
+
+[node name="BMitch" type="Sprite2D" parent="UI" unique_id=107688881]
+position = Vector2(105, 103.00001)
+scale = Vector2(1.9485981, 1.65625)
+texture = ExtResource("6_ddb65")
+
+[node name="EngranajeMitch" type="Sprite2D" parent="UI" unique_id=65087170]
+position = Vector2(43, 100)
+scale = Vector2(1.375, 1.375)
+texture = ExtResource("7_xam1g")
+
+[node name="RPM" type="Label" parent="UI" unique_id=283896704]
+offset_left = 74.0
+offset_top = 79.0
+offset_right = 180.0
+offset_bottom = 126.0
+theme_override_fonts/font = ExtResource("10_q877c")
+theme_override_font_sizes/font_size = 14
+text = "1000 RPM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CabezaMitch" type="Sprite2D" parent="UI" unique_id=895339512]
+position = Vector2(43, 100)
+texture = ExtResource("9_6nnmw")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd3v2cqjhfij1"
-path="res://.godot/imported/A_Sprite_6.png-c39af5a8f0c68d14dcc9eb9a885274cd.ctex"
+uid="uid://csoed8b4onfv4"
+path="res://.godot/imported/Engranaje100.png-b12aaca396912ef6bd95c529d6e631bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/teclas/a_and_d/A/A_Sprite_6.png"
-dest_files=["res://.godot/imported/A_Sprite_6.png-c39af5a8f0c68d14dcc9eb9a885274cd.ctex"]
+source_file="res://UISprites/Crusty/Engranaje100.png"
+dest_files=["res://.godot/imported/Engranaje100.png-b12aaca396912ef6bd95c529d6e631bb.ctex"]
 
 [params]
 

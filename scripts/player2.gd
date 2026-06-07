@@ -170,6 +170,9 @@ func _melee_attack() -> void:
 func actualizar_cuerpo() -> void:
 	brazo_izq.visible = Global.vida_crusty > 3
 	pierna_izq.visible = Global.vida_crusty > 2
+	var ui = get_tree().get_first_node_in_group("ui_canvas")
+	if ui:
+		ui.actualizar_vida_crusty()
 
 func _on_melee_hit(area: Area2D) -> void:
 	if area.name == "HitArea":

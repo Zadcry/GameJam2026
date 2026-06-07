@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgbkd4sa2qjxf"]
 
-[ext_resource type="Texture2D" uid="uid://cujjhevjwwdde" path="res://images/initial_menu_images/Pantalla Prueba.jpg" id="1_nddpm"]
 [ext_resource type="Texture2D" uid="uid://cvkovwe0r62j8" path="res://images/initial_menu_images/PressAnyButton_Button.png" id="2_ejsif"]
+[ext_resource type="Texture2D" uid="uid://dcw3jk2cgt4ti" path="res://menus/initial_menu/Fondo_Menu_Inital.png" id="2_tsw84"]
 [ext_resource type="Texture2D" uid="uid://huwsd8a24spa" path="res://images/initial_menu_images/PlayM_ns_button.png" id="3_ejsif"]
 [ext_resource type="Script" uid="uid://bx03lpk8i4ypf" path="res://scripts/menui.gd" id="3_hg5xu"]
 [ext_resource type="Texture2D" uid="uid://dd7pokutax02m" path="res://images/initial_menu_images/PlayM_s_button.png" id="4_b8v00"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://brhana76kfk1k" path="res://images/initial_menu_images/OptionsM_s_button.png" id="6_hg5xu"]
 [ext_resource type="Texture2D" uid="uid://cxurc4rfbryhp" path="res://images/initial_menu_images/QuitM_ns_button.png" id="7_tsw84"]
 [ext_resource type="Texture2D" uid="uid://baainpsi1ku5x" path="res://images/initial_menu_images/QuitM_s_button.png" id="8_j5uib"]
-[ext_resource type="Texture2D" uid="uid://b67o3ydg67adj" path="res://images/initial_menu_images/Logo_CrustyAndMitchMejoradov2.png" id="10_tsw84"]
+[ext_resource type="Texture2D" uid="uid://fg1qc5airyyj" path="res://menus/initial_menu/Logo_CrustyAndMitch_UltimaVersionSombras.png" id="10_j5uib"]
 
 [node name="MenuI" type="Node2D" unique_id=1463913144]
 script = ExtResource("3_hg5xu")
@@ -17,7 +17,7 @@ script = ExtResource("3_hg5xu")
 [node name="ScreenP" type="Sprite2D" parent="." unique_id=1970419366]
 position = Vector2(576, 325)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_nddpm")
+texture = ExtResource("2_tsw84")
 
 [node name="click" type="TextureButton" parent="." unique_id=1512701556]
 offset_left = 423.985
@@ -57,4 +57,4 @@ texture_hover = ExtResource("8_j5uib")
 [node name="Logo" type="Sprite2D" parent="." unique_id=300429291]
 position = Vector2(575, 166.395)
 scale = Vector2(0.31649998, 0.31649998)
-texture = ExtResource("10_tsw84")
+texture = ExtResource("10_j5uib")
