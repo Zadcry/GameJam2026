@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bchqlq5kotebw"]
 
 [ext_resource type="Script" uid="uid://cfaftc3amu7ul" path="res://scripts/music_manager.gd" id="1_k17rw"]
-[ext_resource type="AudioStream" uid="uid://vpi6y3rwjmkg" path="res://musica/mus_boss.ogg" id="2_mvbrv"]
+[ext_resource type="AudioStream" uid="uid://cmwouecrj1wr1" path="res://musica/mus_levels.ogg" id="2_mvbrv"]
 
 [node name="MusicManager" type="Node" unique_id=477760329]
 script = ExtResource("1_k17rw")
