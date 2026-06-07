@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://ckyirqyi37b54" path="res://images/gameover_menu_images/Two/Two_5_Sprite.png" id="11_68abj"]
 [ext_resource type="Texture2D" uid="uid://nogmj0kjrmjs" path="res://images/gameover_menu_images/One/One_Sprite.png" id="12_0auh5"]
 [ext_resource type="Texture2D" uid="uid://qwwd7aqryrl" path="res://images/gameover_menu_images/Two/Two_4.5_Sprite.png" id="13_0g2cg"]
+[ext_resource type="AudioStream" uid="uid://dtnuc1debtjtt" path="res://sfx/Pitido.ogg" id="18_0auh5"]
+[ext_resource type="AudioStream" uid="uid://da3xxlyk4haub" path="res://sfx/Estatica.ogg" id="19_0g2cg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0g2cg"]
 animations = [{
@@ -99,3 +101,10 @@ visible = false
 position = Vector2(576, 324.00003)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_4xn18")
+
+[node name="SonidoPitido" type="AudioStreamPlayer2D" parent="." unique_id=710087060]
+stream = ExtResource("18_0auh5")
+
+[node name="SonidoEstatica" type="AudioStreamPlayer2D" parent="." unique_id=518068194]
+stream = ExtResource("19_0g2cg")
+parameters/looping = true

@@ -3,6 +3,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.vida_crusty = 6
+	Global.oxido_mitch = 0
 	FadeManager.fade_in()
 	if Global.puerta_destino != "":
 		# Buscamos el Marker2D que coincida con el nombre que guardamos
@@ -20,13 +22,3 @@ func _ready() -> void:
 				p2.global_position = spawn_point.global_position + Vector2(30, 0)
 		else:
 			print("Advertencia: No se encontró un Marker2D llamado '", Global.puerta_destino, "' en esta sala.")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-# FINAL MALO REDIRIGE A:
-# res://cinematicas/FinalMalo/FinalMalo.tscn
-
-# FINAL BUENO REDIRIGE A:
-# res://cinematicas/FinalBueno/FinalBueno.tscn

@@ -4,6 +4,8 @@ extends Node2D
 @onready var retry := $Retry
 @onready var barra := $Sprite2D
 @onready var sin_senal := $SinSenalFondo
+@onready var sonido_pitido := $SonidoPitido
+@onready var sonido_estatica := $SonidoEstatica
 
 var barra_inicio_y: float
 var barra_fin_y: float
@@ -20,11 +22,20 @@ func _ready() -> void:
 	barra.position.y = barra_inicio_y
 	sin_senal.modulate.a = 1.0
 	sin_senal.visible = true
+
+	sonido_pitido.volume_db = linear_to_db(Global.sfx_volume / 100.0)
+	sonido_pitido.play()
+
 	await get_tree().create_timer(1.5).timeout
 	var tween = create_tween()
 	tween.tween_property(sin_senal, "modulate:a", 0.0, 2.0)
 	await tween.finished
 	sin_senal.visible = false
+
+	sonido_pitido.stop()
+	sonido_estatica.volume_db = linear_to_db(Global.sfx_volume / 100.0)
+	sonido_estatica.play()
+
 	quit.disabled = false
 	retry.disabled = false
 
@@ -48,6 +59,9 @@ func _on_retry() -> void:
 func _mostrar_sin_senal() -> void:
 	quit.disabled = true
 	retry.disabled = true
+	sonido_estatica.stop()
+	sonido_pitido.volume_db = linear_to_db(Global.sfx_volume / 100.0)
+	sonido_pitido.play()
 	sin_senal.modulate.a = 1.0
 	sin_senal.visible = true
 	await get_tree().create_timer(2.0).timeout

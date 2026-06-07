@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var engranaje3 := $UI/Engranaje3
 @onready var engranaje_mitch := $UI/EngranajeMitch
 @onready var rpm_label := $UI/RPM
+@onready var sonido_click := $UI/SonidoClick
 
 var tex_mitch_0: Texture2D = preload("res://UISprites/Mitch/Engranaje0_Sprite.png")
 var tex_mitch_50: Texture2D = preload("res://UISprites/Mitch/Engranaje100_Sprite.png")
@@ -26,6 +27,10 @@ func _ready() -> void:
 func mostrar_d(textura: Texture2D) -> void:
 	d_sprite.visible = true
 	d_sprite.texture = textura
+
+func play_click() -> void:
+	sonido_click.volume_db = linear_to_db(Global.sfx_volume / 100.0)
+	sonido_click.play()
 
 func ocultar_d() -> void:
 	d_sprite.visible = false

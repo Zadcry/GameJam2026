@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var brazo_izq := $Body/BrazoIzq
 @onready var pierna_izq := $Body/PiernaIzq
+@onready var sonido_ataque := $SonidoAtaque
 signal proyectil_golpeado
 
 const GRAVITY = 800.0
@@ -154,6 +155,8 @@ func _melee_attack() -> void:
 		return
 	puede_atacar = false
 	atacando = true
+	sonido_ataque.volume_db = linear_to_db(Global.sfx_volume / 100.0) - 10
+	sonido_ataque.play()
 	estado_actual = ""
 	var anim := ""
 	if not is_on_floor() and not Global.es_tutorial:

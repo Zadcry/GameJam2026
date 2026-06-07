@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cd3v2cqjhfij1" path="res://sprites/teclas/a_and_d/A/A_Sprite_6.png" id="7_r6q38"]
 [ext_resource type="Texture2D" uid="uid://dphimww6w144s" path="res://UISprites/Mitch/Engranaje0_Sprite.png" id="7_xam1g"]
 [ext_resource type="Texture2D" uid="uid://dohe7w0mvmvyi" path="res://UISprites/Mitch/Cabeza_Mitch_Sprite.png" id="9_6nnmw"]
+[ext_resource type="AudioStream" uid="uid://dsmci25keqmh4" path="res://sfx/click_menu.ogg" id="10_ddb65"]
 [ext_resource type="FontFile" uid="uid://c64fus21ycpbr" path="res://fonts/DePixelBreit.ttf" id="10_q877c"]
 [ext_resource type="Texture2D" uid="uid://c1684p3eugnek" path="res://sprites/teclas/a_and_d/D/D_Sprite_6.png" id="14_fxjhw"]
 
@@ -69,3 +70,6 @@ vertical_alignment = 1
 [node name="CabezaMitch" type="Sprite2D" parent="UI" unique_id=895339512]
 position = Vector2(43, 100)
 texture = ExtResource("9_6nnmw")
+
+[node name="SonidoClick" type="AudioStreamPlayer2D" parent="UI" unique_id=1397663780]
+stream = ExtResource("10_ddb65")

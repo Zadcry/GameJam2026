@@ -16,6 +16,7 @@ func _on_resume() -> void:
 	queue_free()
 
 func _on_options() -> void:
+	FadeManager.play_click()
 	var opt = preload("res://menus/option_menu/menuOpt.tscn").instantiate()
 	opt.connect("cerrar", _on_opciones_cerradas)
 	add_child(opt)

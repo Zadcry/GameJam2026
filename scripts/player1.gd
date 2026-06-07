@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var sonido_lanzamiento := $SonidoLanzamiento
+@onready var sonido_carga := $SonidoCarga
+
 const GRAVITY = 800.0
 const JUMP_FORCE = -400.0
 const MIN_POWER = 150.0
@@ -8,6 +11,7 @@ const CHARGE_RATE = 500.0
 
 @export var projectile_scene: PackedScene
 
+var carga_sono := false
 var SPEED = 200.0
 var can_shoot := true
 var facing := 1.0
@@ -87,6 +91,8 @@ func _physics_process(delta: float) -> void:
 				charging = false
 				charge = 0.0
 				estado_actual = ""
+				carga_sono = false
+				sonido_carga.stop()
 		if Input.is_action_pressed("p1_move_left") and not a_bloqueada:
 			direction -= 1.0
 			facing = -1.0
@@ -95,6 +101,8 @@ func _physics_process(delta: float) -> void:
 				charging = false
 				charge = 0.0
 				estado_actual = ""
+				carga_sono = false
+				sonido_carga.stop()
 		velocity.x = direction * SPEED
 		if Input.is_action_just_pressed("p1_move_up") and is_on_floor() and not $RayArriba.is_colliding():
 			velocity.y = JUMP_FORCE
@@ -102,6 +110,8 @@ func _physics_process(delta: float) -> void:
 				charging = false
 				charge = 0.0
 				estado_actual = ""
+				carga_sono = false
+				sonido_carga.stop()
 	elif locked:
 		velocity.x = 0.0
 
@@ -110,9 +120,15 @@ func _physics_process(delta: float) -> void:
 			charging = false
 			charge = 0.0
 			estado_actual = ""
+			carga_sono = false
+			sonido_carga.stop()
 	elif Input.is_action_pressed("p1_shoot") and can_shoot:
 		charging = true
 		charge = min(charge + CHARGE_RATE * delta, MAX_POWER)
+		if not carga_sono:
+			carga_sono = true
+			sonido_carga.volume_db = linear_to_db(Global.sfx_volume / 100.0) - 15.0
+			sonido_carga.play()
 
 	if Input.is_action_just_released("p1_shoot") and can_shoot and charging and is_on_floor():
 		_shoot()
@@ -121,9 +137,7 @@ func _physics_process(delta: float) -> void:
 
 	$animation.flip_h = facing == -1.0
 
-	# === SISTEMA DE TRAMPAS POR TILEMAP ===
 	var mapa = get_tree().get_first_node_in_group("mapa_trampas")
-
 	if mapa and not en_knockback:
 		var pos_pies = global_position + Vector2(0, 20)
 		var celda = mapa.local_to_map(mapa.to_local(pos_pies))
@@ -229,6 +243,10 @@ func lock_movement(forced_facing: float = 0.0) -> void:
 func _shoot() -> void:
 	if Global.game_over_activo:
 		return
+	carga_sono = false
+	sonido_carga.stop()
+	sonido_lanzamiento.volume_db = linear_to_db(Global.sfx_volume / 100.0)
+	sonido_lanzamiento.play()
 	charging = false
 	can_shoot = false
 	disparando = true

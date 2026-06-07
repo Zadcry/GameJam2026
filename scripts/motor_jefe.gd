@@ -60,4 +60,14 @@ func recibir_dano(dano_recibido: float = 1.0) -> void:
 
 func _destruir_motor() -> void:
 	print("¡Motor destruido! Reiniciando la escena para comprobar que funciona...")
-	get_tree().reload_current_scene()
+	activar_final()
+	
+func activar_final() -> void:
+	if Global.contador_antioxidantes >= 3:
+		Global.final_bueno = true
+		await FadeManager.fade_out()
+		get_tree().change_scene_to_file("res://cinematicas/FinalBueno/FinalBueno.tscn")
+	else:
+		Global.final_bueno = false
+		await FadeManager.fade_out()
+		get_tree().change_scene_to_file("res://cinematicas/FinalMalo/FinalMalo.tscn")

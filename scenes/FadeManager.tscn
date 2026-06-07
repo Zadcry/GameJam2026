@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://c5a1qvb5eq8at"]
 
 [ext_resource type="Script" uid="uid://5rv856jtyovc" path="res://scripts/fade_manager.gd" id="1_cninp"]
+[ext_resource type="AudioStream" uid="uid://dsmci25keqmh4" path="res://sfx/click_menu.ogg" id="2_uwt3l"]
 
-[node name="FadeManager" type="CanvasLayer"]
+[node name="FadeManager" type="CanvasLayer" unique_id=1283937019]
 script = ExtResource("1_cninp")
 
-[node name="Fade" type="ColorRect" parent="."]
+[node name="Fade" type="ColorRect" parent="." unique_id=607143926]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
+
+[node name="SonidoClick" type="AudioStreamPlayer2D" parent="." unique_id=1338566736]
+stream = ExtResource("2_uwt3l")

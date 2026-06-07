@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dkan8wlwu025k"]
+[gd_scene format=4 uid="uid://cwynsftb4l86q"]
 
 [ext_resource type="Script" uid="uid://ddx3imnmecwc2" path="res://scripts/level_3.gd" id="1_6qt4k"]
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="1_rupth"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bo0bh7xjdumkk" path="res://escenarios/CercanoOxido.png" id="22_8vbrh"]
 [ext_resource type="Script" uid="uid://c2fo5v32jghkg" path="res://scripts/antioxidante.gd" id="23_8vbrh"]
 [ext_resource type="Texture2D" uid="uid://cer74bwxc6kf4" path="res://sprites/BD-10.png" id="24_8vbrh"]
+[ext_resource type="AudioStream" uid="uid://dtusnij6ngrc2" path="res://sfx/damage.ogg" id="25_d5gix"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("5_bradm")
@@ -449,3 +450,6 @@ texture = ExtResource("24_8vbrh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Antioxidante" unique_id=1653303884]
 shape = SubResource("RectangleShape2D_7hs6g")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1038471147]
+stream = ExtResource("25_d5gix")

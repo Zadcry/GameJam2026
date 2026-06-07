@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://dfwwe0su0xvum" path="res://sprites/mitch_camina_oxido1/mitch idle.png" id="11_6062o"]
 [ext_resource type="Texture2D" uid="uid://c2nkw612lahqu" path="res://sprites/mitch_camina_oxido2/mitch idle.png" id="12_3p2px"]
 [ext_resource type="Texture2D" uid="uid://bcyff0yv7xiwa" path="res://sprites/mitch_camina_oxido3/mitch idle.png" id="13_oac26"]
+[ext_resource type="AudioStream" uid="uid://df705gi77a6og" path="res://sfx/bola_swing.ogg" id="17_vy07h"]
+[ext_resource type="AudioStream" uid="uid://bh6y7bqqva2c4" path="res://sfx/Carga.ogg" id="18_rgxth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jryi"]
 size = Vector2(30, 41)
@@ -869,3 +871,11 @@ frame_progress = 0.20051
 [node name="RayArriba" type="RayCast2D" parent="." unique_id=1281377716]
 target_position = Vector2(0, -50)
 collision_mask = 2
+
+[node name="SonidoLanzamiento" type="AudioStreamPlayer2D" parent="." unique_id=1405318085]
+stream = ExtResource("17_vy07h")
+
+[node name="SonidoCarga" type="AudioStreamPlayer2D" parent="." unique_id=385268885]
+stream = ExtResource("18_rgxth")
+volume_db = -25.0
+pitch_scale = 2.5
