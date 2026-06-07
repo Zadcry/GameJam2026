@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var engranaje_mitch := $UI/EngranajeMitch
 @onready var rpm_label := $UI/RPM
 @onready var sonido_click := $UI/SonidoClick
+@onready var engranaje4 := $UI/Engranaje4
 
 var tex_mitch_0: Texture2D = preload("res://UISprites/Mitch/Engranaje0_Sprite.png")
 var tex_mitch_50: Texture2D = preload("res://UISprites/Mitch/Engranaje100_Sprite.png")
@@ -22,6 +23,7 @@ func _ready() -> void:
 	add_to_group("ui_canvas")
 	d_sprite.visible = false
 	a_sprite.visible = false
+	await get_tree().process_frame
 	actualizar_vida_crusty()
 
 func mostrar_d(textura: Texture2D) -> void:
@@ -44,7 +46,14 @@ func ocultar_a() -> void:
 	
 func actualizar_vida_crusty() -> void:
 	var vida = Global.vida_crusty
-	# Engranaje 3 (primero en romperse, vida 6-5)
+	# Engranaje 4 (vida 8-7)
+	if vida >= 8:
+		engranaje4.texture = tex_100
+	elif vida >= 7:
+		engranaje4.texture = tex_50
+	else:
+		engranaje4.texture = tex_0
+	# Engranaje 3 (vida 6-5)
 	if vida >= 6:
 		engranaje3.texture = tex_100
 	elif vida >= 5:

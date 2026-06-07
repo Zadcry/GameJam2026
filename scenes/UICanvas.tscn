@@ -27,23 +27,28 @@ scale = Vector2(1.4047619, 1.4047619)
 texture = ExtResource("14_fxjhw")
 
 [node name="BCrusty" type="Sprite2D" parent="UI" unique_id=1677825292]
-position = Vector2(1038, 104)
-scale = Vector2(1.8915095, 1.8915095)
+position = Vector2(1031.2935, 109.06251)
+scale = Vector2(2.002359, 2.0023587)
 texture = ExtResource("4_q6oxl")
 
 [node name="Engranaje1" type="Sprite2D" parent="UI" unique_id=1733774685]
-position = Vector2(1098, 93)
-scale = Vector2(1.7380953, 1.7380953)
+position = Vector2(997, 99.00001)
+scale = Vector2(1.4880986, 1.4880986)
 texture = ExtResource("5_nebn6")
 
 [node name="Engranaje2" type="Sprite2D" parent="UI" unique_id=344506892]
-position = Vector2(1055.0001, 93)
-scale = Vector2(1.7380953, 1.7380953)
+position = Vector2(1040, 99.00001)
+scale = Vector2(1.5357156, 1.5357156)
 texture = ExtResource("5_nebn6")
 
 [node name="Engranaje3" type="Sprite2D" parent="UI" unique_id=744773884]
-position = Vector2(1012.0001, 93)
-scale = Vector2(1.7380953, 1.7380953)
+position = Vector2(1079.4375, 99.4375)
+scale = Vector2(1.4821403, 1.4821403)
+texture = ExtResource("5_nebn6")
+
+[node name="Engranaje4" type="Sprite2D" parent="UI" unique_id=1590273187]
+position = Vector2(1123.0001, 99)
+scale = Vector2(1.5119065, 1.5119065)
 texture = ExtResource("5_nebn6")
 
 [node name="BMitch" type="Sprite2D" parent="UI" unique_id=107688881]
