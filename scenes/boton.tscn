@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bal6xp4g8icwy"]
+
+[ext_resource type="Texture2D" uid="uid://dswn6c2hiat8t" path="res://sprites/boton/botonApagado.png" id="1_kbunx"]
+[ext_resource type="Texture2D" uid="uid://d27gmjkjknkvo" path="res://sprites/boton/botonPrendido.png" id="2_jts3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05w2u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5rts8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kbunx")
+}],
+"loop": true,
+"name": &"apagado",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jts3j")
+}],
+"loop": true,
+"name": &"prendido",
+"speed": 5.0
+}]
+
+[node name="boton" type="Area2D" unique_id=733811680]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1512690737]
+shape = SubResource("RectangleShape2D_05w2u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1117013939]
+sprite_frames = SubResource("SpriteFrames_5rts8")
+animation = &"apagado"
