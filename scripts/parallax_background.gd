@@ -4,6 +4,10 @@ extends ParallaxBackground
 @export var tex_media: Texture2D
 @export var tex_frontal: Texture2D
 
+@export var tex_lejana_alt: Texture2D
+@export var tex_media_alt: Texture2D
+@export var tex_frontal_alt: Texture2D
+
 func _escalar_a_pantalla(sprite: Sprite2D) -> void:
 	if sprite.texture == null:
 		return
@@ -12,6 +16,15 @@ func _escalar_a_pantalla(sprite: Sprite2D) -> void:
 	sprite.scale = Vector2(screen.x / tex_size.x, screen.y / tex_size.y) * 1.3
 
 func _ready() -> void:
+	# CHEQUEO DE ESTADO: Si tienen el objeto, cambiamos las texturas a las alternativas
+	if Global.estado_mundo==2:
+		if tex_media_alt: tex_media = tex_media_alt
+		if tex_frontal_alt: tex_frontal = tex_frontal_alt
+	if Global.estado_mundo==3:
+		if tex_lejana_alt: tex_lejana = tex_lejana_alt
+		if tex_media_alt: tex_media = tex_media_alt
+		if tex_frontal_alt: tex_frontal = tex_frontal_alt
+		
 	$CapaLejana.motion_scale = Vector2(0.1, 0.0)
 	$CapaMedia.motion_scale = Vector2(0.4, 0.0)
 	$CapaFrontal.motion_scale = Vector2(0.8, 0.0)

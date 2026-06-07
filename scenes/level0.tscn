@@ -17,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://p0arfxn0kgbr" path="res://tileset/Tileset_v2.png" id="14_ooohs"]
 [ext_resource type="PackedScene" uid="uid://essjqlp6nh48" path="res://scenes/OxidoP1.tscn" id="14_yoi1k"]
 [ext_resource type="Script" uid="uid://cfwhvx8jbmjmg" path="res://scripts/tilemap2_manager.gd" id="15_pnrra"]
+[ext_resource type="PackedScene" uid="uid://d0p6nvdcfklsm" path="res://scenes/ParallaxBackground.tscn" id="18_l1g8i"]
+[ext_resource type="Texture2D" uid="uid://dbxvnga8epysk" path="res://escenarios/Escenario-fondo.png" id="19_8qpon"]
+[ext_resource type="Texture2D" uid="uid://wwwda44judjc" path="res://escenarios/Escenario-tubo-2.png" id="20_fu4xf"]
+[ext_resource type="Texture2D" uid="uid://dn23t3pysfn58" path="res://escenarios/Escenario-tubo1.png" id="21_kjxej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qpon"]
 size = Vector2(121, 20)
@@ -442,3 +446,8 @@ script = ExtResource("15_pnrra")
 trampa_p1_scene = ExtResource("14_yoi1k")
 bloque_melee_scene = ExtResource("7_yoi1k")
 bloque_projectile_scene = ExtResource("6_pnrra")
+
+[node name="ParallaxBackground" parent="." unique_id=1401416965 instance=ExtResource("18_l1g8i")]
+tex_lejana = ExtResource("19_8qpon")
+tex_media = ExtResource("20_fu4xf")
+tex_frontal = ExtResource("21_kjxej")

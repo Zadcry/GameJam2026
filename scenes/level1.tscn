@@ -16,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://essjqlp6nh48" path="res://scenes/OxidoP1.tscn" id="13_dxn3v"]
 [ext_resource type="PackedScene" uid="uid://bnb50m5srk2pu" path="res://scenes/bloque_melee.tscn" id="14_14jow"]
 [ext_resource type="PackedScene" uid="uid://c06q5xroigsbf" path="res://scenes/bloque_proyectil.tscn" id="15_mvsps"]
+[ext_resource type="PackedScene" uid="uid://d0p6nvdcfklsm" path="res://scenes/ParallaxBackground.tscn" id="17_3w4mx"]
+[ext_resource type="Texture2D" uid="uid://dbxvnga8epysk" path="res://escenarios/Escenario-fondo.png" id="18_u068y"]
+[ext_resource type="Texture2D" uid="uid://wwwda44judjc" path="res://escenarios/Escenario-tubo-2.png" id="19_1ooyw"]
+[ext_resource type="Texture2D" uid="uid://dn23t3pysfn58" path="res://escenarios/Escenario-tubo1.png" id="20_ai3nx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("5_ru4tf")
@@ -446,7 +450,7 @@ shape = SubResource("RectangleShape2D_d3jkd")
 position = Vector2(-12, -394)
 
 [node name="Entrada2" type="Marker2D" parent="SpawnPoints" unique_id=1973616174]
-position = Vector2(-968, -193)
+position = Vector2(-920, -190)
 
 [node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("10_u3awl")]
 
@@ -457,3 +461,8 @@ script = ExtResource("12_i8kv5")
 trampa_p1_scene = ExtResource("13_dxn3v")
 bloque_melee_scene = ExtResource("14_14jow")
 bloque_projectile_scene = ExtResource("15_mvsps")
+
+[node name="ParallaxBackground" parent="." unique_id=1401416965 instance=ExtResource("17_3w4mx")]
+tex_lejana = ExtResource("18_u068y")
+tex_media = ExtResource("19_1ooyw")
+tex_frontal = ExtResource("20_ai3nx")

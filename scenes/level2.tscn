@@ -17,6 +17,15 @@
 [ext_resource type="PackedScene" uid="uid://essjqlp6nh48" path="res://scenes/OxidoP1.tscn" id="14_cqal4"]
 [ext_resource type="PackedScene" uid="uid://bnb50m5srk2pu" path="res://scenes/bloque_melee.tscn" id="15_o3sye"]
 [ext_resource type="PackedScene" uid="uid://c06q5xroigsbf" path="res://scenes/bloque_proyectil.tscn" id="16_24ks5"]
+[ext_resource type="PackedScene" uid="uid://d0p6nvdcfklsm" path="res://scenes/ParallaxBackground.tscn" id="18_s4es8"]
+[ext_resource type="Texture2D" uid="uid://dbxvnga8epysk" path="res://escenarios/Escenario-fondo.png" id="19_63e4f"]
+[ext_resource type="Texture2D" uid="uid://wwwda44judjc" path="res://escenarios/Escenario-tubo-2.png" id="20_y6lc1"]
+[ext_resource type="Texture2D" uid="uid://dn23t3pysfn58" path="res://escenarios/Escenario-tubo1.png" id="21_ekhvm"]
+[ext_resource type="Texture2D" uid="uid://x6423318ui12" path="res://escenarios/LejanoOxido.png" id="22_ikw2v"]
+[ext_resource type="Script" uid="uid://bi55aenxq5dbo" path="res://scripts/engranaje.gd" id="22_y6lc1"]
+[ext_resource type="Texture2D" uid="uid://bk7gb3ugyp6li" path="res://escenarios/MedianoOxido.png" id="23_cgqhq"]
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="23_ekhvm"]
+[ext_resource type="Texture2D" uid="uid://bo0bh7xjdumkk" path="res://escenarios/CercanoOxido.png" id="24_ttvjw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("5_56gwk")
@@ -371,6 +380,9 @@ custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_s4es8")
 sources/1 = SubResource("TileSetAtlasSource_63e4f")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nflru"]
+size = Vector2(29, 27)
+
 [node name="Level2" type="Node2D" unique_id=78769976]
 script = ExtResource("1_bo4dx")
 
@@ -449,6 +461,9 @@ script = ExtResource("9_g8vcy")
 next_level_path = "res://scenes/level1.tscn"
 id_destino = "Entrada2"
 REQUIRED_TIME = 0.1
+usar_desvio_condicional = true
+path_alternativo = "res://scenes/level1v2.tscn"
+id_destino_alternativo = "Entrada2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit3" unique_id=171468216]
 position = Vector2(-15, -462)
@@ -463,3 +478,26 @@ script = ExtResource("13_g8vcy")
 trampa_p1_scene = ExtResource("14_cqal4")
 bloque_melee_scene = ExtResource("15_o3sye")
 bloque_projectile_scene = ExtResource("16_24ks5")
+
+[node name="ParallaxBackground" parent="." unique_id=1401416965 instance=ExtResource("18_s4es8")]
+tex_lejana = ExtResource("19_63e4f")
+tex_media = ExtResource("20_y6lc1")
+tex_frontal = ExtResource("21_ekhvm")
+tex_lejana_alt = ExtResource("22_ikw2v")
+tex_media_alt = ExtResource("23_cgqhq")
+tex_frontal_alt = ExtResource("24_ttvjw")
+
+[node name="Engranaje" type="Area2D" parent="." unique_id=19156723]
+position = Vector2(-196, 325)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("22_y6lc1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Engranaje" unique_id=2009977807]
+position = Vector2(-48.000008, 18.999992)
+scale = Vector2(0.23437491, 0.23046885)
+texture = ExtResource("23_ekhvm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Engranaje" unique_id=1374731866]
+position = Vector2(-47.5, 19.5)
+shape = SubResource("RectangleShape2D_nflru")

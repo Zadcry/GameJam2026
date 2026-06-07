@@ -17,6 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://essjqlp6nh48" path="res://scenes/OxidoP1.tscn" id="15_su468"]
 [ext_resource type="PackedScene" uid="uid://bnb50m5srk2pu" path="res://scenes/bloque_melee.tscn" id="16_ylt8s"]
 [ext_resource type="PackedScene" uid="uid://c06q5xroigsbf" path="res://scenes/bloque_proyectil.tscn" id="17_7eo2k"]
+[ext_resource type="PackedScene" uid="uid://d0p6nvdcfklsm" path="res://scenes/ParallaxBackground.tscn" id="18_7eo2k"]
+[ext_resource type="Texture2D" uid="uid://dbxvnga8epysk" path="res://escenarios/Escenario-fondo.png" id="19_phje4"]
+[ext_resource type="Texture2D" uid="uid://wwwda44judjc" path="res://escenarios/Escenario-tubo-2.png" id="20_rcqrb"]
+[ext_resource type="Texture2D" uid="uid://dn23t3pysfn58" path="res://escenarios/Escenario-tubo1.png" id="21_xrxmp"]
+[ext_resource type="Texture2D" uid="uid://x6423318ui12" path="res://escenarios/LejanoOxido.png" id="22_xrxmp"]
+[ext_resource type="Texture2D" uid="uid://bk7gb3ugyp6li" path="res://escenarios/MedianoOxido.png" id="23_ul3a2"]
+[ext_resource type="Texture2D" uid="uid://bo0bh7xjdumkk" path="res://escenarios/CercanoOxido.png" id="24_ibbb1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("6_jyn2d")
@@ -435,3 +442,11 @@ script = ExtResource("14_o0ljq")
 trampa_p1_scene = ExtResource("15_su468")
 bloque_melee_scene = ExtResource("16_ylt8s")
 bloque_projectile_scene = ExtResource("17_7eo2k")
+
+[node name="ParallaxBackground" parent="." unique_id=1401416965 instance=ExtResource("18_7eo2k")]
+tex_lejana = ExtResource("19_phje4")
+tex_media = ExtResource("20_rcqrb")
+tex_frontal = ExtResource("21_xrxmp")
+tex_lejana_alt = ExtResource("22_xrxmp")
+tex_media_alt = ExtResource("23_ul3a2")
+tex_frontal_alt = ExtResource("24_ibbb1")
