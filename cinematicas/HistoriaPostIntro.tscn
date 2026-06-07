@@ -21,7 +21,7 @@ offset_right = 799.0
 offset_bottom = 364.0
 theme_override_fonts/font = ExtResource("1_bxtah")
 text = "But two little ones are determined 
-to survive and rescue their broken home"
+to survive and save their broken home"
 horizontal_alignment = 1
 
 [node name="historia2" type="Label" parent="." unique_id=1625308564]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0d0g5ypp5w7u"]
+[gd_scene format=3 uid="uid://d0d0g5ypp5w7u"]
 
 [ext_resource type="Texture2D" uid="uid://b44ehdlmtvsx3" path="res://images/pause_menu_images/Pause Screen.png" id="1_01aqn"]
 [ext_resource type="Script" uid="uid://c8lk2p87038uo" path="res://scripts/menup.gd" id="1_tayp1"]
@@ -9,16 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://bpwff3kxblcbd" path="res://images/pause_menu_images/Quit_ns_button.png" id="6_0ikmf"]
 [ext_resource type="Texture2D" uid="uid://dlnrnarve5xst" path="res://images/pause_menu_images/Quit_s_button.png" id="7_7in3v"]
 
-[node name="MenuP" type="Node2D"]
+[node name="MenuP" type="Node2D" unique_id=253717616]
 process_mode = 3
 script = ExtResource("1_tayp1")
 
-[node name="ScreenPause" type="Sprite2D" parent="."]
+[node name="ScreenPause" type="Sprite2D" parent="." unique_id=1153372807]
 position = Vector2(578, 328)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_01aqn")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="TextureButton" type="TextureButton" parent="." unique_id=979936348]
 offset_left = 359.0
 offset_top = 233.0
 offset_right = 714.0
@@ -27,7 +27,7 @@ scale = Vector2(0.6, 0.6)
 texture_normal = ExtResource("2_tayp1")
 texture_hover = ExtResource("3_05rtu")
 
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="TextureButton2" type="TextureButton" parent="." unique_id=924035873]
 offset_left = 359.0
 offset_top = 298.0
 offset_right = 700.0
@@ -36,7 +36,7 @@ scale = Vector2(0.6, 0.6)
 texture_normal = ExtResource("4_0xt4n")
 texture_hover = ExtResource("5_y6gl8")
 
-[node name="TextureButton3" type="TextureButton" parent="."]
+[node name="TextureButton3" type="TextureButton" parent="." unique_id=1965334780]
 offset_left = 359.0
 offset_top = 365.0
 offset_right = 577.0

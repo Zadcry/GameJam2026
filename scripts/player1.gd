@@ -222,7 +222,7 @@ func recibir_dano(knockback_dir: float) -> void:
 	sonido_dano.pitch_scale = 1.3
 	sonido_dano.volume_db = linear_to_db(Global.sfx_volume / 100.0)
 	sonido_dano.play()
-	Global.oxido_mitch += randf_range(3.0, 6.0)
+	Global.oxido_mitch += randf_range(3.0, 4.0)
 	aplicar_oxido()
 	velocity.x = knockback_dir * 100.0
 	velocity.y = knockback_dir * -300.0

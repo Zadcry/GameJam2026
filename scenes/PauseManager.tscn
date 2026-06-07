@@ -3,9 +3,15 @@
 [sub_resource type="GDScript" id="GDScript_pcko4"]
 script/source = "extends Node
 
+var menu_pausa = null
+
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(\"pausar\"):
-		_pausar()
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.is_action(\"pausar\"):
+			if menu_pausa != null:
+				_reanudar()
+			else:
+				_pausar()
 
 func _pausar() -> void:
 	get_tree().paused = true
@@ -13,6 +19,14 @@ func _pausar() -> void:
 	var canvas = CanvasLayer.new()
 	get_tree().root.add_child(canvas)
 	canvas.add_child(pausa)
+	menu_pausa = canvas
+	pausa.connect(\"cerrar\", _reanudar)
+
+func _reanudar() -> void:
+	get_tree().paused = false
+	if menu_pausa != null:
+		menu_pausa.queue_free()
+		menu_pausa = null
 "
 
 [node name="PauseManager" type="Node2D" unique_id=768789384]

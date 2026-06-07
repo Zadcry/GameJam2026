@@ -33,5 +33,3 @@ func reset() -> void:
 	vida_crusty = 6.0
 	game_over_activo = false
 	contador_antioxidantes = 0
-	# NO se resetean: es_tutorial, sfx_volume, music_volume, puerta_destino,
-	# version_mapa, final_bueno, estado_mundo — son datos persistentes entre escenas

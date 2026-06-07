@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bix764l764ei2" path="res://scripts/intro.gd" id="1_ys57d"]
 [ext_resource type="AudioStream" uid="uid://d16qdk6tqxju0" path="res://sfx/Anvil.ogg" id="3_th1a5"]
-[ext_resource type="AudioStream" uid="uid://bb4bj3tkobo43" path="res://sfx/Alarma.ogg" id="4_avhfg"]
+[ext_resource type="AudioStream" uid="uid://rsasfdhed6s1" path="res://sfx/AlarmaNoPito.mp3" id="5_nmom7"]
 [ext_resource type="FontFile" uid="uid://c64fus21ycpbr" path="res://fonts/DePixelBreit.ttf" id="5_w0npl"]
+[ext_resource type="AudioStream" uid="uid://bh8a75ik12erf" path="res://musica/mus_intro.ogg" id="6_nmom7"]
 [ext_resource type="VideoStream" uid="uid://6exc812los08" path="res://cinematicas/intro/Intro.ogv" id="12_daaew"]
 
 [sub_resource type="Animation" id="Animation_swtp3"]
@@ -79,6 +80,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("musica_intro:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_7a07t"]
@@ -156,6 +169,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("musica_intro:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(-0.1, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dh45t"]
 _data = {
@@ -181,11 +206,14 @@ autoplay = true
 libraries/ = SubResource("AnimationLibrary_dh45t")
 autoplay = &"intro"
 
+[node name="musica_intro" type="AudioStreamPlayer2D" parent="." unique_id=283884340]
+stream = ExtResource("6_nmom7")
+
 [node name="Anvil" type="AudioStreamPlayer2D" parent="." unique_id=279822185]
 stream = ExtResource("3_th1a5")
 
 [node name="Alarma" type="AudioStreamPlayer2D" parent="." unique_id=763613199]
-stream = ExtResource("4_avhfg")
+stream = ExtResource("5_nmom7")
 
 [node name="label1" type="Node2D" parent="." unique_id=1604036780]
 

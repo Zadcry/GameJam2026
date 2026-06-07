@@ -12,9 +12,10 @@ func _ready() -> void:
 	quit.connect("pressed", _on_quit)
 
 func _on_resume() -> void:
+	emit_signal("cerrar")
 	get_tree().paused = false
 	queue_free()
-
+	
 func _on_options() -> void:
 	FadeManager.play_click()
 	var opt = preload("res://menus/option_menu/menuOpt.tscn").instantiate()
@@ -23,7 +24,6 @@ func _on_options() -> void:
 
 func _on_opciones_cerradas() -> void:
 	pass
-
 func _on_quit() -> void:
 	get_tree().paused = false
 	get_parent().queue_free()
