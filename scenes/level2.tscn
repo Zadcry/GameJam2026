@@ -24,8 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://x6423318ui12" path="res://escenarios/LejanoOxido.png" id="22_ikw2v"]
 [ext_resource type="Script" uid="uid://bi55aenxq5dbo" path="res://scripts/engranaje.gd" id="22_y6lc1"]
 [ext_resource type="Texture2D" uid="uid://bk7gb3ugyp6li" path="res://escenarios/MedianoOxido.png" id="23_cgqhq"]
-[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="23_ekhvm"]
 [ext_resource type="Texture2D" uid="uid://bo0bh7xjdumkk" path="res://escenarios/CercanoOxido.png" id="24_ttvjw"]
+[ext_resource type="Texture2D" uid="uid://dvbcigxlve7h4" path="res://sprites/Tuerca.png" id="26_ikw2v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("5_56gwk")
@@ -494,9 +494,9 @@ collision_mask = 3
 script = ExtResource("22_y6lc1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Engranaje" unique_id=2009977807]
-position = Vector2(-48.000008, 18.999992)
-scale = Vector2(0.23437491, 0.23046885)
-texture = ExtResource("23_ekhvm")
+position = Vector2(-47.500008, 19.587502)
+scale = Vector2(0.8437495, 0.82968765)
+texture = ExtResource("26_ikw2v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Engranaje" unique_id=1374731866]
 position = Vector2(-47.5, 19.5)

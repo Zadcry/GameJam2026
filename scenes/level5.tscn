@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bk7gb3ugyp6li" path="res://escenarios/MedianoOxido.png" id="23_ul3a2"]
 [ext_resource type="Texture2D" uid="uid://bo0bh7xjdumkk" path="res://escenarios/CercanoOxido.png" id="24_ibbb1"]
 [ext_resource type="Script" uid="uid://c2fo5v32jghkg" path="res://scripts/antioxidante.gd" id="25_ibbb1"]
-[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="26_3wd6l"]
+[ext_resource type="Texture2D" uid="uid://cer74bwxc6kf4" path="res://sprites/BD-10.png" id="26_ibbb1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("6_jyn2d")
@@ -462,9 +462,9 @@ collision_mask = 3
 script = ExtResource("25_ibbb1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Antioxidante" unique_id=172575557]
-position = Vector2(0, 1)
-scale = Vector2(0.2109375, 0.2109375)
-texture = ExtResource("26_3wd6l")
+position = Vector2(-2.169609e-05, -2.169609e-05)
+scale = Vector2(0.62500095, 0.62500095)
+texture = ExtResource("26_ibbb1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Antioxidante" unique_id=353794870]
 shape = SubResource("RectangleShape2D_77lo6")
