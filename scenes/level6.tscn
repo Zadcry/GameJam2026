@@ -420,6 +420,9 @@ script = ExtResource("7_21e8i")
 next_level_path = "res://scenes/level4.tscn"
 id_destino = "Entrada6"
 REQUIRED_TIME = 1.0
+usar_desvio_condicional = true
+path_alternativo = "res://scenes/level4v2.tscn"
+id_destino_alternativo = "Entrada6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit2" unique_id=1144252757]
 position = Vector2(-537, 92)
