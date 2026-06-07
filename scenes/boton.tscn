@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bal6xp4g8icwy"]
 
+[ext_resource type="Script" uid="uid://g8nr027pguku" path="res://scripts/botonlv9.gd" id="1_jts3j"]
 [ext_resource type="Texture2D" uid="uid://dswn6c2hiat8t" path="res://sprites/boton/botonApagado.png" id="1_kbunx"]
 [ext_resource type="Texture2D" uid="uid://d27gmjkjknkvo" path="res://sprites/boton/botonPrendido.png" id="2_jts3j"]
 
@@ -32,6 +33,7 @@ animations = [{
 [node name="boton" type="Area2D" unique_id=733811680]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("1_jts3j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1512690737]
 shape = SubResource("RectangleShape2D_05w2u")
