@@ -2,6 +2,95 @@
 
 [ext_resource type="VideoStream" uid="uid://d2dcjx78akxv8" path="res://cinematicas/FinalMalo/Final-Malo.ogv" id="1_kvwta"]
 [ext_resource type="Script" uid="uid://bxuu7w45vevhy" path="res://scripts/final_malo.gd" id="1_pj1ar"]
+[ext_resource type="AudioStream" uid="uid://ccvkwdb7wnonc" path="res://sfx/vapor.ogg" id="3_5nh8t"]
+[ext_resource type="AudioStream" uid="uid://btr01ck70q4r1" path="res://sfx/Ventana.ogg" id="4_aldpe"]
+[ext_resource type="AudioStream" uid="uid://c2gbfqp4kwujd" path="res://sfx/Fuego.ogg" id="5_8xnyl"]
+[ext_resource type="AudioStream" uid="uid://cx2n4dxm1kqfg" path="res://musica/mus_final_malo.ogg" id="6_aldpe"]
+
+[sub_resource type="Animation" id="Animation_qomnn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vapor:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fuego:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ventana:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rgvnt"]
+resource_name = "sfx"
+length = 22.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vapor:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0666666, 4.133333, 4.266667, 5.366667, 5.4, 5.5, 6.633333, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false, false, true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fuego:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0666666, 6.9, 7.0666666, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ventana:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 9.866667, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m8jvd"]
+_data = {
+&"RESET": SubResource("Animation_qomnn"),
+&"sfx": SubResource("Animation_rgvnt")
+}
 
 [node name="FinalMalo" type="Node2D" unique_id=377967997]
 script = ExtResource("1_pj1ar")
@@ -14,9 +103,18 @@ stream = ExtResource("1_kvwta")
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1241802393]
+libraries/ = SubResource("AnimationLibrary_m8jvd")
+autoplay = &"sfx"
 
 [node name="vapor" type="AudioStreamPlayer2D" parent="." unique_id=158722121]
+stream = ExtResource("3_5nh8t")
 
 [node name="ventana" type="AudioStreamPlayer2D" parent="." unique_id=1125806814]
+stream = ExtResource("4_aldpe")
 
 [node name="fuego" type="AudioStreamPlayer2D" parent="." unique_id=1133348790]
+stream = ExtResource("5_8xnyl")
+
+[node name="Musica" type="AudioStreamPlayer2D" parent="." unique_id=1272203326]
+stream = ExtResource("6_aldpe")
+autoplay = true
