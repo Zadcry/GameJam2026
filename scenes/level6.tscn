@@ -77,7 +77,7 @@ size = Vector2(37, 66)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6dii"]
 size = Vector2(42, 70)
 
-[node name="Level5" type="Node2D" unique_id=78769976]
+[node name="Level6" type="Node2D" unique_id=78769976]
 script = ExtResource("1_6p2dx")
 
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("2_00gn1")]

@@ -70,7 +70,7 @@ size = Vector2(33, 90)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qewby"]
 size = Vector2(37, 93)
 
-[node name="Level5" type="Node2D" unique_id=78769976]
+[node name="Level7" type="Node2D" unique_id=78769976]
 script = ExtResource("1_72klc")
 
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("2_co8fc")]

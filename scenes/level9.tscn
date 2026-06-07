@@ -1,0 +1,84 @@
+[gd_scene format=4 uid="uid://b3b8a8k0wylep"]
+
+[ext_resource type="Script" uid="uid://ddx3imnmecwc2" path="res://scripts/level_3.gd" id="1_bcbta"]
+[ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="2_jo5h5"]
+[ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="3_llul2"]
+[ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="4_jq68i"]
+[ext_resource type="Texture2D" uid="uid://cacw0o7imfg3l" path="res://tileset/tiles.png" id="5_s2sfq"]
+[ext_resource type="Script" uid="uid://b15ydvf4alkfs" path="res://scripts/level_1.gd" id="6_u7kq5"]
+[ext_resource type="PackedScene" uid="uid://cwj30qpuewkap" path="res://scenes/GameCamera.tscn" id="8_6pt6s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
+texture = ExtResource("5_s2sfq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:1/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_ejswk"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_6sh32")
+
+[node name="Level9" type="Node2D" unique_id=78769976]
+script = ExtResource("1_bcbta")
+
+[node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("2_jo5h5")]
+position = Vector2(-305, 106)
+collision_mask = 19
+projectile_scene = ExtResource("3_llul2")
+
+[node name="Player2" parent="." unique_id=940511587 instance=ExtResource("4_jq68i")]
+position = Vector2(-203, 93)
+collision_mask = 17
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=541619513]
+tile_map_data = PackedByteArray("AAD1/wQAAAABAAAAAAD2/wQAAAABAAAAAAD3/wQAAAABAAAAAAD4/wQAAAABAAAAAAD5/wQAAAABAAAAAAD6/wQAAAABAAAAAAD7/wQAAAABAAAAAAD0/wQAAAABAAAAAADz/wQAAAABAAAAAAD8/wQAAAABAAAAAAD9/wQAAAABAAAAAAD+/wQAAAABAAAAAAD//wQAAAABAAAAAADy/wQAAAABAAAAAADx/wQAAAABAAAAAADw/wQAAAABAAAAAAAAAAQAAAABAAAAAAABAAQAAAABAAAAAADv/wQAAAABAAAAAADu/wQAAAABAAAAAADt/wQAAAADAAIAAAACAAQAAAAFAAIAAADt/wMAAAACAAEAAADt/wIAAAACAAEAAADt/wEAAAACAAEAAADt/wAAAAACAAEAAADt////AAACAAEAAADt//7/AAACAAEAAADt//3/AAACAAEAAADt//z/AAACAAEAAADt//v/AAACAAEAAADt//r/AAACAAEAAADt//n/AAACAAEAAADt//j/AAACAAEAAADt//f/AAACAAEAAADt//b/AAACAAEAAADt//X/AAACAAEAAADt//T/AAACAAEAAADt//P/AAACAAEAAADt//L/AAACAAEAAAACAAMAAAAAAAEAAAACAAIAAAAAAAEAAAACAAEAAAAAAAEAAAACAAAAAAAAAAEAAAACAP//AAAAAAEAAAACAP7/AAAAAAEAAAACAP3/AAAAAAEAAAACAPz/AAAAAAEAAAACAPv/AAAAAAEAAAACAPr/AAAAAAEAAAACAPn/AAAAAAEAAAACAPj/AAAAAAEAAAACAPf/AAAAAAEAAAACAPb/AAAAAAEAAAACAPX/AAAAAAEAAAACAPT/AAAAAAEAAAACAPP/AAAAAAEAAAACAPL/AAAAAAEAAADu/wEAAAAAAAMAAADv/wEAAAABAAMAAADw/wEAAAACAAMAAAD//wEAAAAAAAMAAAAAAAEAAAABAAMAAAABAAEAAAACAAMAAAD7////AAAAAAMAAAD8////AAABAAMAAAD9////AAACAAMAAAD2////AAACAAMAAADy////AAAAAAMAAADz////AAABAAMAAAD0////AAACAAMAAAD5////AAAAAAMAAAD6////AAABAAMAAAD1////AAABAAMAAADu//3/AAAAAAMAAADv//3/AAABAAMAAADw//3/AAACAAMAAADy//v/AAAAAAMAAADz//v/AAABAAMAAAD0//v/AAACAAMAAAD1//v/AAABAAMAAAD2//v/AAACAAMAAAD5//v/AAAAAAMAAAD6//v/AAABAAMAAAD7//v/AAAAAAMAAAD8//v/AAABAAMAAAD9//v/AAACAAMAAAD///3/AAAAAAMAAAAAAP3/AAABAAMAAAABAP3/AAACAAMAAADu//n/AAAAAAMAAADv//n/AAABAAMAAADw//n/AAACAAMAAAD///n/AAAAAAMAAAAAAPn/AAABAAMAAAABAPn/AAACAAMAAAAAAPb/AAACAAMAAAD///b/AAABAAMAAAD+//b/AAABAAMAAAD9//b/AAABAAMAAAD8//b/AAABAAMAAAD7//b/AAABAAMAAAD6//b/AAABAAMAAAD5//b/AAABAAMAAAD1//b/AAABAAMAAAD0//b/AAABAAMAAADz//b/AAABAAMAAADy//b/AAABAAMAAADx//b/AAABAAMAAADw//b/AAABAAMAAAD2//b/AAABAAMAAAD3//b/AAAAAAAAAAD4//b/AAACAAAAAADv//b/AAAAAAMAAADt//H/AAADAAEAAAACAPH/AAAFAAEAAADt/+7/AAADAAAAAADu/+7/AAABAAIAAADv/+7/AAABAAIAAADw/+7/AAABAAIAAADx/+7/AAABAAIAAADy/+7/AAABAAIAAADz/+7/AAABAAIAAAD0/+7/AAABAAIAAAD1/+7/AAABAAIAAAD2/+7/AAABAAIAAAD3/+7/AAABAAIAAAD4/+7/AAABAAIAAAD5/+7/AAABAAIAAAD6/+7/AAABAAIAAAD7/+7/AAABAAIAAAD8/+7/AAABAAIAAAD9/+7/AAABAAIAAAD+/+7/AAABAAIAAAD//+7/AAABAAIAAAAAAO7/AAABAAIAAAABAO7/AAABAAIAAAACAO7/AAAFAAAAAADt//D/AAACAAEAAADt/+//AAACAAEAAAACAO//AAAAAAEAAAACAPD/AAAAAAEAAAD3/wEAAAAAAAIAAAD4/wEAAAACAAIAAAD4/wAAAAACAAEAAAD3/wAAAAAAAAEAAAD3//7/AAAAAAEAAAD4//7/AAACAAEAAAD3////AAAAAAEAAAD3//3/AAAAAAEAAAD3//z/AAAAAAEAAAD3//v/AAAAAAEAAAD3//r/AAAAAAEAAAD3//n/AAAAAAEAAAD3//j/AAAAAAEAAAD4////AAACAAEAAAD4//3/AAACAAEAAAD4//z/AAACAAEAAAD4//v/AAACAAEAAAD4//r/AAACAAEAAAD4//n/AAACAAEAAAD4//j/AAACAAEAAAD3//f/AAAAAAEAAAD4//f/AAACAAEAAAA=")
+tile_set = SubResource("TileSet_ejswk")
+script = ExtResource("6_u7kq5")
+
+[node name="GameCamera" parent="." unique_id=964162124 instance=ExtResource("8_6pt6s")]
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1671760751]
+
+[node name="Entrada7" type="Marker2D" parent="SpawnPoints" unique_id=908722202]
+position = Vector2(-258, 100)
