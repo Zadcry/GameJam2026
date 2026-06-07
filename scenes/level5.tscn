@@ -385,6 +385,8 @@ sources/1 = SubResource("TileSetAtlasSource_rcqrb")
 [node name="Level5" type="Node2D" unique_id=78769976]
 script = ExtResource("1_7pj42")
 
+[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("2_54swg")]
+
 [node name="AuraCambio4" parent="." unique_id=275953806 instance=ExtResource("2_o0ljq")]
 position = Vector2(80.5, 91.5)
 
@@ -396,8 +398,6 @@ position = Vector2(23.5, 91.5)
 
 [node name="AuraCambio" parent="." unique_id=193226585 instance=ExtResource("2_o0ljq")]
 position = Vector2(-4.5, 91.5)
-
-[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("2_54swg")]
 
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("2_thmvh")]
 position = Vector2(-47, 78)
@@ -438,8 +438,6 @@ collision_mask = 19
 patrol_distance = 80.0
 vision_range = 96.0
 
-[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("12_teump")]
-
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1867583628 groups=["mapa_trampas"]]
 tile_map_data = PackedByteArray("AAD5/wMAAQABAAQAAAD6/wMAAQABAAQAAADx/wMAAQABAAQAAADw/wMAAQADAAYAAADw/wIAAQADAAUAAADy/wIAAQAHAAUAAADx/wIAAQAGAAMAAADy/wEAAQAHAAMAAADy/wAAAQAHAAEAAADx/wAAAQAGAAAAAAD4//v/AQAFAAMAAAD2//v/AQABAAYAAAD3//v/AQACAAYAAAD1//v/AQABAAYAAAD0//v/AQABAAYAAAD3//j/AQANAAIAAAD3//f/AQANAAAAAAD2//j/AQALAAIAAAD2//f/AQALAAAAAADv/wIAAQABAAUAAADv/wMAAQABAAUAAADv/wQAAQABAAUAAADw/wQAAQABAAUAAADx/wQAAQABAAUAAADx/wUAAQABAAUAAADw/wUAAQABAAUAAADv/wUAAQABAAUAAADu/wUAAQABAAUAAADu/wQAAQABAAUAAADu/wMAAQABAAUAAADu/wIAAQABAAUAAAD5/wQAAQABAAUAAAD6/wQAAQABAAUAAAD6/wUAAQABAAUAAAD5/wUAAQABAAUAAADu/wYAAQABAAUAAADv/wYAAQABAAUAAADw/wYAAQABAAUAAADx/wYAAQABAAUAAAD5/wYAAQABAAUAAAD6/wYAAQABAAUAAAD///7/AQAAAAUAAAD///3/AQAAAAUAAAD///z/AQAAAAUAAAD///v/AQAAAAUAAAAAAP7/AQABAAUAAAAAAP3/AQABAAUAAAAAAPz/AQABAAUAAAAAAPv/AQABAAUAAAABAPv/AQABAAUAAAABAPz/AQABAAUAAAABAP3/AQABAAUAAAABAP7/AQABAAUAAAACAP7/AQABAAUAAAACAP3/AQABAAUAAAACAPz/AQABAAUAAAACAPv/AQABAAUAAADy//b/AQABAAYAAADx//b/AQABAAYAAADz//b/AQABAAYAAADw//b/AQADAAQAAADw//f/AQACAAUAAADv//f/AQABAAUAAADv//b/AQABAAUAAADv//X/AQABAAUAAADw//X/AQABAAUAAADx//X/AQABAAUAAADy//X/AQABAAUAAADz//X/AQABAAUAAAD0////AQAGAAIAAAD0//7/AQAGAAEAAAD1////AQAHAAIAAAD6//7/AQAEAAMAAAA=")
 tile_set = SubResource("TileSet_xrxmp")
@@ -469,3 +467,5 @@ texture = ExtResource("26_ibbb1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Antioxidante" unique_id=353794870]
 shape = SubResource("RectangleShape2D_77lo6")
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("12_teump")]

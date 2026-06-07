@@ -376,6 +376,8 @@ sources/1 = SubResource("TileSetAtlasSource_3w4mx")
 
 [node name="Level1" type="Node2D" unique_id=78769976]
 
+[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("1_d3jkd")]
+
 [node name="AuraCambio4" parent="." unique_id=275953806 instance=ExtResource("1_dxn3v")]
 position = Vector2(-925, -163)
 scale = Vector2(1, 1.0000002)
@@ -390,8 +392,6 @@ scale = Vector2(1, 1.0000002)
 
 [node name="AuraCambio" parent="." unique_id=1425928096 instance=ExtResource("1_dxn3v")]
 position = Vector2(-1012, -162)
-
-[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("1_d3jkd")]
 
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("1_6sh32")]
 position = Vector2(-86, -374)
@@ -452,8 +452,6 @@ position = Vector2(-12, -394)
 [node name="Entrada2" type="Marker2D" parent="SpawnPoints" unique_id=1973616174]
 position = Vector2(-920, -190)
 
-[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("10_u3awl")]
-
 [node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=962440071 groups=["mapa_trampas"]]
 tile_map_data = PackedByteArray("AAAAAPv/AQABAAQAAAABAPv/AQABAAQAAAACAPv/AQABAAQAAAADAPv/AQABAAQAAAAAAPz/AQABAAUAAAABAPz/AQABAAUAAAACAPz/AQABAAUAAAACAP3/AQABAAUAAAADAP3/AQABAAUAAAADAPz/AQABAAUAAAD7//v/AQABAAQAAAD8//v/AQABAAQAAAD7//z/AQABAAUAAAD8//z/AQABAAUAAAD8//3/AQABAAUAAAAQAPf/AAABAAAAAAAQAPb/AQAGAAAAAAAPAPb/AQAGAAAAAAAOAPb/AQAGAAAAAAANAPb/AQAGAAEAAAANAPf/AQAHAAIAAAAMAPf/AQAGAAAAAAALAPf/AQAGAAAAAAAKAPf/AQAGAAAAAAAJAPf/AQAGAAAAAAAIAPf/AQAGAAIAAAAJAPb/AQAHAAEAAAAIAPb/AQAGAAEAAAAOAPj/AQAGAAIAAAAOAPf/AQAGAAEAAAAOAPn/AQAGAAEAAAAOAPr/AQAHAAIAAADr//L/AQAHAAAAAADr//P/AQAHAAAAAADr//T/AQAHAAIAAADq//T/AQAGAAEAAADq//X/AQAHAAIAAADp//X/AQAGAAIAAADp//T/AQAHAAEAAADo//T/AQAGAAAAAADn//T/AQAGAAAAAADm//T/AQAGAAAAAADl//T/AQAGAAAAAADk//T/AQAGAAAAAAALAPr/AQAGAAEAAAAMAPr/AQAGAAAAAAANAPr/AQAGAAAAAAA=")
 tile_set = SubResource("TileSet_u068y")
@@ -466,3 +464,5 @@ bloque_projectile_scene = ExtResource("15_mvsps")
 tex_lejana = ExtResource("18_u068y")
 tex_media = ExtResource("19_1ooyw")
 tex_frontal = ExtResource("20_ai3nx")
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("10_u3awl")]

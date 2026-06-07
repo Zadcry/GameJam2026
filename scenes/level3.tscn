@@ -385,6 +385,8 @@ sources/1 = SubResource("TileSetAtlasSource_atr84")
 [node name="Level3" type="Node2D" unique_id=78769976]
 script = ExtResource("1_6qt4k")
 
+[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("2_fh4ka")]
+
 [node name="AuraCambio4" parent="." unique_id=275953806 instance=ExtResource("2_7hs6g")]
 position = Vector2(-571.5, 95.5)
 
@@ -396,8 +398,6 @@ position = Vector2(-628.5, 95.5)
 
 [node name="AuraCambio" parent="." unique_id=1156963437 instance=ExtResource("2_7hs6g")]
 position = Vector2(-656.5, 95.5)
-
-[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("2_fh4ka")]
 
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("1_rupth")]
 position = Vector2(-513, 79)
@@ -432,8 +432,6 @@ shape = SubResource("RectangleShape2D_d3jkd")
 [node name="Entrada2" type="Marker2D" parent="SpawnPoints" unique_id=908722202]
 position = Vector2(-532, 63)
 
-[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("11_qewby")]
-
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=188143848 groups=["mapa_trampas"]]
 tile_map_data = PackedByteArray("AAD1////AQAGAAEAAAD1/wAAAQAGAAIAAAD2/wAAAQAGAAAAAAD3/wAAAQAGAAAAAAD4/wAAAQAGAAAAAAD5/wAAAQAHAAIAAAD6/wMAAQAGAAEAAAD7/wMAAQAGAAAAAAD8/wMAAQAGAAAAAAD6/wQAAQAGAAIAAAD7/wQAAQAGAAAAAAD8/wQAAQAGAAAAAAD9/wQAAQAGAAMAAAD+/wQAAQAGAAMAAAD0/wgAAQABAAQAAADz/wgAAQABAAQAAAD6/wgAAQABAAQAAAD7/wgAAQABAAQAAADz/wkAAQABAAUAAAD0/wkAAQABAAUAAAD0/woAAQABAAUAAAD0/wsAAQABAAUAAADz/wsAAQABAAUAAADz/woAAQABAAUAAAD1/woAAQABAAUAAAD2/woAAQABAAUAAAD2/wsAAQABAAUAAAD3/wsAAQABAAUAAAD4/wsAAQABAAUAAAD5/wsAAQABAAUAAAD5/woAAQABAAUAAAD6/woAAQABAAUAAAD7/woAAQABAAUAAAD7/wkAAQABAAUAAAD7/wsAAQABAAUAAAD6/wsAAQABAAUAAAD1/wsAAQABAAUAAAD1/wwAAQABAAUAAAD0/wwAAQABAAUAAAD2/wwAAQABAAUAAAD3/wwAAQABAAUAAAD4/wwAAQABAAUAAAD4/woAAQABAAUAAAD3/woAAQABAAUAAAD6/wkAAQABAAUAAAD5/wwAAQABAAUAAADz/wwAAQABAAUAAADx/wQAAQAHAAEAAADx/wYAAQAHAAIAAADx/wUAAQAHAAAAAAD//wQAAQAAAAUAAAD//wMAAQAFAAQAAAD+/wMAAQAEAAQAAAD+/wIAAQABAAUAAAD//wIAAQABAAUAAAAAAAIAAQABAAUAAAAAAAMAAQABAAUAAAAAAAQAAQABAAUAAAABAAQAAQABAAUAAAACAAQAAQABAAUAAAACAAMAAQABAAUAAAACAAIAAQABAAUAAAACAAEAAQABAAUAAAABAAEAAQABAAUAAAAAAAEAAQABAAUAAAD5//r/AQABAAYAAAD6//r/AQABAAYAAAD7//r/AQABAAYAAAD5//n/AQABAAUAAAD6//n/AQABAAUAAAD7//n/AQABAAUAAAD7//j/AQABAAUAAAD6//j/AQABAAUAAAD5//j/AQABAAUAAAD2//z/AQALAAIAAAD3//v/AQANAAAAAAD3//z/AQANAAIAAAD2//v/AQALAAAAAAA=")
 tile_set = SubResource("TileSet_qyu38")
@@ -466,3 +464,5 @@ shape = SubResource("RectangleShape2D_7hs6g")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1038471147]
 stream = ExtResource("25_d5gix")
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("11_qewby")]

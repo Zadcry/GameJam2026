@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$MusicaBoss.volume_db = linear_to_db(Global.music_volume / 100.0)
 	Global.vida_crusty = 8
 	Global.oxido_mitch = 0
 	FadeManager.fade_in()
@@ -22,3 +23,6 @@ func _ready() -> void:
 				p2.global_position = spawn_point.global_position + Vector2(30, 0)
 		else:
 			print("Advertencia: No se encontró un Marker2D llamado '", Global.puerta_destino, "' en esta sala.")
+			
+func _process(_delta: float) -> void:
+	$MusicaBoss.volume_db = linear_to_db(Global.music_volume / 100.0)
