@@ -30,6 +30,10 @@ func _get_ui():
 	return get_tree().get_first_node_in_group("ui_canvas")
 
 func _physics_process(delta: float) -> void:
+	if Global.game_over_activo:
+		velocity = Vector2.ZERO
+		return
+
 	if $RayArriba.is_colliding():
 		velocity.x = 150.0 * facing
 
@@ -116,36 +120,21 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	$animation.flip_h = facing == -1.0
-	# (Aquí arriba debe estar tu move_and_slide() y tus animaciones)
 
 	# === SISTEMA DE TRAMPAS POR TILEMAP ===
 	var mapa = get_tree().get_first_node_in_group("mapa_trampas")
-	
+
 	if mapa and not en_knockback:
-		# 1. Calculamos la posición de los pies del jugador
-		# (Suma en Y si el centro de tu jugador está en su ombligo y no en sus pies)
-		var pos_pies = global_position + Vector2(0, 20) 
-		
-		# 2. Convertimos esa posición global a coordenadas exactas de la cuadrícula (X, Y)
+		var pos_pies = global_position + Vector2(0, 20)
 		var celda = mapa.local_to_map(mapa.to_local(pos_pies))
-		
-		# 3. Le pedimos a la celda su información
 		var data = mapa.get_cell_tile_data(celda)
-		
 		if data:
-			# 4. Revisamos si tiene activada nuestra capa personalizada
 			if data.get_custom_data("es_oxido") == true:
-				
-				# Calculamos el centro exacto de la celda para el Knockback
 				var centro_tile = mapa.to_global(mapa.map_to_local(celda))
 				var knockback_dir = sign(global_position.x - centro_tile.x)
-				
-				# Respaldo por si cae exactamente en el centro del píxel
-				if knockback_dir == 0.0: knockback_dir = -facing 
-				
-				# ¡Aplicamos el daño!
+				if knockback_dir == 0.0: knockback_dir = -facing
 				recibir_dano(knockback_dir)
-				
+
 	if charging:
 		var anim_atk := ""
 		if nivel < 12.0:
@@ -212,21 +201,25 @@ func aplicar_oxido() -> void:
 		SPEED = 200.0 * 0.6
 
 func recibir_dano(knockback_dir: float) -> void:
-	if en_knockback:
+	if en_knockback or Global.game_over_activo:
 		return
 	Global.oxido_mitch += randf_range(3.0, 6.0)
 	aplicar_oxido()
-	_flash_dano()
 	en_knockback = true
 	velocity.x = knockback_dir * 100.0
 	velocity.y = knockback_dir * -300.0
+	_flash_dano()
+	if Global.oxido_mitch >= 35.0:
+		return
 	await get_tree().create_timer(0.5).timeout
-	en_knockback = false
+	if is_instance_valid(self) and not Global.game_over_activo:
+		en_knockback = false
 
 func _flash_dano() -> void:
 	$animation.modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.5).timeout
-	$animation.modulate = Color(1, 1, 1)
+	if is_instance_valid(self) and not Global.game_over_activo:
+		$animation.modulate = Color(1, 1, 1)
 
 func lock_movement(forced_facing: float = 0.0) -> void:
 	locked = true
@@ -234,6 +227,8 @@ func lock_movement(forced_facing: float = 0.0) -> void:
 		facing = forced_facing
 
 func _shoot() -> void:
+	if Global.game_over_activo:
+		return
 	charging = false
 	can_shoot = false
 	disparando = true
@@ -245,7 +240,9 @@ func _shoot() -> void:
 	get_parent().add_child(proj)
 	proj.direction = Vector2(facing * power, -power * 0.0875)
 	await get_tree().create_timer(0.3).timeout
-	disparando = false
-	estado_actual = ""
-	await get_tree().create_timer(0.2).timeout
-	can_shoot = true
+	if is_instance_valid(self) and not Global.game_over_activo:
+		disparando = false
+		estado_actual = ""
+		await get_tree().create_timer(0.2).timeout
+		if is_instance_valid(self) and not Global.game_over_activo:
+			can_shoot = true

@@ -15,9 +15,22 @@ var contador_antioxidantes := 0
 func _process(_delta: float) -> void:
 	if game_over_activo:
 		return
+	oxido_mitch = maxf(oxido_mitch, 0.0)
+	vida_crusty = maxf(vida_crusty, 0.0)
 	if vida_crusty <= 0 or oxido_mitch >= 35.0:
 		_game_over()
 
 func _game_over() -> void:
+	if game_over_activo:
+		return
 	game_over_activo = true
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://menus/gameover_menu/menuGaOv.tscn")
+
+func reset() -> void:
+	oxido_mitch = 0.0
+	vida_crusty = 6.0
+	game_over_activo = false
+	contador_antioxidantes = 0
+	# NO se resetean: es_tutorial, sfx_volume, music_volume, puerta_destino,
+	# version_mapa, final_bueno, estado_mundo — son datos persistentes entre escenas

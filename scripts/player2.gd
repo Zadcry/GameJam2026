@@ -1,7 +1,9 @@
 extends CharacterBody2D
+
 @onready var brazo_izq := $Body/BrazoIzq
 @onready var pierna_izq := $Body/PiernaIzq
 signal proyectil_golpeado
+
 const GRAVITY = 800.0
 const JUMP_FORCE = -400.0
 var SPEED = 200.0
@@ -13,21 +15,29 @@ var puede_atacar := true
 var en_knockback := false
 
 func _physics_process(delta: float) -> void:
+	if Global.game_over_activo:
+		velocity = Vector2.ZERO
+		return
+
 	$Body/Torso.flip_h = facing == -1.0
 	$Body/Head.flip_h = facing == -1.0
 	$Body/BrazoDer.flip_h = facing == -1.0
 	$Body/BrazoIzq.flip_h = facing == -1.0
 	$Body/PiernaDer.flip_h = facing == -1.0
 	$Body/PiernaIzq.flip_h = facing == -1.0
+
 	if $RayArriba.is_colliding():
 		velocity.x = 150.0 * facing
+
 	var p1 = get_tree().get_first_node_in_group("player1")
 	if p1 and not p1.en_knockback and not Global.es_tutorial:
 		var dist = global_position.distance_to(p1.global_position)
 		if dist < 40.0:
 			p1.recibir_dano(-p1.facing)
+
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+
 	var moving := false
 	if not locked and not en_knockback:
 		var direction := 0.0
@@ -45,11 +55,14 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	elif locked:
 		velocity.x = 0.0
+
 	if Input.is_action_just_pressed("p2_hit") and puede_atacar:
 		_melee_attack()
+
 	$MeleeArea/HitRight.disabled = facing != 1.0
 	$MeleeArea/HitLeft.disabled = facing != -1.0
 	move_and_slide()
+
 	if not atacando:
 		var nuevo_estado := ""
 		var en_aire = not is_on_floor()
@@ -113,6 +126,7 @@ func _physics_process(delta: float) -> void:
 					$Body/BrazoIzq.play("idle")
 					$Body/PiernaDer.play("idle")
 					$Body/PiernaIzq.play("idle")
+
 	if atacando:
 		if p1:
 			var dist = global_position.distance_to(p1.global_position)
@@ -136,6 +150,8 @@ func _ready() -> void:
 	actualizar_cuerpo()
 
 func _melee_attack() -> void:
+	if Global.game_over_activo:
+		return
 	puede_atacar = false
 	atacando = true
 	estado_actual = ""
@@ -153,19 +169,18 @@ func _melee_attack() -> void:
 	$Body/BrazoIzq.play(anim)
 	$Body/PiernaDer.play(anim)
 	$Body/PiernaIzq.play(anim)
-	
 	$MeleeArea/HitRight.disabled = facing != 1.0
 	$MeleeArea/HitLeft.disabled = facing != -1.0
 	$MeleeArea.monitoring = true
 	await get_tree().create_timer(0.5).timeout
-	$MeleeArea.monitoring = false
-	$MeleeArea/HitRight.disabled = true
-	$MeleeArea/HitLeft.disabled = true
-	
-	$Body.position.y += 15.0
-	atacando = false
-	estado_actual = ""
-	puede_atacar = true
+	if is_instance_valid(self):
+		$MeleeArea.monitoring = false
+		$MeleeArea/HitRight.disabled = true
+		$MeleeArea/HitLeft.disabled = true
+		$Body.position.y += 15.0
+		atacando = false
+		estado_actual = ""
+		puede_atacar = true
 
 func actualizar_cuerpo() -> void:
 	brazo_izq.visible = Global.vida_crusty > 3
@@ -180,28 +195,22 @@ func _on_melee_hit(area: Area2D) -> void:
 		var proj = area.get_parent()
 		var speed = abs(proj.direction.x)
 		proj.hit_redirect(Vector2(-proj.direction.x, -speed * 1.732).normalized() * speed * 1.2)
-		
-	# Buscamos variaciones de mayúsculas por si acaso
 	elif area.name == "HurtBox" or area.name == "Hurtbox":
 		if Global.es_tutorial:
 			return
-			
 		var victima = area.get_parent()
-		
-		# Calculamos la dirección del empuje basados en la posición de la víctima
 		var knockback_dir = sign(victima.global_position.x - global_position.x)
 		if knockback_dir == 0.0: knockback_dir = facing
-		
-		# 1. FUEGO AMIGO: Si a quien golpeamos está en el grupo "player1"
 		if victima.is_in_group("player1"):
 			victima.recibir_dano(knockback_dir)
-			
-		# 2. ENEMIGO: Si a quien golpeamos tiene la función para recibir ataques melee
 		elif victima.has_method("recibir_dano_melee"):
 			victima.recibir_dano_melee()
 
 func recibir_dano_liquido() -> void:
+	if Global.game_over_activo:
+		return
 	Global.vida_crusty -= 1
+	Global.vida_crusty = maxf(Global.vida_crusty, 0.0)
 	actualizar_cuerpo()
 	_flash_dano()
 
@@ -210,16 +219,21 @@ func _flash_dano() -> void:
 	for parte in partes:
 		parte.modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.5).timeout
-	for parte in partes:
-		parte.modulate = Color(1, 1, 1)
-		
+	if is_instance_valid(self) and not Global.game_over_activo:
+		for parte in partes:
+			parte.modulate = Color(1, 1, 1)
+
 func recibir_dano(knockback_dir: float) -> void:
-	if en_knockback:
+	if en_knockback or Global.game_over_activo:
 		return
 	Global.vida_crusty -= 1
+	Global.vida_crusty = maxf(Global.vida_crusty, 0.0)
 	actualizar_cuerpo()
 	_flash_dano()
 	en_knockback = true
 	velocity.x = knockback_dir * 150.0
+	if Global.vida_crusty <= 0:
+		return
 	await get_tree().create_timer(0.5).timeout
-	en_knockback = false
+	if is_instance_valid(self) and not Global.game_over_activo:
+		en_knockback = false
