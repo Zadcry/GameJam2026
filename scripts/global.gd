@@ -7,7 +7,7 @@ var sfx_volume := 100.0
 var music_volume := 100.0
 var puerta_destino := ""
 var game_over_activo := false
-var version_fondo := 0
+var version_mapa := 1
 
 func _process(_delta: float) -> void:
 	if game_over_activo:

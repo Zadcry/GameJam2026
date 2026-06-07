@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ox0rop1t01u3" path="res://scenes/UICanvas.tscn" id="11_l3elg"]
 [ext_resource type="PackedScene" uid="uid://cwj30qpuewkap" path="res://scenes/GameCamera.tscn" id="12_6hrqr"]
 [ext_resource type="PackedScene" uid="uid://cynyuu07jbpr4" path="res://scenes/PauseManager.tscn" id="12_wetln"]
+[ext_resource type="PackedScene" uid="uid://c2oeecb8jesal" path="res://scenes/Item.tscn" id="13_wetln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2h6oo"]
 size = Vector2(58, 175)
@@ -155,3 +156,6 @@ tile_set = SubResource("TileSet_l3elg")
 position = Vector2(302, -21)
 
 [node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("12_wetln")]
+
+[node name="Item" parent="." unique_id=1855208449 instance=ExtResource("13_wetln")]
+position = Vector2(76, -251)

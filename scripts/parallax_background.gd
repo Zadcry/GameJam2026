@@ -34,3 +34,14 @@ func _ready() -> void:
 	if tex_media:
 		var tex_size = $CapaMedia/Medio.texture.get_size()
 		$CapaMedia/Medio.scale = Vector2(screen.x / tex_size.x, screen.y / tex_size.y)
+		
+# CUANDO SE QUIERA QUE CAMBIE EL FONDO CON Global.version_mapa (1,2,3) se descomenta este código: 
+#@export var textura_v1: Texture2D
+#@export var textura_v2: Texture2D
+#@export var textura_v3: Texture2D
+#
+#func _process(_delta: float) -> void:
+	#match Global.version_mapa:
+		#1: $CapaX/Sprite.texture = textura_v1
+		#2: $CapaX/Sprite.texture = textura_v2
+		#3: $CapaX/Sprite.texture = textura_v3
