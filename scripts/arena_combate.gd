@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player1") and body.is_in_group("player1"):
+	if body.is_in_group("player1") and body.is_in_group("player2"):
 		print("llegaron los dos jugadores")
 	elif body.is_in_group("jefe"):
 		jefe = body

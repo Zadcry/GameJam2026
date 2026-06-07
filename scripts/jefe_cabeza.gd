@@ -121,6 +121,7 @@ func _physics_process(delta: float) -> void:
 					var dirX = sign(jugador.global_position.x - global_position.x)
 					if dirX == 0: dirX = 1
 					jugador.recibir_dano(dirX)
+					animacion.play("hurtJefe")
 					
 				estado_actual = Estado.SUBIDA_FASE2
 				
@@ -128,12 +129,13 @@ func _physics_process(delta: float) -> void:
 			# Fase 2: Retorno al techo
 			velocity.y = -speed
 			velocity.x = 0
-			animacion.play("preJefe")
+			
 			
 			if global_position.y <= faseDos.y:
 				global_position.y = faseDos.y 
 				estado_actual = Estado.PATRULLA_FASE2
 				velocity.x = speed 
+				animacion.play("preJefe")
 
 	move_and_slide()
 
@@ -144,6 +146,7 @@ func cambioFase(llegaron: bool) -> void:
 		cambioFase2 = true
 		timer.stop() 
 		estado_actual = Estado.FASE2 
+		speed = 200
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if !sigueJugador and jugador == null: 

@@ -2,6 +2,27 @@
 
 [ext_resource type="Script" uid="uid://2tti4p2155b5" path="res://scripts/motor_jefe.gd" id="1_7trfr"]
 [ext_resource type="Texture2D" uid="uid://bh68ttc0iyxgu" path="res://sprites/jefe/motor_animado/motor.png" id="1_g4x3t"]
+[ext_resource type="Texture2D" uid="uid://pecqymm4vy1a" path="res://sprites/jefe/motor_animado/CadenasSprite.png" id="2_mwrn0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22lly"]
+atlas = ExtResource("2_mwrn0")
+region = Rect2(0, 0, 1200, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_12wh6"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22lly")
+}],
+"loop": true,
+"name": &"idlemotor",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7trfr"]
 atlas = ExtResource("1_g4x3t")
@@ -191,10 +212,16 @@ collision_layer = 2
 collision_mask = 49
 script = ExtResource("1_7trfr")
 
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=785626791]
+position = Vector2(0, 16)
+scale = Vector2(0.99999994, 1)
+sprite_frames = SubResource("SpriteFrames_12wh6")
+animation = &"idlemotor"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1983791701]
 sprite_frames = SubResource("SpriteFrames_22lly")
 animation = &"motor"
-frame_progress = 0.2762421
+frame_progress = 0.9680201
 
 [node name="hitbox" type="CollisionShape2D" parent="." unique_id=2046574255]
 scale = Vector2(6, 6.1200013)

@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 const SPEED = 200.0
-@export var vida: int = 5
+@export var vida: int = 3
+@onready var animacion :AnimatedSprite2D = $AnimatedSprite2D
 var activo: bool = false # Controla si ya pasaron los 3 segundos
 
 @onready var rayoIzq: RayCast2D = $rayIzq
@@ -11,6 +12,7 @@ func _ready() -> void:
 	# 1. El motor empieza completamente quieto
 	velocity = Vector2.ZERO
 	add_to_group("jefe")
+	animacion.play("motor")
 	
 	# 2. Esperamos 3 segundos exactos sin congelar el resto del juego
 	await get_tree().create_timer(3.0).timeout
