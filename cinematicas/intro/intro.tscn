@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bix764l764ei2" path="res://scripts/intro.gd" id="1_ys57d"]
 [ext_resource type="AudioStream" uid="uid://d16qdk6tqxju0" path="res://sfx/Anvil.ogg" id="3_th1a5"]
 [ext_resource type="AudioStream" uid="uid://bb4bj3tkobo43" path="res://sfx/Alarma.ogg" id="4_avhfg"]
-[ext_resource type="VideoStream" uid="uid://c1fiqj3kyswma" path="res://cinematicas/intro/Intro.ogv" id="12_daaew"]
+[ext_resource type="VideoStream" uid="uid://6exc812los08" path="res://cinematicas/intro/Intro.ogv" id="12_daaew"]
 
 [sub_resource type="Animation" id="Animation_swtp3"]
 length = 0.001
