@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	if $RayArriba.is_colliding():
 		velocity.x = 150.0 * facing
 	var p1 = get_tree().get_first_node_in_group("player1")
-	if p1 and not p1.en_knockback:
+	if p1 and not p1.en_knockback and not Global.es_tutorial:
 		var dist = global_position.distance_to(p1.global_position)
 		if dist < 40.0:
 			p1.recibir_dano(-p1.facing)

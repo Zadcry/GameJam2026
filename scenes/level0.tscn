@@ -8,9 +8,10 @@
 [ext_resource type="Script" uid="uid://c521p1fmnaisw" path="res://scripts/block_melee.gd" id="6_gklfi"]
 [ext_resource type="Script" uid="uid://diura8olt18n" path="res://scripts/level_exit.gd" id="7_cm1v6"]
 [ext_resource type="PackedScene" uid="uid://bnwyes2nta0fx" path="res://scenes/Enemy.tscn" id="8_tcqsn"]
-[ext_resource type="Script" uid="uid://bs6b34pc5wdjk" path="res://scripts/enemy.gd" id="8_wrnl3"]
 [ext_resource type="Texture2D" uid="uid://cacw0o7imfg3l" path="res://tileset/tiles.png" id="10_6q6d4"]
+[ext_resource type="PackedScene" uid="uid://ox0rop1t01u3" path="res://scenes/UICanvas.tscn" id="11_l3elg"]
 [ext_resource type="PackedScene" uid="uid://cwj30qpuewkap" path="res://scenes/GameCamera.tscn" id="12_6hrqr"]
+[ext_resource type="PackedScene" uid="uid://cynyuu07jbpr4" path="res://scenes/PauseManager.tscn" id="12_wetln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2h6oo"]
 size = Vector2(58, 175)
@@ -81,6 +82,8 @@ sources/0 = SubResource("TileSetAtlasSource_l3elg")
 [node name="Level0" type="Node2D" unique_id=78769976]
 script = ExtResource("1_l3elg")
 
+[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("11_l3elg")]
+
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("1_2h6oo")]
 position = Vector2(-285, -305)
 collision_mask = 19
@@ -138,7 +141,6 @@ shape = SubResource("RectangleShape2D_8qpon")
 position = Vector2(-16, -14)
 collision_layer = 3
 collision_mask = 19
-script = ExtResource("8_wrnl3")
 vision_range = 96.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=738793767]
@@ -151,3 +153,5 @@ tile_set = SubResource("TileSet_l3elg")
 
 [node name="Entrada1" type="Marker2D" parent="SpawnPoints" unique_id=712736955]
 position = Vector2(302, -21)
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("12_wetln")]
