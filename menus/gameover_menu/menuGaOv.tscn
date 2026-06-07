@@ -1,24 +1,68 @@
 [gd_scene format=3 uid="uid://cksg0ttrqa8sc"]
 
 [ext_resource type="Texture2D" uid="uid://bnwu2wb7i23au" path="res://images/gameover_menu_images/FondoGameOver.png" id="1_6xe3b"]
+[ext_resource type="Script" uid="uid://c0nghcry8di5f" path="res://scripts/game_over.gd" id="1_faesf"]
 [ext_resource type="Texture2D" uid="uid://7our67bastpu" path="res://images/gameover_menu_images/SinSeñal.png" id="2_4xn18"]
 [ext_resource type="Texture2D" uid="uid://hhi1x8nerqn1" path="res://images/gameover_menu_images/Buttons/Quit_ns_button.png" id="3_j4ogd"]
 [ext_resource type="Texture2D" uid="uid://dj0gdv16dlut8" path="res://images/gameover_menu_images/Buttons/Quit_s_button.png" id="4_7tsoc"]
 [ext_resource type="Texture2D" uid="uid://7t7gy8bjys5k" path="res://images/gameover_menu_images/Buttons/Retry_ns_button.png" id="5_vtwjp"]
 [ext_resource type="Texture2D" uid="uid://d1maqghwhspp1" path="res://images/gameover_menu_images/Buttons/Retry_s_button.png" id="6_3bpux"]
+[ext_resource type="Texture2D" uid="uid://b6ab0q3qvomd6" path="res://images/gameover_menu_images/Two/Two_1.5_Sprite.png" id="7_3mwg2"]
+[ext_resource type="Texture2D" uid="uid://dafpei841s8ig" path="res://images/gameover_menu_images/Two/Two_1_Sprite.png" id="7_5a233"]
+[ext_resource type="Texture2D" uid="uid://bclwgp726nt40" path="res://images/gameover_menu_images/Two/Two_2_Sprite.png" id="8_txdv6"]
+[ext_resource type="Texture2D" uid="uid://xwkiu84bxdkt" path="res://images/gameover_menu_images/Two/Two_3_Sprite.png" id="9_2bqfp"]
+[ext_resource type="Texture2D" uid="uid://qlt6w20v81qr" path="res://images/gameover_menu_images/Two/Two_2.5_Sprite.png" id="9_68abj"]
+[ext_resource type="Texture2D" uid="uid://caj11yh5vqjn7" path="res://images/gameover_menu_images/Two/Two_4_Sprite.png" id="10_3mwg2"]
+[ext_resource type="Texture2D" uid="uid://3armoo01ymh" path="res://images/gameover_menu_images/Two/Two_3.5_Sprite.png" id="11_0auh5"]
+[ext_resource type="Texture2D" uid="uid://ckyirqyi37b54" path="res://images/gameover_menu_images/Two/Two_5_Sprite.png" id="11_68abj"]
+[ext_resource type="Texture2D" uid="uid://nogmj0kjrmjs" path="res://images/gameover_menu_images/One/One_Sprite.png" id="12_0auh5"]
+[ext_resource type="Texture2D" uid="uid://qwwd7aqryrl" path="res://images/gameover_menu_images/Two/Two_4.5_Sprite.png" id="13_0g2cg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0g2cg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3mwg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5a233")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_68abj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_txdv6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0auh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2bqfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0g2cg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3mwg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3mwg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_68abj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="MenuGaOv" type="Node2D" unique_id=129239339]
+script = ExtResource("1_faesf")
 
 [node name="GaOvFondo" type="Sprite2D" parent="." unique_id=1267231586]
 position = Vector2(576, 324)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_6xe3b")
-
-[node name="SinSeñalFondo" type="Sprite2D" parent="." unique_id=529537884]
-visible = false
-position = Vector2(576, 324.00003)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_4xn18")
 
 [node name="Quit" type="TextureButton" parent="." unique_id=1514509272]
 offset_left = 688.0
@@ -37,3 +81,21 @@ offset_bottom = 537.0
 scale = Vector2(0.6, 0.6)
 texture_normal = ExtResource("5_vtwjp")
 texture_hover = ExtResource("6_3bpux")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1074861223]
+position = Vector2(576.5, 324)
+scale = Vector2(0.60052085, 0.6)
+sprite_frames = SubResource("SpriteFrames_0g2cg")
+autoplay = "default"
+frame_progress = 0.854411
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=591355642]
+position = Vector2(576, -16.500008)
+scale = Vector2(0.6, 0.6166667)
+texture = ExtResource("12_0auh5")
+
+[node name="SinSenalFondo" type="Sprite2D" parent="." unique_id=529537884]
+visible = false
+position = Vector2(576, 324.00003)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_4xn18")

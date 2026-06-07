@@ -6,3 +6,15 @@ var es_tutorial := true
 var sfx_volume := 100.0
 var music_volume := 100.0
 var puerta_destino := ""
+var game_over_activo := false
+var version_fondo := 0
+
+func _process(_delta: float) -> void:
+	if game_over_activo:
+		return
+	if vida_crusty <= 0 or oxido_mitch >= 35.0:
+		_game_over()
+
+func _game_over() -> void:
+	game_over_activo = true
+	get_tree().change_scene_to_file("res://menus/gameover_menu/menuGaOv.tscn")

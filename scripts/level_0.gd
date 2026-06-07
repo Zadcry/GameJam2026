@@ -13,7 +13,6 @@ func _ready() -> void:
 			# Obtenemos a los jugadores usando los grupos que ya les asignaste en sus _ready()
 			var p1 = get_tree().get_first_node_in_group("player1")
 			var p2 = get_tree().get_first_node_in_group("player2")
-			
 			if p1 and p2:
 				# Movemos a los jugadores a la posición del Marker2D.
 				# Les damos un pequeño desfase (offset) en X para que no aparezcan uno encima del otro.

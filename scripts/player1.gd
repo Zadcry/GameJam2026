@@ -41,12 +41,12 @@ func _physics_process(delta: float) -> void:
 	var nivel = Global.oxido_mitch
 	var ui = _get_ui()
 
-	if nivel > 40.0 and not d_bloqueada and d_estado == 6:
+	if nivel > 15.0 and not d_bloqueada and d_estado == 6:
 		d_bloqueada = true
 		if ui:
 			ui.mostrar_d(texturas_d[d_estado])
 
-	if nivel > 55.0 and not a_bloqueada and a_estado == 6:
+	if nivel > 20.0 and not a_bloqueada and a_estado == 6:
 		a_bloqueada = true
 		if ui:
 			ui.mostrar_a(texturas_a[a_estado])
@@ -119,11 +119,11 @@ func _physics_process(delta: float) -> void:
 
 	if charging:
 		var anim_atk := ""
-		if nivel < 20.0:
+		if nivel < 12.0:
 			anim_atk = "atk_ox0"
-		elif nivel < 40.0:
+		elif nivel < 22.0:
 			anim_atk = "atk_ox1"
-		elif nivel < 60.0:
+		elif nivel < 30.0:
 			anim_atk = "atk_ox2"
 		else:
 			anim_atk = "atk_ox3"
@@ -138,27 +138,27 @@ func _physics_process(delta: float) -> void:
 		var nuevo_estado := ""
 		var en_aire = not is_on_floor()
 		if en_aire:
-			if nivel < 20.0:
+			if nivel < 12.0:
 				nuevo_estado = "jump_ox0"
-			elif nivel < 40.0:
+			elif nivel < 22.0:
 				nuevo_estado = "jump_ox1"
-			elif nivel < 60.0:
+			elif nivel < 30.0:
 				nuevo_estado = "jump_ox2"
 			else:
 				nuevo_estado = "jump_ox3"
 		elif moving:
-			if nivel < 20.0:
+			if nivel < 12.0:
 				nuevo_estado = "walk_ox0"
-			elif nivel < 40.0:
+			elif nivel < 22.0:
 				nuevo_estado = "walk_ox1"
-			elif nivel < 60.0:
+			elif nivel < 30.0:
 				nuevo_estado = "walk_ox2"
 			else:
 				nuevo_estado = "walk_ox3"
 		else:
-			if nivel < 20.0:
+			if nivel < 12.0:
 				nuevo_estado = "idle_ox0"
-			elif nivel < 50.0:
+			elif nivel < 22.0:
 				nuevo_estado = "idle_ox1"
 			else:
 				nuevo_estado = "idle_ox2"
@@ -175,17 +175,17 @@ func _ready() -> void:
 
 func aplicar_oxido() -> void:
 	var nivel = Global.oxido_mitch
-	if nivel >= 60.0:
+	if nivel >= 50.0:
 		SPEED = 200.0 * 0.4
-	elif nivel >= 40.0:
+	elif nivel >= 30.0:
+		SPEED = 200.0 * 0.5
+	elif nivel >= 15.0:
 		SPEED = 200.0 * 0.6
-	elif nivel >= 20.0:
-		SPEED = 200.0 * 0.7
 
 func recibir_dano(knockback_dir: float) -> void:
 	if en_knockback:
 		return
-	Global.oxido_mitch += randf_range(1.0, 2.0)
+	Global.oxido_mitch += randf_range(3.0, 6.0)
 	aplicar_oxido()
 	_flash_dano()
 	en_knockback = true
