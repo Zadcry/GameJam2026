@@ -50,7 +50,7 @@ func _on_naranja_finished() -> void:
 func _process(_delta: float) -> void:
 	#pass
 	Global.oxido_mitch = 0
-	Global.vida_crusty = 6
+	Global.vida_crusty = 8
 
 func _on_proyectil_golpeado() -> void:
 	if not tutorial_activo:

@@ -10,7 +10,7 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		# Sumamos 1 al contador global
 		Global.contador_antioxidantes += 1
-		if Global.vida_crusty < 6:
+		if Global.vida_crusty < 8:
 			Global.vida_crusty += 1
 		if Global.oxido_mitch > 10:
 			Global.oxido_mitch -=10

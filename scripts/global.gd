@@ -30,6 +30,6 @@ func _game_over() -> void:
 
 func reset() -> void:
 	oxido_mitch = 0.0
-	vida_crusty = 6.0
+	vida_crusty = 8.0
 	game_over_activo = false
 	contador_antioxidantes = 0
