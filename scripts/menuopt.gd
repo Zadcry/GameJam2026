@@ -31,7 +31,7 @@ const FADE_DELAY := 1.0
 @onready var music := $music
 
 var _posicion_origen := Vector2.ZERO
-var _animando := false
+var _saliendo := false
 var desde_pausa := false
 
 func _ready() -> void:
@@ -80,8 +80,6 @@ func _ready() -> void:
 		_animar_entrada_principal()
 
 func _animar_entrada_pausa() -> void:
-	_animando = true
-	# Sin delay extra: pausa ya se ocultó, opciones aparece de inmediato
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.set_ease(Tween.EASE_OUT)
@@ -94,12 +92,9 @@ func _animar_entrada_pausa() -> void:
 	tween.tween_property(quit, "modulate:a", 1.0, ANIM_DURACION * 0.8)
 	tween.tween_property(sfx, "modulate:a", 1.0, ANIM_DURACION * 0.8)
 	tween.tween_property(music, "modulate:a", 1.0, ANIM_DURACION * 0.8)
-	await tween.finished
-	_animando = false
-	_actualizar_visibilidad_flechas()
+	tween.chain().tween_callback(_actualizar_visibilidad_flechas)
 
 func _animar_entrada_principal() -> void:
-	_animando = true
 	var tween = create_tween()
 	tween.set_parallel(false)
 	tween.set_ease(Tween.EASE_OUT)
@@ -114,32 +109,27 @@ func _animar_entrada_principal() -> void:
 	tween.tween_property(quit, "modulate:a", 1.0, ANIM_DURACION * 0.8)
 	tween.tween_property(sfx, "modulate:a", 1.0, ANIM_DURACION * 0.8)
 	tween.tween_property(music, "modulate:a", 1.0, ANIM_DURACION * 0.8)
-	await tween.finished
-	_animando = false
-	_actualizar_visibilidad_flechas()
+	tween.chain().tween_callback(_actualizar_visibilidad_flechas)
 
 func animar_salida_esc() -> void:
-	if _animando:
+	if _saliendo:
 		return
-	_animando = true
+	_saliendo = true
 	set_process_input(false)
 	emit_signal("cerrar", true)
 	queue_free()
 
-# Quit desde opciones en pausa: solo emite señal, pausa gestiona la animacion de salida
 func animar_salida_y_cerrar(cerrar_pausa: bool = false) -> void:
-	if _animando:
+	if _saliendo:
 		return
-	_animando = true
+	_saliendo = true
 	set_process_input(false)
 
 	if desde_pausa:
-		# Pausa gestiona la salida, opciones solo se elimina
 		emit_signal("cerrar", cerrar_pausa)
 		queue_free()
 		return
 
-	# Desde menu principal: fade elementos + deslizar salida
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(modo_label, "modulate:a", 0.0, ANIM_DURACION * 0.6)
@@ -172,14 +162,13 @@ func _on_music_gui_input(event: InputEvent) -> void:
 		music.value = lerp(music.min_value, music.max_value, ratio)
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE and not _animando:
+	# ESC solo funciona desde pausa, nunca desde menu principal
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE and not _saliendo:
 		if desde_pausa:
 			animar_salida_esc()
-		else:
-			animar_salida_y_cerrar(false)
 		return
 
-	if _animando:
+	if _saliendo:
 		return
 
 	if event is InputEventMouseButton and event.pressed:
