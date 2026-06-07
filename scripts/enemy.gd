@@ -90,7 +90,7 @@ func _attack_logic() -> void:
 	velocity.x = 0.0
 	if is_attacking: return
 	is_attacking = true
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.5).timeout
 	if not is_instance_valid(self): return
 	if is_instance_valid(target_player):
 		var distance = abs(target_player.global_position.x - global_position.x)
