@@ -455,8 +455,6 @@ REQUIRED_TIME = 1.0
 position = Vector2(-1008.625, -6)
 shape = SubResource("RectangleShape2D_d3jkd")
 
-[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("11_v1l7f")]
-
 [node name="Enemy2" parent="." unique_id=739025128 instance=ExtResource("12_2arsn")]
 position = Vector2(61, -137)
 collision_mask = 19
@@ -484,3 +482,5 @@ tex_frontal = ExtResource("20_8600d")
 tex_lejana_alt = ExtResource("21_8600d")
 tex_media_alt = ExtResource("22_csnlx")
 tex_frontal_alt = ExtResource("23_ogwt3")
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("11_v1l7f")]

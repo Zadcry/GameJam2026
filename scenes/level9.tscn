@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://ox0rop1t01u3" path="res://scenes/UICanvas.tscn" id="23_p0iup"]
 [ext_resource type="PackedScene" uid="uid://cynyuu07jbpr4" path="res://scenes/PauseManager.tscn" id="24_4sr7o"]
 [ext_resource type="Script" uid="uid://c6kgj6gh5lsim" path="res://scripts/respawn.gd" id="25_xiiio"]
+[ext_resource type="AudioStream" uid="uid://vpi6y3rwjmkg" path="res://musica/mus_boss.ogg" id="26_2gkne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("5_s2sfq")
@@ -384,6 +385,8 @@ size = Vector2(635, 20)
 [node name="Level9" type="Node2D" unique_id=78769976]
 script = ExtResource("1_xiiio")
 
+[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("23_p0iup")]
+
 [node name="motorJefe" parent="." unique_id=1262854097 instance=ExtResource("12_jq68i")]
 position = Vector2(-255, -675)
 
@@ -436,10 +439,6 @@ tex_lejana_alt = ExtResource("20_47yom")
 tex_media_alt = ExtResource("21_jb1uw")
 tex_frontal_alt = ExtResource("22_vrigc")
 
-[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("23_p0iup")]
-
-[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("24_4sr7o")]
-
 [node name="Respawn" type="Area2D" parent="." unique_id=688348115]
 position = Vector2(-564, 129)
 collision_mask = 3
@@ -448,5 +447,11 @@ script = ExtResource("25_xiiio")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn" unique_id=1162221040]
 position = Vector2(305.5, 5)
 shape = SubResource("RectangleShape2D_kmqas")
+
+[node name="MusicaBoss" type="AudioStreamPlayer2D" parent="." unique_id=1023955481]
+stream = ExtResource("26_2gkne")
+autoplay = true
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("24_4sr7o")]
 
 [connection signal="body_entered" from="arenaCombate" to="arenaCombate" method="_on_body_entered"]
