@@ -18,8 +18,7 @@ func _escalar_a_pantalla(sprite: Sprite2D) -> void:
 func _ready() -> void:
 	# CHEQUEO DE ESTADO: Si tienen el objeto, cambiamos las texturas a las alternativas
 	if Global.estado_mundo==2:
-		if tex_media_alt: tex_media = tex_media_alt
-		if tex_frontal_alt: tex_frontal = tex_frontal_alt
+		if tex_lejana_alt: tex_lejana = tex_lejana_alt
 	if Global.estado_mundo==3:
 		if tex_lejana_alt: tex_lejana = tex_lejana_alt
 		if tex_media_alt: tex_media = tex_media_alt

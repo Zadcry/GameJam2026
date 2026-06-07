@@ -10,6 +10,7 @@ var game_over_activo := false
 var version_mapa := 1
 var final_bueno : bool = false
 var estado_mundo := 1
+var contador_antioxidantes := 0
 
 func _process(_delta: float) -> void:
 	if game_over_activo:

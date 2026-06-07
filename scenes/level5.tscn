@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://x6423318ui12" path="res://escenarios/LejanoOxido.png" id="22_xrxmp"]
 [ext_resource type="Texture2D" uid="uid://bk7gb3ugyp6li" path="res://escenarios/MedianoOxido.png" id="23_ul3a2"]
 [ext_resource type="Texture2D" uid="uid://bo0bh7xjdumkk" path="res://escenarios/CercanoOxido.png" id="24_ibbb1"]
+[ext_resource type="Script" uid="uid://c2fo5v32jghkg" path="res://scripts/antioxidante.gd" id="25_ibbb1"]
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="26_3wd6l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("6_jyn2d")
@@ -378,6 +380,8 @@ custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_phje4")
 sources/1 = SubResource("TileSetAtlasSource_rcqrb")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77lo6"]
+
 [node name="Level5" type="Node2D" unique_id=78769976]
 script = ExtResource("1_7pj42")
 
@@ -450,3 +454,15 @@ tex_frontal = ExtResource("21_xrxmp")
 tex_lejana_alt = ExtResource("22_xrxmp")
 tex_media_alt = ExtResource("23_ul3a2")
 tex_frontal_alt = ExtResource("24_ibbb1")
+
+[node name="Antioxidante" type="Area2D" parent="." unique_id=58210354]
+position = Vector2(-433, -255)
+script = ExtResource("25_ibbb1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Antioxidante" unique_id=172575557]
+position = Vector2(0, 1)
+scale = Vector2(0.2109375, 0.2109375)
+texture = ExtResource("26_3wd6l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Antioxidante" unique_id=353794870]
+shape = SubResource("RectangleShape2D_77lo6")
