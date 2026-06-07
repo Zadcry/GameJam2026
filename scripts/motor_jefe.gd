@@ -8,6 +8,7 @@ var activo: bool = false # Controla si ya pasaron los 3 segundos
 @onready var rayoIzq: RayCast2D = $rayIzq
 @onready var rayoDer: RayCast2D = $rayDer
 var destruido: bool = false
+@export var globalANTI = Global.contador_antioxidantes
 
 func _ready() -> void:
 	# 1. El motor empieza completamente quieto

@@ -12,3 +12,11 @@ offset_bottom = 40.0
 scale = Vector2(0.6, 0.6)
 stream = ExtResource("1_kvwta")
 autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1241802393]
+
+[node name="vapor" type="AudioStreamPlayer2D" parent="." unique_id=158722121]
+
+[node name="ventana" type="AudioStreamPlayer2D" parent="." unique_id=1125806814]
+
+[node name="fuego" type="AudioStreamPlayer2D" parent="." unique_id=1133348790]

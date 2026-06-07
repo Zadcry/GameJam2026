@@ -1,6 +1,5 @@
 extends Node2D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$MusicaBoss.volume_db = linear_to_db(Global.music_volume / 100.0)
