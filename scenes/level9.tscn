@@ -92,8 +92,11 @@ position = Vector2(41, -197)
 collision_mask = 3
 muro_a_eliminar = NodePath("../murokk2")
 
+[node name="motorJefe" parent="." unique_id=1262854097 instance=ExtResource("12_jq68i")]
+position = Vector2(-255, -675)
+
 [node name="jefeCabeza" parent="." unique_id=2067842342 instance=ExtResource("4_dbux4")]
-position = Vector2(-255, 86)
+position = Vector2(-255, 80)
 
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("2_jo5h5")]
 position = Vector2(-539, 110)
@@ -130,14 +133,11 @@ shape = SubResource("RectangleShape2D_llul2")
 [node name="arenaCombate" type="Area2D" parent="." unique_id=81174150]
 position = Vector2(-255, -362)
 scale = Vector2(25.72, 1)
-collision_mask = 3
+collision_mask = 11
 script = ExtResource("11_llul2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arenaCombate" unique_id=1617004265]
 shape = SubResource("RectangleShape2D_jq68i")
-
-[node name="motorJefe" parent="." unique_id=1262854097 instance=ExtResource("12_jq68i")]
-position = Vector2(-255, -675)
 
 [node name="murokk" type="StaticBody2D" parent="." unique_id=779914751]
 position = Vector2(-12, -14)

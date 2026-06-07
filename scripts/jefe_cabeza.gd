@@ -11,54 +11,85 @@ var sigueJugador: bool = false
 
 var jugador: Node2D = null	
 var distanciaContraPlayer: int = 200
+var cambioFase2: bool = false
 
 
-enum Estado { SIGUIENDO, ATACANDO, REGRESANDO }
+enum Estado { SIGUIENDO, ATACANDO, REGRESANDO, FASE2 }
 var estado_actual = Estado.SIGUIENDO
 var posicion_x_original: float = -255.0
 
+var faseDos:Vector2 = Vector2(-255.0, -550.0)
+
 func _ready() -> void:
-	pass
+	add_to_group("jefe")
 
 func _physics_process(delta: float) -> void:
-	if jugador != null and is_instance_valid(jugador):
-		# El seguimiento vertical (eje Y) es constante en todos los estados
-		var directionY = global_position.direction_to(jugador.global_position).y
-		velocity.y = directionY * speed
-
-		match estado_actual:
-			Estado.SIGUIENDO:
+	# Verificación de seguridad base
+	if jugador == null or not is_instance_valid(jugador):
+		return # Si no hay jugador, no calculamos físicas para evitar crashes
+		
+	match estado_actual:
+		Estado.SIGUIENDO:
+			# Aquí SÍ seguimos al jugador en Y
+			velocity.y = global_position.direction_to(jugador.global_position).y * speed
+			velocity.x = 0
+			animacion.play("preJefe")
+			
+		Estado.ATACANDO:
+			# Mantenemos el seguimiento en Y mientras ataca
+			velocity.y = global_position.direction_to(jugador.global_position).y * speed
+			
+			var directionX = sign(jugador.global_position.x - global_position.x)
+			if directionX == 0: directionX = 1
+			velocity.x = directionX * speed_ataque
+			animacion.play("pequeAtaque")
+			
+			var distancia_x = abs(global_position.x - jugador.global_position.x)
+			var distancia_y = abs(global_position.y - jugador.global_position.y)
+			
+			if distancia_x < 50.0 and distancia_y < 80.0: 
+				if jugador.has_method("recibir_dano"):
+					jugador.recibir_dano(directionX)
+				estado_actual = Estado.REGRESANDO
+				
+		Estado.REGRESANDO:
+			# Mantenemos el seguimiento en Y mientras regresa a su posición
+			velocity.y = global_position.direction_to(jugador.global_position).y * speed
+			
+			var dir_regreso = sign(posicion_x_original - global_position.x)
+			velocity.x = dir_regreso * speed
+			animacion.play("preJefe")
+			
+			if abs(global_position.x - posicion_x_original) < 10.0:
 				velocity.x = 0
-				animacion.play("preJefe")
+				estado_actual = Estado.SIGUIENDO
+			
+		Estado.FASE2:
+			# Ya no seguimos al jugador en Y, vamos directo al punto de la Fase 2
+			animacion.play("jefeHabla")
+			
+			# Comprobamos a qué distancia estamos del punto objetivo
+			var distancia = global_position.distance_to(faseDos)
+			
+			if distancia > 10.0:
+				# Si estamos lejos, calculamos la dirección correcta y avanzamos
+				velocity = global_position.direction_to(faseDos) * speed
+			else:
+				# ¡Llegamos! Detenemos la velocidad y forzamos la posición exacta para no temblar
+				velocity = Vector2.ZERO
+				global_position = faseDos 
 				
-			Estado.ATACANDO:
-				var directionX = sign(jugador.global_position.x - global_position.x)
-				if directionX == 0: directionX = 1 # Evitar multiplicaciones por cero
-				velocity.x = directionX * speed_ataque
-				animacion.play("pequeAtaque")
-				
-				# Detección de impacto por distancia
-				var distancia_x = abs(global_position.x - jugador.global_position.x)
-				var distancia_y = abs(global_position.y - jugador.global_position.y)
-				
-				# Si está lo suficientemente cerca en X y alineado en Y, es un golpe
-				if distancia_x < 50.0 and distancia_y < 80.0: 
-					if jugador.has_method("recibir_dano"):
-						jugador.recibir_dano(directionX)
-					estado_actual = Estado.REGRESANDO
-					
-			Estado.REGRESANDO:
-				# Calculamos hacia dónde debe moverse para volver a su X original
-				var dir_regreso = sign(posicion_x_original - global_position.x)
-				velocity.x = dir_regreso * speed
-				animacion.play("preJefe")
-				
-				# Condición de llegada: Si la diferencia entre su posición actual y la original es mínima
-				if abs(global_position.x - posicion_x_original) < 10.0:
-					velocity.x = 0
-					estado_actual = Estado.SIGUIENDO
+				# ---> AQUÍ puedes meter la lógica de lo que pasa después de llegar a Fase 2 <---
+				# Por ejemplo: estado_actual = Estado.ATACANDO_FASE_2
 
 	move_and_slide()
+
+# La señal del Area2D solo debe cambiar el estado e inicializar lo necesario
+func cambioFase(llegaron: bool) -> void:
+	if llegaron and estado_actual != Estado.FASE2:
+		cambioFase2 = true
+		timer.stop() # Apagamos el timer para que no decida atacar de la nada
+		estado_actual = Estado.FASE2 # Usamos nuestra máquina de estados como se debe
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if !sigueJugador and jugador == null: 

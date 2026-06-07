@@ -189,7 +189,7 @@ animations = [{
 }]
 
 [node name="jefeCabeza" type="CharacterBody2D" unique_id=2067842342]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_2qr1i")
 
