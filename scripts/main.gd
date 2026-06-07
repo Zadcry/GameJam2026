@@ -10,6 +10,7 @@ extends Node2D
 @onready var letrero_p2b := $LetreroP2b
 @onready var azul := $Azul
 @onready var naranja := $Naranja
+@onready var punt_label := $PUNT
 
 var azul_invertido := false
 var naranja_invertido := false
@@ -55,11 +56,11 @@ func _on_proyectil_golpeado() -> void:
 	if not tutorial_activo:
 		return
 	golpes += 1
-	print("Golpes: ", golpes)
+	punt_label.text = "PUNT!\n  " + str(golpes) + "/3"
 	if golpes >= 3:
 		Global.es_tutorial = false
+		await FadeManager.fade_out()
 		get_tree().change_scene_to_file("res://cinematicas/intro/intro.tscn")
-
 
 func _on_zona_p1_entered(body: Node2D) -> void:
 	if body.name == "Player1":

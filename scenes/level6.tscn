@@ -16,6 +16,15 @@
 [ext_resource type="PackedScene" uid="uid://essjqlp6nh48" path="res://scenes/OxidoP1.tscn" id="15_7mags"]
 [ext_resource type="PackedScene" uid="uid://bnb50m5srk2pu" path="res://scenes/bloque_melee.tscn" id="16_ruoii"]
 [ext_resource type="PackedScene" uid="uid://c06q5xroigsbf" path="res://scenes/bloque_proyectil.tscn" id="17_r4i0l"]
+[ext_resource type="PackedScene" uid="uid://d0p6nvdcfklsm" path="res://scenes/ParallaxBackground.tscn" id="17_ruoii"]
+[ext_resource type="Texture2D" uid="uid://dbxvnga8epysk" path="res://escenarios/Escenario-fondo.png" id="18_r4i0l"]
+[ext_resource type="Texture2D" uid="uid://wwwda44judjc" path="res://escenarios/Escenario-tubo-2.png" id="19_vpfkg"]
+[ext_resource type="Texture2D" uid="uid://dn23t3pysfn58" path="res://escenarios/Escenario-tubo1.png" id="20_qr7i8"]
+[ext_resource type="Texture2D" uid="uid://x6423318ui12" path="res://escenarios/LejanoOxido.png" id="21_qr7i8"]
+[ext_resource type="Texture2D" uid="uid://bk7gb3ugyp6li" path="res://escenarios/MedianoOxido.png" id="22_7r6ro"]
+[ext_resource type="Texture2D" uid="uid://bo0bh7xjdumkk" path="res://escenarios/CercanoOxido.png" id="23_6m0uo"]
+[ext_resource type="Script" uid="uid://bi55aenxq5dbo" path="res://scripts/engranaje.gd" id="24_6m0uo"]
+[ext_resource type="Texture2D" uid="uid://dvbcigxlve7h4" path="res://sprites/Tuerca.png" id="25_6m0uo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("5_q1tln")
@@ -370,6 +379,9 @@ custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_vpfkg")
 sources/1 = SubResource("TileSetAtlasSource_qr7i8")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0au3"]
+size = Vector2(29, 27)
+
 [node name="Level6" type="Node2D" unique_id=78769976]
 script = ExtResource("1_6p2dx")
 
@@ -429,3 +441,26 @@ script = ExtResource("14_yowrw")
 trampa_p1_scene = ExtResource("15_7mags")
 bloque_melee_scene = ExtResource("16_ruoii")
 bloque_projectile_scene = ExtResource("17_r4i0l")
+
+[node name="ParallaxBackground" parent="." unique_id=1401416965 instance=ExtResource("17_ruoii")]
+tex_lejana = ExtResource("18_r4i0l")
+tex_media = ExtResource("19_vpfkg")
+tex_frontal = ExtResource("20_qr7i8")
+tex_lejana_alt = ExtResource("21_qr7i8")
+tex_media_alt = ExtResource("22_7r6ro")
+tex_frontal_alt = ExtResource("23_6m0uo")
+
+[node name="Engranaje" type="Area2D" parent="." unique_id=1825733712]
+position = Vector2(139, -273)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("24_6m0uo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Engranaje" unique_id=54392129]
+position = Vector2(-46.937508, 20.044792)
+scale = Vector2(0.87109375, 0.85657626)
+texture = ExtResource("25_6m0uo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Engranaje" unique_id=1001980706]
+position = Vector2(-47.5, 19.5)
+shape = SubResource("RectangleShape2D_s0au3")

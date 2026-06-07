@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2oeecb8jesal"]
 
 [ext_resource type="Script" uid="uid://bp380531ybu54" path="res://scripts/item.gd" id="1_bx46p"]
-[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_j3wwg"]
+[ext_resource type="Texture2D" uid="uid://dvbcigxlve7h4" path="res://sprites/Tuerca.png" id="2_bx46p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx46p"]
 
@@ -13,6 +13,6 @@ script = ExtResource("1_bx46p")
 shape = SubResource("RectangleShape2D_bx46p")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1929655348]
-position = Vector2(4.7683716e-07, 4.7683716e-07)
-scale = Vector2(0.15625, 0.15625)
-texture = ExtResource("1_j3wwg")
+position = Vector2(-0.125, -0.125)
+scale = Vector2(0.63281244, 0.63281244)
+texture = ExtResource("2_bx46p")
