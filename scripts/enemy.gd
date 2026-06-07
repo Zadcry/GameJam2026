@@ -125,6 +125,13 @@ func _apply_stun() -> void:
 	if current_state == State.STUNNED: return
 	current_state = State.STUNNED
 	is_attacking = false
+	var audio = AudioStreamPlayer.new()
+	audio.stream = load("res://sfx/Electricidad.ogg")
+	audio.volume_db = linear_to_db(Global.sfx_volume / 100.0)
+	get_tree().root.add_child(audio)
+	audio.play()
+	await audio.finished
+	audio.queue_free()
 	await get_tree().create_timer(2.0).timeout
 	if is_instance_valid(self):
 		if not is_invulnerable:
