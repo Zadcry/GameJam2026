@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://essjqlp6nh48"]
+
+[ext_resource type="Script" uid="uid://cg6irp0pxw31p" path="res://scripts/tile_oxido.gd" id="1_52hcu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xwht"]
+size = Vector2(30, 30)
+
+[node name="OxidoP1" type="Area2D" unique_id=901189142]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_52hcu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2143279942]
+shape = SubResource("RectangleShape2D_6xwht")

@@ -116,7 +116,36 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	$animation.flip_h = facing == -1.0
+	# (Aquí arriba debe estar tu move_and_slide() y tus animaciones)
 
+	# === SISTEMA DE TRAMPAS POR TILEMAP ===
+	var mapa = get_tree().get_first_node_in_group("mapa_trampas")
+	
+	if mapa and not en_knockback:
+		# 1. Calculamos la posición de los pies del jugador
+		# (Suma en Y si el centro de tu jugador está en su ombligo y no en sus pies)
+		var pos_pies = global_position + Vector2(0, 20) 
+		
+		# 2. Convertimos esa posición global a coordenadas exactas de la cuadrícula (X, Y)
+		var celda = mapa.local_to_map(mapa.to_local(pos_pies))
+		
+		# 3. Le pedimos a la celda su información
+		var data = mapa.get_cell_tile_data(celda)
+		
+		if data:
+			# 4. Revisamos si tiene activada nuestra capa personalizada
+			if data.get_custom_data("es_oxido") == true:
+				
+				# Calculamos el centro exacto de la celda para el Knockback
+				var centro_tile = mapa.to_global(mapa.map_to_local(celda))
+				var knockback_dir = sign(global_position.x - centro_tile.x)
+				
+				# Respaldo por si cae exactamente en el centro del píxel
+				if knockback_dir == 0.0: knockback_dir = -facing 
+				
+				# ¡Aplicamos el daño!
+				recibir_dano(knockback_dir)
+				
 	if charging:
 		var anim_atk := ""
 		if nivel < 12.0:
@@ -189,7 +218,8 @@ func recibir_dano(knockback_dir: float) -> void:
 	aplicar_oxido()
 	_flash_dano()
 	en_knockback = true
-	velocity.x = knockback_dir * 300.0
+	velocity.x = knockback_dir * 100.0
+	velocity.y = knockback_dir * -300.0
 	await get_tree().create_timer(0.5).timeout
 	en_knockback = false
 
