@@ -1,14 +1,16 @@
 [gd_scene format=4 uid="uid://bpg68vipvtv8t"]
 
-[ext_resource type="Script" uid="uid://ddx3imnmecwc2" path="res://scripts/level_3.gd" id="1_604nx"]
+[ext_resource type="Script" path="res://scripts/level_3.gd" id="1_604nx"]
+[ext_resource type="PackedScene" uid="uid://ox0rop1t01u3" path="res://scenes/UICanvas.tscn" id="2_604nx"]
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="2_udt74"]
 [ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="3_51ilp"]
 [ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="4_halys"]
 [ext_resource type="Texture2D" uid="uid://cacw0o7imfg3l" path="res://tileset/tiles.png" id="5_6i030"]
-[ext_resource type="Script" uid="uid://b15ydvf4alkfs" path="res://scripts/level_1.gd" id="6_k64dm"]
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="6_k64dm"]
 [ext_resource type="Script" uid="uid://diura8olt18n" path="res://scripts/level_exit.gd" id="7_wmsw6"]
 [ext_resource type="PackedScene" uid="uid://cwj30qpuewkap" path="res://scenes/GameCamera.tscn" id="8_2o06p"]
 [ext_resource type="Script" uid="uid://cn314dbomqxci" path="res://scripts/block_projectile.gd" id="9_thraj"]
+[ext_resource type="PackedScene" uid="uid://cynyuu07jbpr4" path="res://scenes/PauseManager.tscn" id="11_udt74"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("5_6i030")
@@ -73,6 +75,8 @@ size = Vector2(37, 93)
 [node name="Level8" type="Node2D" unique_id=78769976]
 script = ExtResource("1_604nx")
 
+[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("2_604nx")]
+
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("2_udt74")]
 position = Vector2(-99, 109)
 collision_mask = 19
@@ -135,3 +139,5 @@ shape = SubResource("RectangleShape2D_fh4ka")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BloqueProyectil2/HitboxArea" unique_id=1718676456]
 position = Vector2(22, -65.5)
 shape = SubResource("RectangleShape2D_qewby")
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("11_udt74")]

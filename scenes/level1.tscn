@@ -1,14 +1,15 @@
 [gd_scene format=4 uid="uid://gih8l4ahcpwe"]
 
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="1_6sh32"]
+[ext_resource type="PackedScene" uid="uid://ox0rop1t01u3" path="res://scenes/UICanvas.tscn" id="1_d3jkd"]
 [ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="2_ejswk"]
 [ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="3_bbk5w"]
 [ext_resource type="Texture2D" uid="uid://cacw0o7imfg3l" path="res://tileset/tiles.png" id="5_ru4tf"]
-[ext_resource type="Script" uid="uid://b15ydvf4alkfs" path="res://scripts/level_1.gd" id="6_6sh32"]
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="6_6sh32"]
 [ext_resource type="PackedScene" uid="uid://bnwyes2nta0fx" path="res://scenes/Enemy.tscn" id="7_bbk5w"]
-[ext_resource type="Script" uid="uid://bs6b34pc5wdjk" path="res://scripts/enemy.gd" id="8_conm7"]
 [ext_resource type="Script" uid="uid://diura8olt18n" path="res://scripts/level_exit.gd" id="9_conm7"]
 [ext_resource type="PackedScene" uid="uid://cwj30qpuewkap" path="res://scenes/GameCamera.tscn" id="10_d3jkd"]
+[ext_resource type="PackedScene" uid="uid://cynyuu07jbpr4" path="res://scenes/PauseManager.tscn" id="10_u3awl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("5_ru4tf")
@@ -66,6 +67,8 @@ size = Vector2(120.5, 25)
 
 [node name="Level1" type="Node2D" unique_id=78769976]
 
+[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("1_d3jkd")]
+
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("1_6sh32")]
 position = Vector2(-86, -374)
 collision_mask = 19
@@ -83,14 +86,12 @@ script = ExtResource("6_6sh32")
 [node name="Enemy" parent="." unique_id=739025128 instance=ExtResource("7_bbk5w")]
 position = Vector2(-706, -172)
 collision_mask = 19
-script = ExtResource("8_conm7")
 patrol_distance = 200.0
 vision_range = 128.0
 
 [node name="Enemy2" parent="." unique_id=1765533497 instance=ExtResource("7_bbk5w")]
 position = Vector2(199, -177)
 collision_mask = 19
-script = ExtResource("8_conm7")
 patrol_distance = 200.0
 vision_range = 128.0
 
@@ -127,3 +128,5 @@ position = Vector2(-12, -394)
 
 [node name="Entrada2" type="Marker2D" parent="SpawnPoints" unique_id=1973616174]
 position = Vector2(-968, -193)
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("10_u3awl")]

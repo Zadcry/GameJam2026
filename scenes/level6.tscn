@@ -1,15 +1,17 @@
 [gd_scene format=4 uid="uid://b0lgewg2e3ndk"]
 
-[ext_resource type="Script" uid="uid://ddx3imnmecwc2" path="res://scripts/level_3.gd" id="1_6p2dx"]
+[ext_resource type="Script" path="res://scripts/level_3.gd" id="1_6p2dx"]
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="2_00gn1"]
+[ext_resource type="PackedScene" uid="uid://ox0rop1t01u3" path="res://scenes/UICanvas.tscn" id="2_h6dii"]
 [ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="3_406ad"]
 [ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="4_h6dii"]
 [ext_resource type="Texture2D" uid="uid://cacw0o7imfg3l" path="res://tileset/tiles.png" id="5_q1tln"]
-[ext_resource type="Script" uid="uid://b15ydvf4alkfs" path="res://scripts/level_1.gd" id="6_kl8s1"]
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="6_kl8s1"]
 [ext_resource type="Script" uid="uid://diura8olt18n" path="res://scripts/level_exit.gd" id="7_21e8i"]
 [ext_resource type="PackedScene" uid="uid://cwj30qpuewkap" path="res://scenes/GameCamera.tscn" id="8_pnjdx"]
 [ext_resource type="Script" uid="uid://cn314dbomqxci" path="res://scripts/block_projectile.gd" id="9_bqndy"]
 [ext_resource type="Script" uid="uid://c521p1fmnaisw" path="res://scripts/block_melee.gd" id="10_00gn1"]
+[ext_resource type="PackedScene" uid="uid://cynyuu07jbpr4" path="res://scenes/PauseManager.tscn" id="12_q1tln"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("5_q1tln")
@@ -79,6 +81,8 @@ size = Vector2(42, 70)
 
 [node name="Level6" type="Node2D" unique_id=78769976]
 script = ExtResource("1_6p2dx")
+
+[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("2_h6dii")]
 
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("2_00gn1")]
 position = Vector2(-466, 79)
@@ -158,3 +162,5 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BloqueMelee/HitboxArea" unique_id=1807152662]
 position = Vector2(-39, -41)
 shape = SubResource("RectangleShape2D_h6dii")
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("12_q1tln")]

@@ -1,14 +1,16 @@
-[gd_scene format=4 uid="uid://cwynsftb4l86q"]
+[gd_scene format=4 uid="uid://dkan8wlwu025k"]
 
-[ext_resource type="Script" uid="uid://ddx3imnmecwc2" path="res://scripts/level_3.gd" id="1_6qt4k"]
+[ext_resource type="Script" path="res://scripts/level_3.gd" id="1_6qt4k"]
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="1_rupth"]
 [ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="2_6qt4k"]
+[ext_resource type="PackedScene" uid="uid://ox0rop1t01u3" path="res://scenes/UICanvas.tscn" id="2_fh4ka"]
 [ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="3_fh4ka"]
 [ext_resource type="Texture2D" uid="uid://cacw0o7imfg3l" path="res://tileset/tiles.png" id="5_bradm"]
-[ext_resource type="Script" uid="uid://b15ydvf4alkfs" path="res://scripts/level_1.gd" id="6_got4s"]
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="6_got4s"]
 [ext_resource type="Script" uid="uid://diura8olt18n" path="res://scripts/level_exit.gd" id="9_y1e0c"]
 [ext_resource type="Script" uid="uid://cn314dbomqxci" path="res://scripts/block_projectile.gd" id="10_6qt4k"]
 [ext_resource type="PackedScene" uid="uid://cwj30qpuewkap" path="res://scenes/GameCamera.tscn" id="11_fh4ka"]
+[ext_resource type="PackedScene" uid="uid://cynyuu07jbpr4" path="res://scenes/PauseManager.tscn" id="11_qewby"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("5_bradm")
@@ -73,6 +75,8 @@ size = Vector2(37, 65.5)
 [node name="Level3" type="Node2D" unique_id=78769976]
 script = ExtResource("1_6qt4k")
 
+[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("2_fh4ka")]
+
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("1_rupth")]
 position = Vector2(-513, 79)
 collision_mask = 19
@@ -120,3 +124,5 @@ shape = SubResource("RectangleShape2D_qewby")
 
 [node name="Entrada2" type="Marker2D" parent="SpawnPoints" unique_id=908722202]
 position = Vector2(-532, 63)
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("11_qewby")]

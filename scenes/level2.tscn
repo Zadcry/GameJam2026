@@ -1,14 +1,15 @@
-[gd_scene format=4 uid="uid://b2bpni88oeim"]
+[gd_scene format=4 uid="uid://b3pdb3w2ct1y0"]
 
-[ext_resource type="Script" uid="uid://c8xrvqv44nnoc" path="res://scripts/level_2.gd" id="1_bo4dx"]
+[ext_resource type="Script" path="res://scripts/level_2.gd" id="1_bo4dx"]
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="1_xa7n4"]
+[ext_resource type="PackedScene" uid="uid://ox0rop1t01u3" path="res://scenes/UICanvas.tscn" id="2_76toy"]
 [ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="2_bo4dx"]
 [ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="3_76toy"]
 [ext_resource type="Texture2D" uid="uid://cacw0o7imfg3l" path="res://tileset/tiles.png" id="5_56gwk"]
-[ext_resource type="Script" uid="uid://b15ydvf4alkfs" path="res://scripts/level_1.gd" id="6_ve5ok"]
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="6_ve5ok"]
 [ext_resource type="PackedScene" uid="uid://bnwyes2nta0fx" path="res://scenes/Enemy.tscn" id="7_cleqw"]
-[ext_resource type="Script" uid="uid://bs6b34pc5wdjk" path="res://scripts/enemy.gd" id="8_wvb8j"]
 [ext_resource type="Script" uid="uid://diura8olt18n" path="res://scripts/level_exit.gd" id="9_g8vcy"]
+[ext_resource type="PackedScene" uid="uid://cynyuu07jbpr4" path="res://scenes/PauseManager.tscn" id="11_8g4ke"]
 [ext_resource type="PackedScene" uid="uid://cwj30qpuewkap" path="res://scenes/GameCamera.tscn" id="11_76toy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
@@ -68,6 +69,8 @@ size = Vector2(108, 20)
 [node name="Level2" type="Node2D" unique_id=78769976]
 script = ExtResource("1_bo4dx")
 
+[node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("2_76toy")]
+
 [node name="Player1" parent="." unique_id=1666029543 instance=ExtResource("1_xa7n4")]
 position = Vector2(-86, -374)
 collision_mask = 19
@@ -85,14 +88,12 @@ script = ExtResource("6_ve5ok")
 [node name="Enemy" parent="." unique_id=739025128 instance=ExtResource("7_cleqw")]
 position = Vector2(95, -178)
 collision_mask = 19
-script = ExtResource("8_wvb8j")
 patrol_distance = 120.0
 vision_range = 96.0
 
 [node name="Enemy2" parent="." unique_id=1765533497 instance=ExtResource("7_cleqw")]
 position = Vector2(-118, -275)
 collision_mask = 19
-script = ExtResource("8_wvb8j")
 patrol_distance = 120.0
 vision_range = 96.0
 
@@ -111,7 +112,6 @@ shape = SubResource("RectangleShape2D_d3jkd")
 [node name="Enemy3" parent="." unique_id=330483781 instance=ExtResource("7_cleqw")]
 position = Vector2(-53, 365)
 collision_mask = 19
-script = ExtResource("8_wvb8j")
 patrol_distance = 150.0
 vision_range = 96.0
 
@@ -136,3 +136,5 @@ REQUIRED_TIME = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit3" unique_id=171468216]
 position = Vector2(-15, -462)
 shape = SubResource("RectangleShape2D_d3jkd")
+
+[node name="PauseManager" parent="." unique_id=768789384 instance=ExtResource("11_8g4ke")]
