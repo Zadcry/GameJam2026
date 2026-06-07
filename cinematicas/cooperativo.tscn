@@ -32,3 +32,15 @@ texture = ExtResource("3_rvn6c")
 position = Vector2(1066, 557)
 scale = Vector2(0.695313, 0.55625)
 texture = ExtResource("4_xfnhk")
+
+[node name="OrNot" type="Label" parent="." unique_id=2047053745]
+modulate = Color(1, 1, 1, 0.13725491)
+offset_left = 537.0
+offset_top = 379.0
+offset_right = 612.0
+offset_bottom = 396.0
+theme_override_fonts/font = ExtResource("1_k610j")
+theme_override_font_sizes/font_size = 12
+text = "(Or not)"
+horizontal_alignment = 1
+vertical_alignment = 1

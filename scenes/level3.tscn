@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ddx3imnmecwc2" path="res://scripts/level_3.gd" id="1_6qt4k"]
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="1_rupth"]
 [ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="2_6qt4k"]
+[ext_resource type="PackedScene" uid="uid://448rjaktdhvr" path="res://scenes/AuraCambio.tscn" id="2_7hs6g"]
 [ext_resource type="PackedScene" uid="uid://ox0rop1t01u3" path="res://scenes/UICanvas.tscn" id="2_fh4ka"]
 [ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="3_fh4ka"]
 [ext_resource type="Texture2D" uid="uid://cacw0o7imfg3l" path="res://tileset/tiles.png" id="5_bradm"]
@@ -24,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bo0bh7xjdumkk" path="res://escenarios/CercanoOxido.png" id="22_8vbrh"]
 [ext_resource type="Script" uid="uid://c2fo5v32jghkg" path="res://scripts/antioxidante.gd" id="23_8vbrh"]
 [ext_resource type="Texture2D" uid="uid://cer74bwxc6kf4" path="res://sprites/BD-10.png" id="24_8vbrh"]
-[ext_resource type="AudioStream" uid="uid://dtusnij6ngrc2" path="res://sfx/damage.ogg" id="25_d5gix"]
+[ext_resource type="AudioStream" uid="uid://tpvcfrtvh17" path="res://sfx/damage.ogg" id="25_d5gix"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sh32"]
 texture = ExtResource("5_bradm")
@@ -383,6 +384,18 @@ sources/1 = SubResource("TileSetAtlasSource_atr84")
 
 [node name="Level3" type="Node2D" unique_id=78769976]
 script = ExtResource("1_6qt4k")
+
+[node name="AuraCambio4" parent="." unique_id=275953806 instance=ExtResource("2_7hs6g")]
+position = Vector2(-571.5, 95.5)
+
+[node name="AuraCambio3" parent="." unique_id=691920766 instance=ExtResource("2_7hs6g")]
+position = Vector2(-600.5, 95.5)
+
+[node name="AuraCambio2" parent="." unique_id=1567566457 instance=ExtResource("2_7hs6g")]
+position = Vector2(-628.5, 95.5)
+
+[node name="AuraCambio" parent="." unique_id=1156963437 instance=ExtResource("2_7hs6g")]
+position = Vector2(-656.5, 95.5)
 
 [node name="UiCanvas" parent="." unique_id=2031656424 instance=ExtResource("2_fh4ka")]
 

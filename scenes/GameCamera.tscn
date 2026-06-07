@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwj30qpuewkap"]
+[gd_scene format=3 uid="uid://cwj30qpuewkap"]
 
 [sub_resource type="GDScript" id="GDScript_e66xa"]
 script/source = "extends Camera2D
 
-const CAMERA_OFFSET := Vector2(0, -150)
+const CAMERA_OFFSET := Vector2(0, 0)
 const MARGIN := 20.0
 
 var player1: Node2D = null
@@ -29,5 +29,5 @@ func _process(_delta: float) -> void:
 	player2.global_position.x = clamp(player2.global_position.x, cam_left + MARGIN, cam_right - MARGIN)
 "
 
-[node name="GameCamera" type="Camera2D"]
+[node name="GameCamera" type="Camera2D" unique_id=856316602]
 script = SubResource("GDScript_e66xa")
