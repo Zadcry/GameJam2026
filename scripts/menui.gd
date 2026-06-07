@@ -6,22 +6,13 @@ extends Node
 @onready var quit := $Quit
 
 var opciones_visibles := false
+var _opt_node : Node = null
 
 const CONFIG_PATH := "user://config.cfg"
-
-var resoluciones = [
-	Vector2i(640, 360),
-	Vector2i(854, 480),
-	Vector2i(1024, 576),
-	Vector2i(1280, 720),
-	Vector2i(1600, 900),
-	Vector2i(1920, 1080)
-]
 
 func _ready() -> void:
 	FadeManager.fade_in()
 	_cargar_pantalla()
-
 	play.visible = false
 	options.visible = false
 	quit.visible = false
@@ -34,23 +25,30 @@ func _cargar_pantalla() -> void:
 	var config = ConfigFile.new()
 	var err = config.load(CONFIG_PATH)
 	if err == OK:
-		var modo = int(config.get_value("pantalla", "modo", 0))
-		var indice_resolucion = int(config.get_value("pantalla", "resolucion", 5))
 		Global.sfx_volume = float(config.get_value("audio", "sfx", 100.0))
 		Global.music_volume = float(config.get_value("audio", "music", 100.0))
-
-		if modo == 0:
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-			DisplayServer.window_set_size(Vector2i(1920, 1080))
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		else:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_RESIZE_DISABLED, true)
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-			DisplayServer.window_set_size(resoluciones[indice_resolucion])
+		var indice_resolucion = int(config.get_value("pantalla", "resolucion", 5))
+		var ultima_ventana = int(config.get_value("pantalla", "ultima_ventana", indice_resolucion))
+		# Sobreescribe modo a 0 (Fullscreen) en el config guardado
+		config.set_value("pantalla", "modo", 0)
+		config.set_value("pantalla", "resolucion", indice_resolucion)
+		config.set_value("pantalla", "ultima_ventana", ultima_ventana)
+		config.save(CONFIG_PATH)
 	else:
 		Global.sfx_volume = 100.0
 		Global.music_volume = 100.0
+		# Crea config por defecto con fullscreen
+		config.set_value("pantalla", "modo", 0)
+		config.set_value("pantalla", "resolucion", 5)
+		config.set_value("pantalla", "ultima_ventana", 5)
+		config.set_value("audio", "sfx", 100.0)
+		config.set_value("audio", "music", 100.0)
+		config.save(CONFIG_PATH)
+
+	# Siempre fullscreen al iniciar
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+	DisplayServer.window_set_size(Vector2i(1920, 1080))
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 	_aplicar_volumen_sfx(Global.sfx_volume)
 	_aplicar_volumen_music(Global.music_volume)
@@ -84,14 +82,19 @@ func _on_play() -> void:
 	get_tree().change_scene_to_file("res://cinematicas/cooperativo.tscn")
 
 func _on_options() -> void:
+	if _opt_node != null:
+		return
 	play.disabled = true
 	options.disabled = true
 	quit.disabled = true
 	var opt = preload("res://menus/option_menu/menuOpt.tscn").instantiate()
+	opt.desde_pausa = false
 	opt.connect("cerrar", _on_opciones_cerradas)
 	add_child(opt)
+	_opt_node = opt
 
-func _on_opciones_cerradas() -> void:
+func _on_opciones_cerradas(_cerrar_todo: bool) -> void:
+	_opt_node = null
 	play.disabled = false
 	options.disabled = false
 	quit.disabled = false

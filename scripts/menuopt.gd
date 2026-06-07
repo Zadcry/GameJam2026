@@ -17,7 +17,11 @@ var indice_resolucion = 5
 var ultima_resolucion_ventana = indice_resolucion
 
 const CONFIG_PATH := "user://config.cfg"
+const ANIM_DURACION := 0.35
+const OFFSET_ENTRADA := 1600.0
+const FADE_DELAY := 1.0
 
+@onready var _screen := $ScreenOpt
 @onready var modo_label = $Label
 @onready var resolucion_label = $Label2
 @onready var flecha_izq = $Label3
@@ -25,6 +29,10 @@ const CONFIG_PATH := "user://config.cfg"
 @onready var quit := $Quit
 @onready var sfx := $sfx
 @onready var music := $music
+
+var _posicion_origen := Vector2.ZERO
+var _animando := false
+var desde_pausa := false
 
 func _ready() -> void:
 	quit.connect("pressed", _on_quit)
@@ -49,6 +57,104 @@ func _ready() -> void:
 	if es_primera_vez:
 		_save_config()
 
+	if desde_pausa:
+		_screen.modulate.a = 0.0
+		modo_label.modulate.a = 0.0
+		resolucion_label.modulate.a = 0.0
+		flecha_izq.modulate.a = 0.0
+		flecha_der.modulate.a = 0.0
+		quit.modulate.a = 0.0
+		sfx.modulate.a = 0.0
+		music.modulate.a = 0.0
+		_animar_entrada_pausa()
+	else:
+		_posicion_origen = _screen.position
+		_screen.position.x -= OFFSET_ENTRADA
+		modo_label.modulate.a = 0.0
+		resolucion_label.modulate.a = 0.0
+		flecha_izq.modulate.a = 0.0
+		flecha_der.modulate.a = 0.0
+		quit.modulate.a = 0.0
+		sfx.modulate.a = 0.0
+		music.modulate.a = 0.0
+		_animar_entrada_principal()
+
+func _animar_entrada_pausa() -> void:
+	_animando = true
+	# Sin delay extra: pausa ya se ocultó, opciones aparece de inmediato
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(_screen, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(modo_label, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(resolucion_label, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(flecha_izq, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(flecha_der, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(quit, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(sfx, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(music, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	await tween.finished
+	_animando = false
+	_actualizar_visibilidad_flechas()
+
+func _animar_entrada_principal() -> void:
+	_animando = true
+	var tween = create_tween()
+	tween.set_parallel(false)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(_screen, "position:x", _posicion_origen.x, ANIM_DURACION)
+	tween.tween_interval(FADE_DELAY)
+	tween.set_parallel(true)
+	tween.tween_property(modo_label, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(resolucion_label, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(flecha_izq, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(flecha_der, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(quit, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(sfx, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	tween.tween_property(music, "modulate:a", 1.0, ANIM_DURACION * 0.8)
+	await tween.finished
+	_animando = false
+	_actualizar_visibilidad_flechas()
+
+func animar_salida_esc() -> void:
+	if _animando:
+		return
+	_animando = true
+	set_process_input(false)
+	emit_signal("cerrar", true)
+	queue_free()
+
+# Quit desde opciones en pausa: solo emite señal, pausa gestiona la animacion de salida
+func animar_salida_y_cerrar(cerrar_pausa: bool = false) -> void:
+	if _animando:
+		return
+	_animando = true
+	set_process_input(false)
+
+	if desde_pausa:
+		# Pausa gestiona la salida, opciones solo se elimina
+		emit_signal("cerrar", cerrar_pausa)
+		queue_free()
+		return
+
+	# Desde menu principal: fade elementos + deslizar salida
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(modo_label, "modulate:a", 0.0, ANIM_DURACION * 0.6)
+	tween.tween_property(resolucion_label, "modulate:a", 0.0, ANIM_DURACION * 0.6)
+	tween.tween_property(flecha_izq, "modulate:a", 0.0, ANIM_DURACION * 0.6)
+	tween.tween_property(flecha_der, "modulate:a", 0.0, ANIM_DURACION * 0.6)
+	tween.tween_property(quit, "modulate:a", 0.0, ANIM_DURACION * 0.6)
+	tween.tween_property(sfx, "modulate:a", 0.0, ANIM_DURACION * 0.6)
+	tween.tween_property(music, "modulate:a", 0.0, ANIM_DURACION * 0.6)
+	tween.set_parallel(false)
+	tween.tween_property(_screen, "position:x", _posicion_origen.x - OFFSET_ENTRADA, ANIM_DURACION)
+	await tween.finished
+	emit_signal("cerrar", cerrar_pausa)
+	queue_free()
+
 func _on_sfx_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var ratio = clamp(event.position.x / sfx.size.x, 0.0, 1.0)
@@ -66,6 +172,16 @@ func _on_music_gui_input(event: InputEvent) -> void:
 		music.value = lerp(music.min_value, music.max_value, ratio)
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE and not _animando:
+		if desde_pausa:
+			animar_salida_esc()
+		else:
+			animar_salida_y_cerrar(false)
+		return
+
+	if _animando:
+		return
+
 	if event is InputEventMouseButton and event.pressed:
 		var click_pos = event.position
 
@@ -85,10 +201,7 @@ func _input(event: InputEvent) -> void:
 					resolucion_label.modulate.a = 0.5
 				"Windowed":
 					indice_resolucion = ultima_resolucion_ventana
-					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-					DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_RESIZE_DISABLED, true)
-					DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-					DisplayServer.window_set_size(resoluciones[indice_resolucion])
+					_aplicar_ventana_windowed()
 					resolucion_label.modulate.a = 1.0
 					_actualizar_label_resolucion()
 
@@ -99,7 +212,7 @@ func _input(event: InputEvent) -> void:
 			if flecha_izq and flecha_izq.get_global_rect().has_point(click_pos) and event.button_index == MOUSE_BUTTON_LEFT:
 				if indice_resolucion > 0:
 					indice_resolucion -= 1
-					DisplayServer.window_set_size(resoluciones[indice_resolucion])
+					_aplicar_ventana_windowed()
 					_actualizar_label_resolucion()
 					_actualizar_visibilidad_flechas()
 					_save_config()
@@ -107,10 +220,20 @@ func _input(event: InputEvent) -> void:
 			if flecha_der and flecha_der.get_global_rect().has_point(click_pos) and event.button_index == MOUSE_BUTTON_LEFT:
 				if indice_resolucion < resoluciones.size() - 1:
 					indice_resolucion += 1
-					DisplayServer.window_set_size(resoluciones[indice_resolucion])
+					_aplicar_ventana_windowed()
 					_actualizar_label_resolucion()
 					_actualizar_visibilidad_flechas()
 					_save_config()
+
+func _aplicar_ventana_windowed() -> void:
+	var res = resoluciones[indice_resolucion]
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_RESIZE_DISABLED, false)
+	DisplayServer.window_set_size(res)
+	var pantalla = DisplayServer.screen_get_size()
+	var pos = Vector2i((pantalla.x - res.x) / 2, (pantalla.y - res.y) / 2)
+	DisplayServer.window_set_position(pos)
 
 func _actualizar_label_resolucion() -> void:
 	if opciones[indice_actual] == "Fullscreen":
@@ -136,9 +259,7 @@ func _actualizar_visibilidad_flechas() -> void:
 func _aplicar_configuracion() -> void:
 	if indice_actual < 0 or indice_actual >= opciones.size():
 		indice_actual = 0
-
 	modo_label.text = opciones[indice_actual]
-
 	match opciones[indice_actual]:
 		"Fullscreen":
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
@@ -147,10 +268,7 @@ func _aplicar_configuracion() -> void:
 			resolucion_label.text = "1920x1080"
 			resolucion_label.modulate.a = 0.5
 		"Windowed":
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_RESIZE_DISABLED, true)
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-			DisplayServer.window_set_size(resoluciones[indice_resolucion])
+			_aplicar_ventana_windowed()
 			resolucion_label.modulate.a = 1.0
 
 func _aplicar_fuente() -> void:
@@ -158,7 +276,6 @@ func _aplicar_fuente() -> void:
 	var label_settings = LabelSettings.new()
 	label_settings.font = fuente_archivo
 	label_settings.font_size = 24
-
 	for label in [modo_label, resolucion_label, flecha_izq, flecha_der]:
 		if label:
 			label.label_settings = label_settings.duplicate()
@@ -218,11 +335,9 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_SIZE_CHANGED:
 		if opciones[indice_actual] == "Windowed":
 			var modo_actual = DisplayServer.window_get_mode()
-			if modo_actual == DisplayServer.WINDOW_MODE_MAXIMIZED or \
-			   modo_actual == DisplayServer.WINDOW_MODE_MINIMIZED:
+			if modo_actual == DisplayServer.WINDOW_MODE_MINIMIZED:
 				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-				DisplayServer.window_set_size(resoluciones[indice_resolucion])
+				_aplicar_ventana_windowed()
 
 func _on_quit() -> void:
-	emit_signal("cerrar")
-	queue_free()
+	animar_salida_y_cerrar(false)
