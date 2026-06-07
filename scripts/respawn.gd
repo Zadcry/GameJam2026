@@ -9,12 +9,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player1") or body.is_in_group("player2"):
 		
 		# Sumamos 1 al contador global
-		Global.contador_antioxidantes += 1
-		if Global.vida_crusty < 6:
-			Global.vida_crusty += 1
-		if Global.oxido_mitch > 10:
-			Global.oxido_mitch -=10
-		print("¡Coleccionable recogido! Total actual: ", Global.contador_antioxidantes)
+		Global.on_bossfight=true;
+		print("Spawn set on Bossfight")
 		
 		# Destruimos la moneda/objeto
 		queue_free()

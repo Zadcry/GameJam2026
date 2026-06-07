@@ -52,8 +52,14 @@ func _on_quit() -> void:
 
 func _on_retry() -> void:
 	await _mostrar_sin_senal()
-	Global.reset()
-	get_tree().change_scene_to_file("res://scenes/level0.tscn")
+	if Global.on_bossfight:
+		Global.reset() 
+		Global.on_bossfight=true
+		Global.estado_mundo=3
+		get_tree().change_scene_to_file("res://scenes/level9.tscn")  
+	else:
+		Global.reset()
+		get_tree().change_scene_to_file("res://scenes/level0.tscn") 
 
 func _mostrar_sin_senal() -> void:
 	quit.disabled = true

@@ -447,3 +447,5 @@ bloque_projectile_scene = ExtResource("6_pnrra")
 tex_lejana = ExtResource("19_8qpon")
 tex_media = ExtResource("20_fu4xf")
 tex_frontal = ExtResource("21_kjxej")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1841390496]
