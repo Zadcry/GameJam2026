@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ddx3imnmecwc2" path="res://scripts/level_3.gd" id="1_604nx"]
 [ext_resource type="PackedScene" uid="uid://ox0rop1t01u3" path="res://scenes/UICanvas.tscn" id="2_604nx"]
 [ext_resource type="PackedScene" uid="uid://do2gp1wxtuj7d" path="res://scenes/Player1.tscn" id="2_udt74"]
-[ext_resource type="PackedScene" uid="uid://448rjaktdhvr" path="res://scenes/AuraCambio.tscn" id="2_wmsw6"]
+[ext_resource type="PackedScene" path="res://scenes/AuraCambio.tscn" id="2_wmsw6"]
 [ext_resource type="PackedScene" uid="uid://d4lr2d8efn6p3" path="res://scenes/Projectile.tscn" id="3_51ilp"]
 [ext_resource type="PackedScene" uid="uid://dprcmckdt2e7r" path="res://scenes/Player2.tscn" id="4_halys"]
 [ext_resource type="Texture2D" uid="uid://cacw0o7imfg3l" path="res://tileset/tiles.png" id="5_6i030"]
@@ -12,10 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://cwj30qpuewkap" path="res://scenes/GameCamera.tscn" id="8_2o06p"]
 [ext_resource type="PackedScene" uid="uid://cynyuu07jbpr4" path="res://scenes/PauseManager.tscn" id="11_udt74"]
 [ext_resource type="Texture2D" uid="uid://p0arfxn0kgbr" path="res://tileset/Tileset_v2.png" id="12_k64dm"]
-[ext_resource type="Script" uid="uid://cfwhvx8jbmjmg" path="res://scripts/tilemap2_manager.gd" id="13_wmsw6"]
-[ext_resource type="PackedScene" uid="uid://essjqlp6nh48" path="res://scenes/OxidoP1.tscn" id="14_2o06p"]
-[ext_resource type="PackedScene" uid="uid://bnb50m5srk2pu" path="res://scenes/bloque_melee.tscn" id="15_thraj"]
-[ext_resource type="PackedScene" uid="uid://c06q5xroigsbf" path="res://scenes/bloque_proyectil.tscn" id="16_ikyaj"]
+[ext_resource type="Script" path="res://scripts/tilemap2_manager.gd" id="13_wmsw6"]
+[ext_resource type="PackedScene" path="res://scenes/OxidoP1.tscn" id="14_2o06p"]
+[ext_resource type="PackedScene" path="res://scenes/bloque_melee.tscn" id="15_thraj"]
+[ext_resource type="PackedScene" path="res://scenes/bloque_proyectil.tscn" id="16_ikyaj"]
 [ext_resource type="PackedScene" uid="uid://d0p6nvdcfklsm" path="res://scenes/ParallaxBackground.tscn" id="17_ikyaj"]
 [ext_resource type="Texture2D" uid="uid://dbxvnga8epysk" path="res://escenarios/Escenario-fondo.png" id="18_ollr2"]
 [ext_resource type="Texture2D" uid="uid://wwwda44judjc" path="res://escenarios/Escenario-tubo-2.png" id="19_haieg"]
@@ -78,7 +78,7 @@ physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_6sh32")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3jkd"]
-size = Vector2(84.5, 20)
+size = Vector2(66.729164, 20)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ollr2"]
 texture = ExtResource("5_6i030")
@@ -416,15 +416,14 @@ script = ExtResource("6_k64dm")
 collision_layer = 3
 collision_mask = 19
 script = ExtResource("7_wmsw6")
-next_level_path = "res://scenes/level7.tsc"
-id_destino = "Entrada5¿8"
+next_level_path = "res://scenes/level7.tscn"
+id_destino = "Entrada8"
 REQUIRED_TIME = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit2" unique_id=1144252757]
-position = Vector2(27, 127)
+position = Vector2(44.060005, 127)
+scale = Vector2(1.9200001, 1)
 shape = SubResource("RectangleShape2D_d3jkd")
-
-[node name="GameCamera" parent="." unique_id=964162124 instance=ExtResource("8_2o06p")]
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1671760751]
 
@@ -462,3 +461,5 @@ texture = ExtResource("25_76dty")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Antioxidante" unique_id=1797167635]
 shape = SubResource("RectangleShape2D_i0rhs")
+
+[node name="GameCamera" parent="." unique_id=964162124 instance=ExtResource("8_2o06p")]
