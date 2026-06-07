@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 200.0
-@export var vida: int = 1
+@export var vida: int = 3
 @onready var animacion :AnimatedSprite2D = $AnimatedSprite2D
 var activo: bool = false # Controla si ya pasaron los 3 segundos
 @onready var sonido_dano := $SonidoDano
