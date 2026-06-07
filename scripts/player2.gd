@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var brazo_izq := $Body/BrazoIzq
 @onready var pierna_izq := $Body/PiernaIzq
 @onready var sonido_ataque := $SonidoAtaque
+@onready var sonido_dano := $SonidoDano
+
 signal proyectil_golpeado
 
 const GRAVITY = 800.0
@@ -210,12 +212,21 @@ func _on_melee_hit(area: Area2D) -> void:
 			victima.recibir_dano_melee()
 
 func recibir_dano_liquido() -> void:
+	if en_knockback:
+		return
+	en_knockback = true
+	sonido_dano.pitch_scale = 1.15
+	sonido_dano.volume_db = linear_to_db(Global.sfx_volume / 100.0)
+	sonido_dano.play()
 	if Global.game_over_activo:
 		return
 	Global.vida_crusty -= 1
 	Global.vida_crusty = maxf(Global.vida_crusty, 0.0)
 	actualizar_cuerpo()
 	_flash_dano()
+	await get_tree().create_timer(0.5).timeout
+	if is_instance_valid(self) and not Global.game_over_activo:
+		en_knockback = false
 
 func _flash_dano() -> void:
 	var partes = [$Body/Head, $Body/Torso, $Body/BrazoDer, $Body/BrazoIzq, $Body/PiernaDer, $Body/PiernaIzq]
@@ -229,11 +240,14 @@ func _flash_dano() -> void:
 func recibir_dano(knockback_dir: float) -> void:
 	if en_knockback or Global.game_over_activo:
 		return
+	en_knockback = true
+	sonido_dano.pitch_scale = 1.15
+	sonido_dano.volume_db = linear_to_db(Global.sfx_volume / 100.0)
+	sonido_dano.play()
 	Global.vida_crusty -= 1
 	Global.vida_crusty = maxf(Global.vida_crusty, 0.0)
 	actualizar_cuerpo()
 	_flash_dano()
-	en_knockback = true
 	velocity.x = knockback_dir * 150.0
 	if Global.vida_crusty <= 0:
 		return

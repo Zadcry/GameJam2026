@@ -4,7 +4,7 @@ const SPEED = 200.0
 @export var vida: int = 3
 @onready var animacion :AnimatedSprite2D = $AnimatedSprite2D
 var activo: bool = false # Controla si ya pasaron los 3 segundos
-
+@onready var sonido_dano := $SonidoDano
 @onready var rayoIzq: RayCast2D = $rayIzq
 @onready var rayoDer: RayCast2D = $rayDer
 
@@ -41,19 +41,18 @@ func _physics_process(delta: float) -> void:
 # Esta función debe ser llamada por el proyectil del Jugador 1 al chocar
 # Asumo que tu proyectil usa algo como if body.has_method("recibir_dano"): body.recibir_dano()
 func recibir_dano(dano_recibido: float = 1.0) -> void:
-	# Si el Jugador 1 le dispara antes de los 3 segundos, tiene armadura de trama (ignora el daño)
-	dano_recibido =dano_recibido*-1
+	dano_recibido = dano_recibido * -1
 	if !activo:
-		print("Motor invulnerable aún...")
 		return
-		
 	vida -= int(dano_recibido)
-	print("¡Impacto al motor! Vida restante: ", vida)
-	
-	# Feedback visual rápido de ingeniero a jugador
+	sonido_dano.pitch_scale = 0.35
+	sonido_dano.volume_db = linear_to_db(Global.sfx_volume / 100.0)
+	sonido_dano.play()
 	modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.1).timeout
 	modulate = Color(1, 1, 1)
+	if vida <= 0:
+		_destruir_motor()
 	
 	if vida <= 0:
 		_destruir_motor()

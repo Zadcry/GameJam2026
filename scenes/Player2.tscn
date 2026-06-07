@@ -52,6 +52,7 @@
 [ext_resource type="Texture2D" uid="uid://v25utnie81xo" path="res://sprites/crusty_saltando_sinoxido/crusty_torso.png" id="38_w4fnc"]
 [ext_resource type="Texture2D" uid="uid://cmghyvfpbfk3v" path="res://sprites/crusty_saltando_sinoxido/crusty_bate.png" id="45_8hxde"]
 [ext_resource type="AudioStream" uid="uid://drttee1fevvpc" path="res://sfx/bate_swing.ogg" id="52_kb7gl"]
+[ext_resource type="AudioStream" uid="uid://tpvcfrtvh17" path="res://sfx/damage.ogg" id="53_qvsp4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3o6np"]
 size = Vector2(23, 59)
@@ -2588,5 +2589,9 @@ target_position = Vector2(0, -50)
 [node name="SonidoAtaque" type="AudioStreamPlayer2D" parent="." unique_id=360373498]
 stream = ExtResource("52_kb7gl")
 volume_db = -10.0
+
+[node name="SonidoDano" type="AudioStreamPlayer2D" parent="." unique_id=910644818]
+stream = ExtResource("53_qvsp4")
+volume_db = 1.15
 
 [connection signal="area_entered" from="MeleeArea" to="." method="_on_melee_hit"]

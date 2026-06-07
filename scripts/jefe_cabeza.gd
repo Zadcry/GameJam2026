@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed: float = 100
 @export var speed_ataque: float = 300 
 var sigueJugador: bool = false
-
+@onready var sonido_dano := $SonidoDano
 @onready var animacion: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: CollisionShape2D = $hitBox
 @onready var hurtbox: Area2D = $hurtbox

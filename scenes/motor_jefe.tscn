@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://2tti4p2155b5" path="res://scripts/motor_jefe.gd" id="1_7trfr"]
 [ext_resource type="Texture2D" uid="uid://bh68ttc0iyxgu" path="res://sprites/jefe/motor_animado/motor.png" id="1_g4x3t"]
 [ext_resource type="Texture2D" uid="uid://pecqymm4vy1a" path="res://sprites/jefe/motor_animado/CadenasSprite.png" id="2_mwrn0"]
+[ext_resource type="AudioStream" uid="uid://tpvcfrtvh17" path="res://sfx/damage.ogg" id="4_12wh6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22lly"]
 atlas = ExtResource("2_mwrn0")
@@ -236,3 +237,7 @@ collision_mask = 57
 rotation = -1.5707964
 target_position = Vector2(0, 65)
 collision_mask = 57
+
+[node name="SonidoDano" type="AudioStreamPlayer2D" parent="." unique_id=14747876]
+stream = ExtResource("4_12wh6")
+pitch_scale = 0.35

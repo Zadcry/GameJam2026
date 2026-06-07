@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ckwh151r4vg3l" path="res://sprites/jefe/motor_animado/Cable.png" id="2_ce45h"]
 [ext_resource type="Texture2D" uid="uid://b2lr7svqqslmb" path="res://sprites/jefe/televisor_cara_dolor/tele_cara_dolor.png" id="2_oicog"]
 [ext_resource type="Texture2D" uid="uid://cxg4n7i5rlg8r" path="res://sprites/jefe/televisor_cara_hablando/tele_cara_hablando.png" id="5_ym6hk"]
+[ext_resource type="AudioStream" uid="uid://tpvcfrtvh17" path="res://sfx/damage.ogg" id="6_0xwag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f501l"]
 size = Vector2(84, 65)
@@ -224,6 +225,10 @@ collision_mask = 57
 rotation = -1.5707964
 target_position = Vector2(0, 60)
 collision_mask = 57
+
+[node name="SonidoDano" type="AudioStreamPlayer2D" parent="." unique_id=1770974057]
+stream = ExtResource("6_0xwag")
+pitch_scale = 0.35
 
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

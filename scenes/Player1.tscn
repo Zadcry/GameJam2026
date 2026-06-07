@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bcyff0yv7xiwa" path="res://sprites/mitch_camina_oxido3/mitch idle.png" id="13_oac26"]
 [ext_resource type="AudioStream" uid="uid://df705gi77a6og" path="res://sfx/bola_swing.ogg" id="17_vy07h"]
 [ext_resource type="AudioStream" uid="uid://bh6y7bqqva2c4" path="res://sfx/Carga.ogg" id="18_rgxth"]
+[ext_resource type="AudioStream" uid="uid://tpvcfrtvh17" path="res://sfx/damage.ogg" id="19_g2667"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jryi"]
 size = Vector2(30, 41)
@@ -879,3 +880,7 @@ stream = ExtResource("17_vy07h")
 stream = ExtResource("18_rgxth")
 volume_db = -25.0
 pitch_scale = 2.5
+
+[node name="SonidoDano" type="AudioStreamPlayer2D" parent="." unique_id=1398172320]
+stream = ExtResource("19_g2667")
+pitch_scale = 0.85

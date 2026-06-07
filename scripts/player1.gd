@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var sonido_lanzamiento := $SonidoLanzamiento
 @onready var sonido_carga := $SonidoCarga
+@onready var sonido_dano := $SonidoDano
 
 const GRAVITY = 800.0
 const JUMP_FORCE = -400.0
@@ -217,9 +218,12 @@ func aplicar_oxido() -> void:
 func recibir_dano(knockback_dir: float) -> void:
 	if en_knockback or Global.game_over_activo:
 		return
+	en_knockback = true
+	sonido_dano.pitch_scale = 1.3
+	sonido_dano.volume_db = linear_to_db(Global.sfx_volume / 100.0)
+	sonido_dano.play()
 	Global.oxido_mitch += randf_range(3.0, 6.0)
 	aplicar_oxido()
-	en_knockback = true
 	velocity.x = knockback_dir * 100.0
 	velocity.y = knockback_dir * -300.0
 	_flash_dano()

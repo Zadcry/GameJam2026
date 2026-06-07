@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var sonido_dano := $SonidoDano
+
 enum State { PATROL, CHASE, ATTACK, STUNNED}
 var current_state = State.PATROL
 var is_invulnerable := false
@@ -132,6 +134,9 @@ func _apply_stun() -> void:
 func recibir_dano_melee() -> void:
 	if is_invulnerable: return
 	is_invulnerable = true
+	sonido_dano.pitch_scale = 1.5
+	sonido_dano.volume_db = linear_to_db(Global.sfx_volume / 100.0)
+	sonido_dano.play()
 	health -= 1
 	$SpriteAnimado.modulate = Color(1, 0, 0)
 	if health <= 0:
